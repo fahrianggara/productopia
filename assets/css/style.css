@@ -3,6 +3,9 @@
 /*--------------------------------------------------------------
 # General CSS
 --------------------------------------------------------------*/
+*{
+	scroll-behavior: smooth;
+}
 :root {
 	--main-color: #141516;
 	--text-color: #fffff0;
@@ -66,6 +69,7 @@ button:focus {
 	padding: 15px 0;
 	background-color: var(--main-color);
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+	transition: 0.2s;
 }
 
 #header .logo-header {
@@ -352,6 +356,49 @@ section {
 		width: 100%;
 	}
 }
+/*--------------------------------------------------------------
+# content
+--------------------------------------------------------------*/
+.tab-pane .col-md-3{
+	padding: 0;
+}
+.carousel-inner .card{
+	padding: 10px !important;
+}
+@media (max-width: 768px) {
+    .carousel-inner .carousel-item > div {
+        display: none;
+    }
+    .carousel-inner .carousel-item > div:first-child {
+        display: block;
+    }
+}
+
+.carousel-inner .carousel-item.active,
+.carousel-inner .carousel-item-next,
+.carousel-inner .carousel-item-prev {
+    display: flex;
+}
+
+/* display 3 */
+@media (min-width: 768px) {
+    
+    .carousel-inner .carousel-item-right.active,
+    .carousel-inner .carousel-item-next {
+      transform: translateX(33.333%);
+    }
+    
+    .carousel-inner .carousel-item-left.active, 
+    .carousel-inner .carousel-item-prev {
+      transform: translateX(-33.333%);
+    }
+}
+
+.carousel-inner .carousel-item-right,
+.carousel-inner .carousel-item-left{ 
+  transform: translateX(0);
+}
+
 
 /*--------------------------------------------------------------
 # Welcome
