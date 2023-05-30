@@ -368,13 +368,35 @@ section {
 	}
 }
 /*--------------------------------------------------------------
-# content
+# card product
 --------------------------------------------------------------*/
+
 .tab-pane .col-md-3{
 	padding: 0;
 }
 .carousel-inner .card{
 	padding: 10px !important;
+	position: relative;
+}
+.carousel-inner .card .col-md-12{
+	padding: 10px !important;
+	color: white;
+	background: #199cff;
+	width: 50%;
+	position: absolute;
+	opacity: 0;
+	top: 0;
+	right: 0;
+	transition: 0.4s;
+}
+.carousel-inner .card .col-md-12 a{
+	color: white;
+}
+.carousel-inner .card .col-md-12 a:hover{
+	color: rgb(192, 192, 192);
+}
+.carousel-inner .card .col-md-12:hover{
+	opacity: 0.9;
 }
 @media (max-width: 768px) {
     .carousel-inner .carousel-item > div {
