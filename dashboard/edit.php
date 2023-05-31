@@ -1,22 +1,26 @@
-<!-- edit.php -->
 <?php
+// Membaca data array dari file JSON (opsional)
+$data = json_decode(file_get_contents('data.json'), true);
+if (!$data) {
+    $data = array();
+}
 // Mendapatkan ID dari URL
 $id = $_GET['id'];
-
 // Mencari data dengan ID yang sesuai
-$editData = null;
-foreach ($data as $row) {
-    if ($row['id'] === $id) {
-        $editData = $row;
-        break;
+foreach ($data as $index) {
+    if ($index['id'] == $id) {
+        $editData = $index;
+    }else{
+        echo "<script> alert('Data tidak ditemukan'); </script>";
+        echo "<script>document.location.href='index.php';</script>";
     }
 }
 
 // Jika data ditemukan
-if ($editData) {
+if ($index) {
     // Tampilkan form edit
     echo "<h2>Edit Data</h2>";
-    echo "<form action='update.php?id=".$editData['id']."' method='post'>";
+    echo "<form action='process-edit.php?id=".$editData['id']."' method='post'>";
     echo "<label for='name'>Nama:</label>";
     echo "<input type='text' name='name' value='".$editData['name']."' required><br><br>";
     echo "<label for='email'>Email:</label>";

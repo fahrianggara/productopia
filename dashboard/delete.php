@@ -11,6 +11,7 @@ foreach ($data as $index =>$row) {
         $deleteIndex = $index;
     }else{
         echo "<script> alert('Data tidak ditemukan'); </script>";
+        echo "<script>document.location.href='index.php';</script>";
     }
 }
 
