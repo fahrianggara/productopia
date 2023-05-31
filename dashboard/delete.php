@@ -1,20 +1,16 @@
 <?php
-// Mendapatkan ID dari URL
-$file = "data.json";
+// Membaca data array dari file JSON (opsional)
+$data = json_decode(file_get_contents('data.json'), true);
+if (!$data) {
+    $data = array();
+}
 
-// Mendapatkan file json
-$anggota = file_get_contents($file);
-
-// Mendecode anggota.json
-$data = json_decode($anggota, true);
-
-// Mencari index data dengan ID yang sesuai
 $id = $_GET['id'];
-$deleteIndex = null;
-foreach ($data as $index => $row) {
-    if ($row['id'] === $id) {
+foreach ($data as $index =>$row) {
+    if ($row['id'] == $id) {
         $deleteIndex = $index;
-        break;
+    }else{
+        echo "<script> alert('Data tidak ditemukan'); </script>";
     }
 }
 
@@ -25,8 +21,11 @@ if ($deleteIndex !== null) {
 
     // Menyimpan data array ke file JSON (opsional)
     file_put_contents('data.json', json_encode($data));
+    echo "<script> alert('Data Berhasil Dihapus'); </script>";
+    echo "<script>document.location.href='index.php';</script>";
 }
 
+
 // Mengarahkan kembali ke halaman utama
-header('Location: index.php');
+
 ?>

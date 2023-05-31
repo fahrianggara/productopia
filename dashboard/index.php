@@ -10,6 +10,11 @@ if (!$data) {
 <html>
 <head>
     <title>CRUD dengan Array PHP</title>
+    <script>
+        function confirmDelete() {
+            return confirm("Apakah Anda yakin ingin menghapus item ini?");
+        }
+    </script>
 </head>
 <body>
     <h2>Tambah Data</h2>
@@ -38,8 +43,8 @@ if (!$data) {
                     <td><?=$row['name']?></td>
                     <td><?=$row['email']?></td>
                     <td>
-                        <a href="edit.php?id=<?=$row['id']?>">Edit</a>
-                        <a href="delete.php?id=<?=$row['id']?>">Hapus</a>;
+                        <a href="edit.php?id='<?=$row['id']?>'">Edit</a>
+                        <a onclick="return confirmDelete()" href="delete.php?id=<?=$row['id']?>">Hapus</a>;
                  </tr>
 
         <?php
