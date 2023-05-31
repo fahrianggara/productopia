@@ -10,10 +10,12 @@ $id = $_GET['id'];
 foreach ($data as $index) {
     if ($index['id'] == $id) {
         $editData = $index;
-    }else{
-        echo "<script> alert('Data tidak ditemukan'); </script>";
-        echo "<script>document.location.href='index.php';</script>";
+        break;
     }
+    // }else{
+    //     echo "<script> alert('Data tidak ditemukan'); </script>";
+    //     echo "<script>document.location.href='index.php';</script>";
+    // }
 }
 
 // Jika data ditemukan
