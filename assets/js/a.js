@@ -1,9 +1,31 @@
-!(function ($) { // deklarasi jQuery
-    "use strict"; // Start of use strict
+!(function ($) {
+    "use strict";
 
-    $("#header").sticky({ // Sticky Header
+    $("#header").sticky({
         topSpacing: 0,
         zIndex: '50'
+    });
+
+    var scrolltoOffset = $('#header').outerHeight() - 20;
+    $(document).on('click', '.welcome-text a', function (e) {
+        if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+            var target = $(this.hash);
+            if (target.length) {
+                e.preventDefault();
+
+                var scrollto = target.offset().top - scrolltoOffset;
+
+                if ($(this).attr("href") == '#header') {
+                    scrollto = 0;
+                }
+
+                $('html, body').animate({
+                    scrollTop: scrollto
+                }, 1500, 'easeInOutExpo');
+
+                return false;
+            }
+        }
     });
 
     if ($(".nav-menu").length) { // Jika ada class nav-menu
@@ -51,6 +73,9 @@
         }
     });
 
+    /*--------------------------------------------------------------
+    # Change Theme
+    --------------------------------------------------------------*/
     const body = document.body;
     const btnTheme = document.getElementById("btn-theme");
     const lightTheme = "light-theme";
@@ -70,10 +95,10 @@
     }
 
     btnTheme.addEventListener('click', () => {
-        document.body.classList.toggle(lightTheme);
+        body.classList.toggle(lightTheme);
         localStorage.setItem('selected-theme', getCurrentTheme());
 
-        if (document.body.classList.contains(lightTheme) && selectedIcon == 'iconSun') {
+        if (body.classList.contains(lightTheme)) {
             btnTheme.innerHTML = iconMoon;
             localStorage.setItem('selected-icon', 'iconMoon');
         } else {
@@ -81,7 +106,6 @@
             localStorage.setItem('selected-icon', 'iconSun');
         }
     });
-
 })(jQuery);
 
 // for this navbar
@@ -118,3 +142,48 @@ $('.carousel .carousel-item').each(function () {
         next.children(':first-child').clone().appendTo($(this));
     }
 });
+
+/*--------------------------------------------------------------
+# Slider product
+--------------------------------------------------------------*/
+var productList = document.querySelectorAll('.product-list');
+var productControls = document.querySelectorAll('.product-controls');
+
+if (productList.length > 0 && productControls.length > 0) {
+    productList.forEach(function (element, index) {
+        var productListSlider = tns({
+            container: element,
+            controlsContainer: productControls[index],
+            items: 2,
+            speed: 400,
+            autoplay: true,
+            autoplayButtonOutput: false,
+            autoplayTimeout: 5000,
+            rewind: true,
+            gutter: 5,
+            responsive: {
+                200: {
+                    items: 1,
+                    // fixedWidth: 240,
+                },
+                320: {
+                    items: 2,
+                },
+                425: {
+                    items: 2,
+                    // fixedWidth: 220,
+                },
+                768: {
+                    items: 3,
+                    fixedWidth: false,
+                },
+                992: {
+                    items: 4,
+                    fixedWidth: false,
+                },
+            },
+        });
+    });
+} else {
+    console.error("Elements with class 'product-list' or 'product-controls' not found.");
+}
