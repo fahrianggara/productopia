@@ -15,10 +15,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     foreach ($data as $index =>$row) {
         if ($row['id'] == $id) {
             $updateIndex = $index;
-        }else{
-            echo "<script> alert('Data tidak ditemukan'); </script>";
-            echo "<script>document.location.href='index.php';</script>";
+            break;
         }
+        // }else{
+        //     echo "<script> alert('Data tidak ditemukan'); </script>";
+        //     echo "<script>document.location.href='index.php';</script>";
+        // }
     }
 
     // Jika index data ditemukan
