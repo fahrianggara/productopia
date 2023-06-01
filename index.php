@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="assets/plugins/bootstrap4/bootstrap.min.css">
     <link rel="stylesheet" href="assets/plugins/fontawesome-free/css/all.css">
     <link rel="stylesheet" href="assets/plugins/tinyslider/tiny-slider.css">
-    <link rel="stylesheet" href="assets/css/e.css">
+    <link rel="stylesheet" href="assets/css/f.css">
 </head>
 
 <body>

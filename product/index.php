@@ -22,7 +22,7 @@
                                         </div>
                                         <div class="product-info">
                                             <span class="category">Fashion</span>
-                                            <h3 class="product-name">Terrex Adasdas</h3>
+                                            <h3 class="product-name">Terrex Adasdas Lorem Ipsumss</h3>
                                             <div class="product-price">
                                                 <p class="price">Rp 12.000.000</p>
                                                 <p class="discount">Rp 900.000</p>

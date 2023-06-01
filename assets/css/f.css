@@ -706,6 +706,7 @@ section {
 .product-item {
 	position: relative;
 	padding-left: 0;
+	min-width: 0;
 	transition: transform 0.3s ease-in-out, border 0.3s ease-in-out;
 	margin-bottom: 10px;
 	border: 1px solid transparent;
