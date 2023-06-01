@@ -146,7 +146,7 @@ $('.carousel .carousel-item').each(function () {
 /*--------------------------------------------------------------
 # Slider product
 --------------------------------------------------------------*/
-var productList = document.querySelectorAll('.product-list');
+var productList = document.querySelectorAll('.slider.product-list');
 var productControls = document.querySelectorAll('.product-controls');
 
 if (productList.length > 0 && productControls.length > 0) {
@@ -184,6 +184,4 @@ if (productList.length > 0 && productControls.length > 0) {
             },
         });
     });
-} else {
-    console.error("Elements with class 'product-list' or 'product-controls' not found.");
 }

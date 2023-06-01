@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="assets/plugins/bootstrap4/bootstrap.min.css">
     <link rel="stylesheet" href="assets/plugins/fontawesome-free/css/all.css">
     <link rel="stylesheet" href="assets/plugins/tinyslider/tiny-slider.css">
-    <link rel="stylesheet" href="assets/css/b.css">
+    <link rel="stylesheet" href="assets/css/e.css">
 </head>
 
 <body>
@@ -24,14 +24,11 @@
                 $page = $_GET['page'];
 
                 switch ($page) {
-                    case 'home':
-                        include('pages/homepage.php');
-                        break;
                     case 'product':
-                        include('pages/product.php');
+                        include('product/index.php');
                         break;
-                    case 'search':
-                        include('pages/search.php');
+                    case 'product-detail':
+                        include('product/detail.php');
                         break;
                     case 'about':
                         include('pages/about.php');
@@ -41,7 +38,7 @@
                         break;
                 }
             } else {
-                include('layouts/welcome.php');
+                include('homepage/index.php');
             }
         ?>
     </main>
@@ -55,6 +52,6 @@
     <script src="assets/plugins/jquery/sticky/jquery.sticky.js"></script>
     <script src="assets/plugins/jquery/easing/jquery.easing.min.js"></script>
     <script src="assets/plugins/tinyslider/tiny-slider.js"></script>
-    <script src="assets/js/a.js"></script>
+    <script src="assets/js/b.js"></script>
 </body>
 
