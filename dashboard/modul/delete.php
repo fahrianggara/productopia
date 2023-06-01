@@ -25,7 +25,7 @@ if ($deleteIndex !== null) {
     // Menyimpan data array ke file JSON (opsional)
     file_put_contents('data.json', json_encode($data));
     echo "<script> alert('Data Berhasil Dihapus'); </script>";
-    echo "<script>document.location.href='index.php';</script>";
+    echo "<script>document.location.href='../index.php?page=product';</script>";
 }
 
 
