@@ -11,8 +11,16 @@ $data = json_decode($anggota, true);
 // Jika ada data yang dikirimkan
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Mengambil data dari form
-    $name = $_POST['name'];
-    $email = $_POST['email'];
+    $image = $_POST['img'];
+    $name = $_POST['nm'];
+    $badge = $_POST['bg'];
+    $category = $_POST['cate'];
+    $original = $_POST['ori'];
+    $discount = $_POST['dis'];
+    $description = $_POST['desc'];
+    $size = $_POST['size'];
+    $quantity = $_POST['qty'];
+    $stock = $_POST['stk'];
 
     // Menambahkan data baru ke dalam array
     if (empty($data)) {
@@ -23,8 +31,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $newData = array(
         'id' => $newId,
+        'image' => $image,
         'name' => $name,
-        'email' => $email
+        'badge' => $badge,
+        'category' => $category,
+        'original' => $original,
+        'discount' => $discount,
+        'description' => $description,
+        'size' => $size,
+        'quantity' => $quantity,
+        'stock' => $stock
     );
     $data[] = $newData;
 }
