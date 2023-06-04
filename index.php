@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="assets/plugins/bootstrap4/bootstrap.min.css">
     <link rel="stylesheet" href="assets/plugins/fontawesome-free/css/all.css">
     <link rel="stylesheet" href="assets/plugins/tinyslider/tiny-slider.css">
-    <link rel="stylesheet" href="assets/css/f.css">
+    <link rel="stylesheet" href="assets/css/p.css">
 </head>
 
 <body>
@@ -30,11 +30,11 @@
                     case 'product-detail':
                         include('product/detail.php');
                         break;
-                    case 'about':
-                        include('pages/about.php');
+                    case 'cart':
+                        include('product/cart.php');
                         break;
                     default:
-                        include('pages/homepage.php');
+                        include('homepage/index.php');
                         break;
                 }
             } else {
@@ -42,6 +42,10 @@
             }
         ?>
     </main>
+
+    <a href="javascript:void(0)" class="btn to-the-top">
+        <i class="fas fa-chevron-up"></i>
+    </a>
 
     <!-- Footer -->
     <?php include('layouts/footer.php'); ?>
@@ -52,6 +56,6 @@
     <script src="assets/plugins/jquery/sticky/jquery.sticky.js"></script>
     <script src="assets/plugins/jquery/easing/jquery.easing.min.js"></script>
     <script src="assets/plugins/tinyslider/tiny-slider.js"></script>
-    <script src="assets/js/b.js"></script>
+    <script src="assets/js/h.js"></script>
 </body>
 

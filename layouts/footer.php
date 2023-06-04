@@ -5,17 +5,13 @@
                     <div class="col-md-4">
                         <h3>Tentang</h3>
                         <p>
-                            Productopia adalah sebuah website yang menyediakan berbagai
-                            macam produk yang dapat dibeli secara online.
+                        Productopia adalah sebuah website yang menyediakan berbagai macam produk seperti produk fashion, elektronik dan olahraga yang dapat
+                        dibeli secara online.
                         </p>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4 footer-menu">
                         <h3>Menu</h3>
                         <ul class="mb-3">
-                            <li><a class="underline active" href="javascript:void(0)">Utama</a></li>
-                            <li><a class="underline" href="javascript:void(0)">Produk</a></li>
-                            <li><a class="underline" href="javascript:void(0)">Pencarian</a></li>
-                            <li><a class="underline" href="javascript:void(0)">Tentang Kami</a></li>
                         </ul>
                     </div>
                     <div class="col-md-4">

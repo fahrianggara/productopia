@@ -1,4 +1,4 @@
-<section id="product-detail">
+<section id="product-detail" style="padding-top: 30px">
     <div class="container">
         <div class="row">
             <figure class="image col-xl-6 col-lg-6 col-md-6">
@@ -35,17 +35,35 @@
                             <div class="form-group">
                                 <label>Pilih Ukuran: </label>
                                 <ul class="selection-input">
-                                    <li><input type="checkbox" name="size" value="M">M</li>
-                                    <li><input type="checkbox" name="size" value="L">L</li>
-                                    <li><input type="checkbox" name="size" value="XL">XL</li>
+                                    <li><input type="radio" name="size" value="M">M</li>
+                                    <li><input type="radio" name="size" value="L">L</li>
+                                    <li><input type="radio" name="size" value="XL">XL</li>
                                 </ul>
                             </div>
 
-                            <hr>
+                            <div class="form-group">
+                                <label>Pilih Warna: </label>
+                                <ul class="selection-input">
+                                    <li><input type="radio" name="color" value="Black">Black</li>
+                                    <li><input type="radio" name="color" value="White">White</li>
+                                    <li><input type="radio" name="color" value="Red">Red</li>
+                                </ul>
+                            </div>
 
                             <div class="form-group">
-                                <input type="number" name="quantity" value="1" min="1" max="999">
                                 <label>Stok: <b>999</b></label>
+
+                                <div class="qty">
+                                    <button type="button" class="min-qty" onclick="this.parentNode.querySelector('#quantity').stepDown()">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                    <div class="form-outline">
+                                        <input id="quantity" min="1" max="10" name="quantity" value="1" type="number" class="form-control" readonly />
+                                    </div>
+                                    <button type="button" class="plus-qty" onclick="this.parentNode.querySelector('#quantity').stepUp()">
+                                        <i class="fas fa-plus"></i>
+                                    </button>
+                                </div>
                             </div>
 
                             <hr>
@@ -84,109 +102,138 @@
         <div class="product-container">
             <ul class="slider product-list">
                 <li class="product-item">
-                    <div class="product">
+                    <a href="javascript:void(0)" class="product">
                         <div class="product-image">
                             <span class="product-tag bg-danger">Hot</span>
-                            <img src="https://www.adidas.co.id/media/catalog/product/cache/3bec5fdb79d91223b1a151be2b21ce8d/h/t/ht9443_2_apparel_photography_front20center20view_grey.jpg">
+                            <img src="https://images.tokopedia.net/img/cache/200-square/VqbcmM/2023/3/7/f06992e7-2e18-4965-a808-a735f1c4ddbb.jpg">
                             <ul class="product-action">
-                                <li><a href="javascript:void(0)"><i class="fas fa-external-link-alt"></i></a>
-                                </li>
-                                <li><a href="javascript:void(0)"><i class="fas fa-shopping-cart"></i></a></li>
+                                <li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
                             </ul>
                         </div>
                         <div class="product-info">
-                            <span class="category">Fashion</span>
-                            <h3 class="product-name">Terrex Adasdas</h3>
+                            <span class="category">Elektronik</span>
+                            <h3 class="product-name">Headset Lenovo</h3>
                             <div class="product-price">
                                 <p class="price">Rp 12.000.000</p>
                                 <p class="discount">Rp 900.000</p>
                             </div>
                         </div>
-                    </div>
+                    </a>
+                </li>
+
+                <li class="product-item">
+                    <a href="javascript:void(0)" class="product">
+                        <div class="product-image">
+                            <span class="product-tag bg-info">New</span>
+                            <img src="https://images.tokopedia.net/img/cache/200-square/VqbcmM/2022/11/17/8d6ebd18-1f84-4e23-a243-ef6ab7dfacb5.jpg">
+                            <ul class="product-action">
+                                <li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="product-info">
+                            <span class="category">Elektronik</span>
+                            <h3 class="product-name">Fantech REVOLVER GP12</h3>
+                            <div class="product-price">
+                                <p class="price">Rp 12.000.000</p>
+                                <!-- <p class="discount">Rp 900.000</p> -->
+                            </div>
+                        </div>
+                    </a>
                 </li>
                 <li class="product-item">
-                    <div class="product">
+                    <a href="javascript:void(0)" class="product">
                         <div class="product-image">
                             <span class="product-tag bg-danger">Hot</span>
-                            <img src="https://www.adidas.co.id/media/catalog/product/cache/3bec5fdb79d91223b1a151be2b21ce8d/h/t/ht9443_2_apparel_photography_front20center20view_grey.jpg">
+                            <img src="https://images.tokopedia.net/img/cache/200-square/VqbcmM/2023/4/19/d76524de-9267-4d3c-ad1d-366f079742f0.jpg">
                             <ul class="product-action">
-                                <li><a href="javascript:void(0)"><i class="fas fa-external-link-alt"></i></a>
-                                </li>
-                                <li><a href="javascript:void(0)"><i class="fas fa-shopping-cart"></i></a></li>
+                                <li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
                             </ul>
                         </div>
                         <div class="product-info">
-                            <span class="category">Fashion</span>
-                            <h3 class="product-name">Terrex Adasdas</h3>
+                            <span class="category">Elektronik</span>
+                            <h3 class="product-name">Fantech Venom II</h3>
                             <div class="product-price">
                                 <p class="price">Rp 12.000.000</p>
                                 <p class="discount">Rp 900.000</p>
                             </div>
                         </div>
-                    </div>
+                    </a>
                 </li>
                 <li class="product-item">
-                    <div class="product">
+                    <a href="javascript:void(0)" class="product">
                         <div class="product-image">
-                            <span class="product-tag bg-danger">Hot</span>
-                            <img src="https://www.adidas.co.id/media/catalog/product/cache/3bec5fdb79d91223b1a151be2b21ce8d/h/t/ht9443_2_apparel_photography_front20center20view_grey.jpg">
+                            <!-- <span class="product-tag bg-danger">Hot</span> -->
+                            <img src="https://images.tokopedia.net/img/cache/200-square/VqbcmM/2022/6/21/18094306-8154-4652-b22a-cd75f1f4f1f4.png">
                             <ul class="product-action">
-                                <li><a href="javascript:void(0)"><i class="fas fa-external-link-alt"></i></a>
-                                </li>
-                                <li><a href="javascript:void(0)"><i class="fas fa-shopping-cart"></i></a></li>
+                                <li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
                             </ul>
                         </div>
                         <div class="product-info">
-                            <span class="category">Fashion</span>
-                            <h3 class="product-name">Terrex Adasdas</h3>
+                            <span class="category">Elektronik</span>
+                            <h3 class="product-name">Fantech C30 Luminos</h3>
                             <div class="product-price">
                                 <p class="price">Rp 12.000.000</p>
-                                <p class="discount">Rp 900.000</p>
+                                <!-- <p class="discount">Rp 900.000</p> -->
                             </div>
                         </div>
-                    </div>
+                    </a>
                 </li>
                 <li class="product-item">
-                    <div class="product">
+                    <a href="javascript:void(0)" class="product">
                         <div class="product-image">
                             <span class="product-tag bg-danger">Hot</span>
-                            <img src="https://www.adidas.co.id/media/catalog/product/cache/3bec5fdb79d91223b1a151be2b21ce8d/h/t/ht9443_2_apparel_photography_front20center20view_grey.jpg">
+                            <img src="https://images.tokopedia.net/img/cache/200-square/VqbcmM/2021/10/1/194b570c-b7f1-41d2-995a-89f62a13a7c9.jpg">
                             <ul class="product-action">
-                                <li><a href="javascript:void(0)"><i class="fas fa-external-link-alt"></i></a>
-                                </li>
-                                <li><a href="javascript:void(0)"><i class="fas fa-shopping-cart"></i></a></li>
+                                <li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
                             </ul>
                         </div>
                         <div class="product-info">
-                            <span class="category">Fashion</span>
-                            <h3 class="product-name">Terrex Adasdas</h3>
+                            <span class="category">Elektronik</span>
+                            <h3 class="product-name">Fantech K613L</h3>
                             <div class="product-price">
                                 <p class="price">Rp 12.000.000</p>
                                 <p class="discount">Rp 900.000</p>
                             </div>
                         </div>
-                    </div>
+                    </a>
                 </li>
                 <li class="product-item">
-                    <div class="product">
+                    <a href="javascript:void(0)" class="product">
                         <div class="product-image">
                             <span class="product-tag bg-danger">Hot</span>
-                            <img src="https://www.adidas.co.id/media/catalog/product/cache/3bec5fdb79d91223b1a151be2b21ce8d/h/t/ht9443_2_apparel_photography_front20center20view_grey.jpg">
+                            <img src="https://images.tokopedia.net/img/cache/200-square/VqbcmM/2023/3/7/f06992e7-2e18-4965-a808-a735f1c4ddbb.jpg">
                             <ul class="product-action">
-                                <li><a href="javascript:void(0)"><i class="fas fa-external-link-alt"></i></a>
-                                </li>
-                                <li><a href="javascript:void(0)"><i class="fas fa-shopping-cart"></i></a></li>
+                                <li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
                             </ul>
                         </div>
                         <div class="product-info">
-                            <span class="category">Fashion</span>
-                            <h3 class="product-name">Terrex Adasdas</h3>
+                            <span class="category">Elektronik</span>
+                            <h3 class="product-name">Headset Lenovo TH10</h3>
                             <div class="product-price">
                                 <p class="price">Rp 12.000.000</p>
                                 <p class="discount">Rp 900.000</p>
                             </div>
                         </div>
-                    </div>
+                    </a>
+                </li>
+                <li class="product-item">
+                    <a href="javascript:void(0)" class="product">
+                        <div class="product-image">
+                            <span class="product-tag bg-danger">Hot</span>
+                            <img src="https://images.tokopedia.net/img/cache/900/VqbcmM/2023/3/17/598a51f7-4def-47b9-94bf-e61439bf875d.jpg">
+                            <ul class="product-action">
+                                <li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="product-info">
+                            <span class="category">Elektronik</span>
+                            <h3 class="product-name">PowerBank ROBOT 10000mAh</h3>
+                            <div class="product-price">
+                                <p class="price">Rp 300.000</p>
+                                <p class="discount">Rp 129.000</p>
+                            </div>
+                        </div>
+                    </a>
                 </li>
             </ul>
 
