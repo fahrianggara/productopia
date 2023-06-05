@@ -205,9 +205,9 @@
                                     <span class="team-job"><?=$row['job']?></span>
                                 </div>
                                 <div class="social">
-                                    <a href="javascript:void(0)"><i class="fab fa-github"></i></a>
-                                    <a href="javascript:void(0)"><i class="fab fa-instagram"></i></a>
-                                    <a href="javascript:void(0)"><i class="fab fa-linkedin"></i></a>
+                                    <a href="<?=$row['github']?>"><i class="fab fa-github"></i></a>
+                                    <a href="<?=$row['instagram']?>"><i class="fab fa-instagram"></i></a>
+                                    <a href="<?=$row['linkdn']?>"><i class="fab fa-linkedin"></i></a>
                                 </div>
                             </div>
                         </div>
