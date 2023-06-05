@@ -271,7 +271,7 @@
                 <li class="team-list">
                     <div class="team-inner">
                         <div class="team-avatar">
-                            <img src="https://images.unsplash.com/photo-1531891437562-4301cf35b7e4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDV8fHByb2ZpbGV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60" alt="team">
+                            <img src="assets/images/team/anggae.jpg" alt="team">
 
                             <div class="team-info">
                                 <div class="inner">
