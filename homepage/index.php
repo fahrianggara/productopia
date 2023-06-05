@@ -190,7 +190,10 @@
 
         <div class="team-container">
             <ul id="team-list">
-
+<?php 
+     if (!empty($data)) {
+        foreach ($data as $row) {
+?>
                 <li class="team-list">
                     <div class="team-inner">
                         <div class="team-avatar">
@@ -210,6 +213,10 @@
                         </div>
                     </div>
                 </li>
+<?php 
+        }
+    }
+?>
 
                 <li class="team-list">
                     <div class="team-inner">
@@ -271,7 +278,7 @@
                 <li class="team-list">
                     <div class="team-inner">
                         <div class="team-avatar">
-                            <img src="assets/images/team/jo.jpg" alt="team">
+                            <img src="https://images.unsplash.com/photo-1531891437562-4301cf35b7e4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDV8fHByb2ZpbGV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60" alt="team">
 
                             <div class="team-info">
                                 <div class="inner">

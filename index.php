@@ -1,3 +1,10 @@
+<?php
+// Membaca data array dari file JSON (opsional)
+$data = json_decode(file_get_contents('data/team.json'), true);
+if (!$data) {
+    $data = array();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,7 +26,6 @@
     <?php include('layouts/navbar.php'); ?>
 
     <main id="main">
-
         <?php
             if (isset($_GET['page'])) {
                 $page = $_GET['page'];
