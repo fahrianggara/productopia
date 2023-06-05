@@ -1,3 +1,10 @@
+<?php
+// Membaca data array dari file JSON (opsional)
+$data = json_decode(file_get_contents('data/team.json'), true);
+if (!$data) {
+    $data = array();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
