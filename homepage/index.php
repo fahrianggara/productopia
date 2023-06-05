@@ -214,7 +214,7 @@
                 <li class="team-list">
                     <div class="team-inner">
                         <div class="team-avatar">
-                            <img src="https://images.unsplash.com/photo-1457449940276-e8deed18bfff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="team">
+                            <img src="assets/images/team/yusuf.jpg" alt="team">
 
                             <div class="team-info">
                                 <div class="inner">
