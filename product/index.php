@@ -128,7 +128,7 @@ $countElek = 0;
                                     <span class="count-item"><?=$countElek?></span>
                                 </a>
                                 <a href="#" data-toggle="tab" class="list-group-item">Olahraga
-                                    <span class="count-item">32</span>
+                                    <span class="count-item">3</span>
                                 </a>
                             </div>
                         </div>
