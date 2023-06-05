@@ -19,6 +19,7 @@
     <?php include('layouts/navbar.php'); ?>
 
     <main id="main">
+        kocaks
         <?php
             if (isset($_GET['page'])) {
                 $page = $_GET['page'];
