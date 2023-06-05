@@ -4,6 +4,10 @@ $data = json_decode(file_get_contents('data/team.json'), true);
 if (!$data) {
     $data = array();
 }
+$product = json_decode(file_get_contents('data/product.json'), true);
+if (!$product) {
+    $product = array();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

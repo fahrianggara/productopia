@@ -33,141 +33,45 @@
 
         <div class="product-container">
             <ul class="slider product-list">
+<?php 
+     if (!empty($product)) {
+        foreach ($product as $row) {
+?>
                 <li class="product-item">
                     <a href="javascript:void(0)" class="product">
                         <div class="product-image">
                             <span class="product-tag bg-danger">Hot</span>
-                            <img src="https://images.tokopedia.net/img/cache/200-square/VqbcmM/2023/3/7/f06992e7-2e18-4965-a808-a735f1c4ddbb.jpg">
+                            <img src="<?=$row['image']?>">
                             <ul class="product-action">
                                 <li><a href=""><i class="fas fa-shopping-cart"></i></a></li>
                             </ul>
                         </div>
                         <div class="product-info">
-                            <span class="category">Elektronik</span>
-                            <h3 class="product-name">Lorem Ipsum DO</h3>
+                            <span class="category"><?=$row['category']?></span>
+                            <h3 class="product-name"><?=$row['name']?></h3>
                             <div class="product-price">
-                                <p class="price">Rp 12.000.000</p>
-                                <p class="discount">Rp 900.000</p>
+                                <?php
+                                if ($row['discount'] == "") {
+                                ?>
+                                    <p class="price">Rp. <?=number_format($row['original'],0,".",".")?></p>
+                                <?php
+                                }else{
+                                ?>
+                                    <p class="price">Rp. <?=number_format($row['original'],0,".",".")?></p>
+                                    <p class="discount">Rp. <?=number_format($row['discount'],0,".",".")?></p>
+                                <?php
+                                }
+                                ?>
                             </div>
                         </div>
                     </a>
                 </li>
+<?php 
+        }
+    }
+?>
 
-                <li class="product-item">
-                    <a href="javascript:void(0)" class="product">
-                        <div class="product-image">
-                            <span class="product-tag bg-info">New</span>
-                            <img src="https://images.tokopedia.net/img/cache/200-square/VqbcmM/2022/11/17/8d6ebd18-1f84-4e23-a243-ef6ab7dfacb5.jpg">
-                            <ul class="product-action">
-                                <li><a href=""><i class="fas fa-shopping-cart"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="product-info">
-                            <span class="category">Elektronik</span>
-                            <h3 class="product-name">Fantech REVOLVER GP12</h3>
-                            <div class="product-price">
-                                <p class="price">Rp 12.000.000</p>
-                                <!-- <p class="discount">Rp 900.000</p> -->
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <li class="product-item">
-                    <a href="javascript:void(0)" class="product">
-                        <div class="product-image">
-                            <span class="product-tag bg-danger">Hot</span>
-                            <img src="https://images.tokopedia.net/img/cache/200-square/VqbcmM/2023/4/19/d76524de-9267-4d3c-ad1d-366f079742f0.jpg">
-                            <ul class="product-action">
-                                <li><a href=""><i class="fas fa-shopping-cart"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="product-info">
-                            <span class="category">Elektronik</span>
-                            <h3 class="product-name">Fantech Venom II</h3>
-                            <div class="product-price">
-                                <p class="price">Rp 12.000.000</p>
-                                <p class="discount">Rp 900.000</p>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <li class="product-item">
-                    <a href="javascript:void(0)" class="product">
-                        <div class="product-image">
-                            <!-- <span class="product-tag bg-danger">Hot</span> -->
-                            <img src="https://images.tokopedia.net/img/cache/200-square/VqbcmM/2022/6/21/18094306-8154-4652-b22a-cd75f1f4f1f4.png">
-                            <ul class="product-action">
-                                <li><a href=""><i class="fas fa-shopping-cart"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="product-info">
-                            <span class="category">Elektronik</span>
-                            <h3 class="product-name">Fantech C30 Luminos</h3>
-                            <div class="product-price">
-                                <p class="price">Rp 12.000.000</p>
-                                <!-- <p class="discount">Rp 900.000</p> -->
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <li class="product-item">
-                    <a href="javascript:void(0)" class="product">
-                        <div class="product-image">
-                            <span class="product-tag bg-danger">Hot</span>
-                            <img src="https://images.tokopedia.net/img/cache/200-square/VqbcmM/2021/10/1/194b570c-b7f1-41d2-995a-89f62a13a7c9.jpg">
-                            <ul class="product-action">
-                                <li><a href=""><i class="fas fa-shopping-cart"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="product-info">
-                            <span class="category">Elektronik</span>
-                            <h3 class="product-name">Fantech K613L</h3>
-                            <div class="product-price">
-                                <p class="price">Rp 12.000.000</p>
-                                <p class="discount">Rp 900.000</p>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <li class="product-item">
-                    <a href="javascript:void(0)" class="product">
-                        <div class="product-image">
-                            <span class="product-tag bg-danger">Hot</span>
-                            <img src="https://images.tokopedia.net/img/cache/200-square/VqbcmM/2023/3/7/f06992e7-2e18-4965-a808-a735f1c4ddbb.jpg">
-                            <ul class="product-action">
-                                <li><a href=""><i class="fas fa-shopping-cart"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="product-info">
-                            <span class="category">Elektronik</span>
-                            <h3 class="product-name">Headset Lenovo TH10</h3>
-                            <div class="product-price">
-                                <p class="price">Rp 12.000.000</p>
-                                <p class="discount">Rp 900.000</p>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <li class="product-item">
-                    <a href="javascript:void(0)" class="product">
-                        <div class="product-image">
-                            <span class="product-tag bg-danger">Hot</span>
-                            <img src="https://images.tokopedia.net/img/cache/900/VqbcmM/2023/3/17/598a51f7-4def-47b9-94bf-e61439bf875d.jpg">
-                            <ul class="product-action">
-                                <li><a href=""><i class="fas fa-shopping-cart"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="product-info">
-                            <span class="category">Elektronik</span>
-                            <h3 class="product-name">PowerBank ROBOT 10000mAh</h3>
-                            <div class="product-price">
-                                <p class="price">Rp 300.000</p>
-                                <p class="discount">Rp 129.000</p>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-
+                
             </ul>
 
             <div class="product-controls">
