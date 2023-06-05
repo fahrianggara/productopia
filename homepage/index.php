@@ -271,7 +271,7 @@
                 <li class="team-list">
                     <div class="team-inner">
                         <div class="team-avatar">
-                            <img src="assets/images/team/anggae.jpg" alt="team">
+                            <img src="assets/images/team/jo.jpg" alt="team">
 
                             <div class="team-info">
                                 <div class="inner">
