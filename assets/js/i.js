@@ -192,6 +192,12 @@
             localStorage.setItem('selected-icon', 'iconSun');
         }
     });
+
+    setTimeout(() => {
+        history.replaceState('', document.title, window.location.origin + window
+            .location.pathname + window
+            .location.search);
+    }, 1000);
 })(jQuery);
 
 /*--------------------------------------------------------------

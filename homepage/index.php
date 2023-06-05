@@ -26,53 +26,45 @@
         <div class="section-title">
             <h2>Produk</h2>
             <p>
-                Berikut adalah beberapa produk yang tersedia di Productopia. Jika ingin melihat semua produk, silahkan klik tombol dibawah ini. <br>
+                Berikut adalah beberapa produk yang tersedia di Productopia. Jika ingin melihat semua produk, silahkan link ini
+                <a class="underline" href="?page=product">
+                    Lihat semua produk
+
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+
             </p>
         </div>
 
         <div class="product-container">
             <ul class="slider product-list">
-<?php 
-     if (!empty($product)) {
-        foreach ($product as $row) {
-?>
-                <li class="product-item">
-                    <a href="?page=product-detail&id=<?=$row['id']?>" class="product">
-                        <div class="product-image">
-                            <span class="product-tag bg-danger"><?=$row['badge']?></span>
-                            <img src="<?=$row['image']?>">
-                            <ul class="product-action">
-                                <li><a href=""><i class="fas fa-shopping-cart"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="product-info">
-                            <span class="category"><?=$row['category']?></span>
-                            <h3 class="product-name"><?=$row['name']?></h3>
-                            <div class="product-price">
-                                <?php
-                                if ($row['discount'] == "") {
-                                ?>
-                                    <p class="price">Rp. <?=number_format($row['original'],0,".",".")?></p>
-                                <?php
-                                }else{
-                                ?>
-                                    <p class="price">Rp. <?=number_format($row['original'],0,".",".")?></p>
-                                    <p class="discount">Rp. <?=number_format($row['discount'],0,".",".")?></p>
-                                <?php
-                                }
-                                ?>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-<?php 
-        }
-    }
-?>
+                <?php if (!empty($product)) {
+                    $groupedData = []; // menyimpan data yang dikelompokkan berdasarkan grup
+                    
+                    foreach ($product as $row) {
+                        $group = $row['category']; // Mendapatkan kategori (grup) dari produk
 
+                        if (!isset($groupedData[$group])) {
+                            $groupedData[$group] = []; // Membuat array kosong untuk grup jika belum ada
+                        }
+
+                        $groupedData[$group][] = $row; // Menambahkan produk ke dalam array grup yang sesuai
+                    }
+
+                    foreach ($groupedData as $group => $data) {
+                        $count = 0; // Menghitung jumlah data yang sudah ditampilkan dalam satu grup
                 
+                        foreach ($data as $row) {
+                            echo itemProduct($row); // Menampilkan item produk
+                            $count++; // Meningkatkan nilai variabel $count setelah setiap data ditampilkan.
+                
+                            if ($count == 3) {
+                                break; // Menghentikan perulangan setelah tiga data ditampilkan
+                            }
+                        }
+                    }
+                } ?>
             </ul>
-            <a class="underline" href="?page=product">Lihat semua produk</a>
 
             <div class="product-controls">
                 <button class="product-prev"><i class="fas fa-arrow-left"></i></button>
@@ -94,33 +86,33 @@
 
         <div class="team-container">
             <ul id="team-list">
-<?php 
-     if (!empty($data)) {
-        foreach ($data as $row) {
-?>
-                <li class="team-list">
-                    <div class="team-inner">
-                        <div class="team-avatar">
-                            <img src="<?=$row['image']?>" alt="team">
+                <?php
+                if (!empty($teams)) {
+                    foreach ($teams as $row) {
+                ?>
+                        <li class="team-list">
+                            <div class="team-inner">
+                                <div class="team-avatar">
+                                    <img src="<?= $row['image'] ?>" alt="team">
 
-                            <div class="team-info">
-                                <div class="inner">
-                                    <h4 class="team-name"><?=$row['name']?></h4>
-                                    <span class="team-job"><?=$row['job']?></span>
-                                </div>
-                                <div class="social">
-                                    <a target="_blank" href="<?=$row['github']?>"><i class="fab fa-github"></i></a>
-                                    <a target="_blank" href="<?=$row['instagram']?>"><i class="fab fa-instagram"></i></a>
-                                    <a target="_blank" href="<?=$row['linkdn']?>"><i class="fab fa-linkedin"></i></a>
+                                    <div class="team-info">
+                                        <div class="inner">
+                                            <h4 class="team-name"><?= $row['name'] ?></h4>
+                                            <span class="team-job"><?= $row['job'] ?></span>
+                                        </div>
+                                        <div class="social">
+                                            <a target="_blank" href="<?= $row['github'] ?>"><i class="fab fa-github"></i></a>
+                                            <a target="_blank" href="<?= $row['instagram'] ?>"><i class="fab fa-instagram"></i></a>
+                                            <a target="_blank" href="<?= $row['linkdn'] ?>"><i class="fab fa-linkedin"></i></a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </li>
-<?php 
-        }
-    }
-?>
+                        </li>
+                <?php
+                    }
+                }
+                ?>
             </ul>
 
             <div class="team-controls">

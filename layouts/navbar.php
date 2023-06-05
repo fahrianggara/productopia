@@ -6,26 +6,50 @@
 
         <nav class="nav-menu d-none d-md-block">
             <?php
-                // Menangkap parameter page
+                $uri = $_SERVER['REQUEST_URI'];
+
+                if (strpos($uri, '?') !== false) {
+                    $param = explode('=', explode('?', $uri)[1])[1];
+                    $param = explode('&', $param)[0];
+                }
+               
                 $page = isset($_GET['page']) ? $_GET['page'] : '';
 
-                // Jika $page == $menu, maka class="active"
-                function activeMenu($page, $menu) 
-                {
-                    if ($page == $menu) {
-                        echo 'active';
+                function setActive($param, $page) {
+                    if (is_array($page)) {
+                        foreach ($page as $p) {
+                            if ($p == $param) {
+                                return 'active';
+                            }
+                        }
+                    } else {
+                        if ($param == $page) {
+                            return 'active';
+                        }
                     }
                 }
             ?>
 
             <?php if ($page != '') { ?>
                 <ul>
-                    <li class="<?php activeMenu($page, ''); ?>">
+                    <li class="<?= setActive($param, ['product', 'product-detail']) ?>">
+                        <a href="?page=product">Produk</a>
+                    </li>
+
+                    <li>
                         <a href="index.php">Utama</a>
                     </li>
 
-                    <li class="<?php activeMenu($page, 'product'); ?>">
-                        <a href="?page=product">Produk</a>
+                    <li>
+                        <a href="index.php#about">Tentang</a>
+                    </li>
+
+                    <li>
+                        <a href="index.php#team">Team</a>
+                    </li>
+
+                    <li>
+                        <a href="index.php#contact">Kontak</a>
                     </li>
                 </ul>
             <?php } else { ?>
@@ -45,10 +69,15 @@
                     <li>
                         <a href="#contact">Kontak</a>
                     </li>
+
+                    <li class="<?= setActive($param, ['product', 'product-detail']) ?>">
+                        <a class="underline" href="?page=product">Semua Produk
+                        <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
                 </ul>
             <?php } ?>
             
-
         </nav>
 
         <div class="icon-header">
@@ -60,7 +89,8 @@
                     </g>
                 </svg>
             </button>
-            <a href="?page=cart" class="icon <?php activeMenu($page, 'cart'); ?>" id="btn-keranjang">
+            
+            <!-- <a href="?page=cart" class="icon <?= setActive($param, ['cart']) ?>" id="btn-keranjang">
                 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" width="512" height="512" x="0" y="0" viewBox="0 0 32 32" style="enable-background:new 0 0 512 512" xml:space="preserve" class="">
                     <g>
                         <path d="M19.334 11.664c0 2.104-1.712 3.815-3.815 3.815s-3.815-1.711-3.815-3.815a1 1 0 1 0-2 0 5.821 5.821 0 0 0 5.815 5.815 5.821 5.821 0 0 0 5.815-5.815 1 1 0 1 0-2 0z" fill="#000000" data-original="#000000" class=""></path>
@@ -68,7 +98,7 @@
                         <path d="M25.455 30a1 1 0 0 0 1-1v-1.889h1.889a1 1 0 1 0 0-2h-1.889v-1.889a1 1 0 1 0-2 0v1.89h-1.889a1 1 0 1 0 0 2h1.89V29a1 1 0 0 0 1 1z" fill="#000000" data-original="#000000" class=""></path>
                     </g>
                 </svg>
-            </a>
+            </a> -->
         </div>
     </div>
 </header>
