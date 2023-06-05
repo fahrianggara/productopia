@@ -6,37 +6,49 @@
 
         <nav class="nav-menu d-none d-md-block">
             <?php
+                // Menangkap parameter page
                 $page = isset($_GET['page']) ? $_GET['page'] : '';
 
-                function activeMenu($page, $menu) // Jika $page == $menu, maka class="active"
+                // Jika $page == $menu, maka class="active"
+                function activeMenu($page, $menu) 
                 {
                     if ($page == $menu) {
-                        echo 'class="active"';
+                        echo 'active';
                     }
                 }
             ?>
 
-            <ul>
-                <li <?php activeMenu($page, ''); ?>>
-                    <a href="index.php">Utama</a>
-                </li>
+            <?php if ($page != '') { ?>
+                <ul>
+                    <li class="<?php activeMenu($page, ''); ?>">
+                        <a href="index.php">Utama</a>
+                    </li>
 
-                <li <?php activeMenu($page, 'product'); ?>>
-                    <a href="?page=product">Produk</a>
-                </li>
+                    <li class="<?php activeMenu($page, 'product'); ?>">
+                        <a href="?page=product">Produk</a>
+                    </li>
+                </ul>
+            <?php } else { ?>
+                <ul class="mainpage">
+                    <li class="active">
+                        <a href="#about">Tentang</a>
+                    </li>
 
-                <li <?php activeMenu($page, 'product-detail'); ?>>
-                    <a href="?page=product-detail">Detail</a>
-                </li>
+                    <li>
+                        <a href="#produk">Produk</a>
+                    </li>
 
-                <li>
-                    <a href="javascript:void(0)">Kontak</a>
-                </li>
+                    <li>
+                        <a href="#team">Team</a>
+                    </li>
 
-                <li>
-                    <a href="javascript:void(0)">Tentang Kami</a>
-                </li>
-            </ul>
+                    <li>
+                        <a href="#contact">Kontak</a>
+                    </li>
+                </ul>
+            <?php } ?>
+            
+
         </nav>
 
         <div class="icon-header">
@@ -48,7 +60,7 @@
                     </g>
                 </svg>
             </button>
-            <button type="button" class="icon" id="btn-keranjang">
+            <a href="?page=cart" class="icon <?php activeMenu($page, 'cart'); ?>" id="btn-keranjang">
                 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" width="512" height="512" x="0" y="0" viewBox="0 0 32 32" style="enable-background:new 0 0 512 512" xml:space="preserve" class="">
                     <g>
                         <path d="M19.334 11.664c0 2.104-1.712 3.815-3.815 3.815s-3.815-1.711-3.815-3.815a1 1 0 1 0-2 0 5.821 5.821 0 0 0 5.815 5.815 5.821 5.821 0 0 0 5.815-5.815 1 1 0 1 0-2 0z" fill="#000000" data-original="#000000" class=""></path>
@@ -56,7 +68,7 @@
                         <path d="M25.455 30a1 1 0 0 0 1-1v-1.889h1.889a1 1 0 1 0 0-2h-1.889v-1.889a1 1 0 1 0-2 0v1.89h-1.889a1 1 0 1 0 0 2h1.89V29a1 1 0 0 0 1 1z" fill="#000000" data-original="#000000" class=""></path>
                     </g>
                 </svg>
-            </button>
+            </a>
         </div>
     </div>
 </header>
