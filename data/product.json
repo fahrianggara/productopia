@@ -3,13 +3,12 @@
         "id": 1,
         "image": "https:\/\/images.tokopedia.net\/img\/cache\/200-square\/VqbcmM\/2023\/3\/7\/f06992e7-2e18-4965-a808-a735f1c4ddbb.jpg",
         "name": "Headphone Logitech",
-        "badge": "HOT",
+        "badge": "",
         "category": "ELEKTRONIK",
         "original": "12000000",
         "discount": "900000",
-        "description": "Headphone dengan bass yang sangat kuat",
+        "description": "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque sit sunt quod dolorum, mollitia odio quas quibusdam consequatur consectetur laborum!</p><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque sit sunt quod dolorum, mollitia odio quas quibusdam consequatur consectetur laborum!</p>",
         "size": "L",
-        "quantity": "1",
         "stock": "10"
     },
     {
@@ -22,7 +21,6 @@
         "discount": "900000",
         "description": "Gamepad edisi terbaru",
         "size": "M",
-        "quantity": "1",
         "stock": "50"
     },
     {
@@ -35,7 +33,6 @@
         "discount": "900000",
         "description": "Mouse dengan desain yang menarik",
         "size": "XL",
-        "quantity": "1",
         "stock": "100"
     },
     {
@@ -48,7 +45,6 @@
         "discount": "900000",
         "description": "Webcam dengan kualitas gambar HD",
         "size": "L",
-        "quantity": "1",
         "stock": "120"
     },
     {
@@ -61,7 +57,6 @@
         "discount": "900000",
         "description": "Keyboard dengan desain menarik",
         "size": "XL",
-        "quantity": "1",
         "stock": "20"
     },
     {
@@ -74,7 +69,6 @@
         "discount": "",
         "description": "Headset dengan desain minimalis",
         "size": "L",
-        "quantity": "1",
         "stock": "50"
     },
     {
@@ -88,7 +82,6 @@
         "description": "Model simple, basic, dan polos. Ujung kaki bawah tanpa karet.",
         "size": "S,M,L,XL",
         "color": "Hitam,Biru,Abu-abu,Putih",
-        "quantity": "1",
         "stock": "25"
     },
     {
@@ -101,7 +94,6 @@
         "discount": null,
         "description": "Powerbank dengan power baterai yang sangat besar",
         "size": "XL",
-        "quantity": "1",
         "stock": "25"
     },
     {
@@ -114,8 +106,45 @@
         "discount": "900000",
         "description": "Bentuk yang unik dan menyenagkan",
         "size": "XL",
-        "quantity": "1",
+        "stock": "25"
+    },
+    {
+        "id": 10,
+        "image": "https://images.tokopedia.net/img/cache/200-square/product-1/2020/5/7/458544/458544_26a12d12-475a-4de2-9f67-acab5cef501e_800_800",
+        "name": "Hand Grip Olahraga Tangan",
+        "badge": "HOT",
+        "category": "OLAHRAGA",
+        "original": "300000",
+        "discount": "900000",
+        "description": "Hand grip merupakan alat fitnes portabel yang Anda bisa gunakan untuk membangun kekuatan dan otot lengan bawa",
+        "size": null,
+        "weight": "5-60 KG",
+        "stock": "25"
+    },
+    {
+        "id": 11,
+        "image": "https://images.tokopedia.net/img/cache/200-square/hDjmkQ/2021/12/7/0cc4660d-df7f-491d-a401-a7c81e92cb1b.jpg",
+        "name": "Hand Grip Olahraga Tangan",
+        "badge": "HOT",
+        "category": "OLAHRAGA",
+        "original": "300000",
+        "discount": "900000",
+        "description": "Dengan kit Karet Elastis latihan dirumah lebih efisien, Anda tidak akan pernah melewatkan kesempatan untuk menantang berbagai kesulitan pelatihan untuk membangun kekuatan dan mengencangkan otot.",
+        "size": null,
+        "weight": "5-60 KG",
+        "stock": "25"
+    },
+    {
+        "id": 12,
+        "image": "https://images.tokopedia.net/img/cache/200-square/VqbcmM/2021/6/29/5851aee5-ec42-4111-8a4d-9d1f9875d6ac.jpg",
+        "name": "Hand Grip Olahraga Tangan",
+        "badge": "HOT",
+        "category": "OLAHRAGA",
+        "original": "300000",
+        "discount": "900000",
+        "description": "Dumbell Kami Semua Terbuat Dari BESI ASLI Sehingga Awet Seumur Hidup Masa Pakainya",
+        "size": null,
+        "weight": "5-60 KG",
         "stock": "25"
     }
-
 ]

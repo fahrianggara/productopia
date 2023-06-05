@@ -27,7 +27,6 @@
             <h2>Produk</h2>
             <p>
                 Berikut adalah beberapa produk yang tersedia di Productopia. Jika ingin melihat semua produk, silahkan klik tombol dibawah ini. <br>
-                <a class="underline" href="?page=product">Lihat semua produk</a>
             </p>
         </div>
 
@@ -38,7 +37,7 @@
         foreach ($product as $row) {
 ?>
                 <li class="product-item">
-                    <a href="javascript:void(0)" class="product">
+                    <a href="?page=product-detail&id=<?=$row['id']?>" class="product">
                         <div class="product-image">
                             <span class="product-tag bg-danger"><?=$row['badge']?></span>
                             <img src="<?=$row['image']?>">
@@ -73,6 +72,7 @@
 
                 
             </ul>
+            <a class="underline" href="?page=product">Lihat semua produk</a>
 
             <div class="product-controls">
                 <button class="product-prev"><i class="fas fa-arrow-left"></i></button>

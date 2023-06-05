@@ -9,17 +9,17 @@
                     <div id="fashion" class="tab-pane fade show active">
                         <div class="product-container">
                             <ul class="product-list grid grid-sm">
-<?php 
-$countFashiion =0;
-     if (!empty($product)) {
-        foreach ($product as $row) {
-?>          
-<?php
-    if ($row['category']== "FASHION"){
-        $countFashiion++   
-?>
+                                <?php 
+                                $countFashiion =0;
+                                    if (!empty($product)) {
+                                        foreach ($product as $row) {
+                                ?>          
+                                <?php
+                                    if ($row['category']== "FASHION"){
+                                        $countFashiion++   
+                                ?>
                                 <li class="product-item">
-                                    <a href="javascript:void(0)" class="product">
+                                    <a href="?page=product-detail&id=<?=$row['id']?>" class="product">
                                         <div class="product-image">
                                             <span class="product-tag bg-danger"><?=$row['badge']?></span>
                                             <img src="<?=$row['image']?>">
@@ -47,13 +47,13 @@ $countFashiion =0;
                                         </div>
                                     </a>
                                 </li>
-<?php
-        }
-?>
-<?php 
-        }
-    }
-?>
+                                <?php
+                                        }
+                                ?>
+                                <?php 
+                                        }
+                                    }
+                                ?>
                             </ul>
                         </div>
                     </div>
@@ -61,17 +61,17 @@ $countFashiion =0;
                     <div id="elektronik" class="tab-pane fade">
                         <div class="product-container">
                             <ul class="product-list grid grid-sm">
-<?php 
-$countElek = 0;
-     if (!empty($product)) {
-        foreach ($product as $row) {
-?>          
-<?php
-    if ($row['category']== "ELEKTRONIK"){
-        $countElek++;
-?>
+                                <?php 
+                                $countElek = 0;
+                                    if (!empty($product)) {
+                                        foreach ($product as $row) {
+                                ?>          
+                                <?php
+                                    if ($row['category']== "ELEKTRONIK"){
+                                        $countElek++;
+                                ?>
                                 <li class="product-item">
-                                    <a href="javascript:void(0)" class="product">
+                                    <a href="?page=product-detail&id=<?=$row['id']?> class="product">
                                         <div class="product-image">
                                             <span class="product-tag bg-danger"><?=$row['badge']?></span>
                                             <img src="<?=$row['image']?>">
@@ -99,13 +99,65 @@ $countElek = 0;
                                         </div>
                                     </a>
                                 </li>
-<?php
-        }
-?>
-<?php 
-        }
-    }
-?>
+                                <?php
+                                        }
+                                ?>
+                                <?php 
+                                        }
+                                    }
+                                ?>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div id="olahraga" class="tab-pane fade">
+                        <div class="product-container">
+                            <ul class="product-list grid grid-sm">
+                                <?php 
+                                $countOg = 0;
+                                    if (!empty($product)) {
+                                        foreach ($product as $row) {
+                                ?>          
+                                <?php
+                                    if ($row['category']== "OLAHRAGA"){
+                                        $countOg++;
+                                ?>
+                                <li class="product-item">
+                                    <a href="?page=product-detail&id=<?=$row['id']?>" class="product">
+                                        <div class="product-image">
+                                            <span class="product-tag bg-danger"><?=$row['badge']?></span>
+                                            <img src="<?=$row['image']?>">
+                                            <ul class="product-action">
+                                                <li><a href="javascript:void(0)"><i class="fas fa-shopping-cart"></i></a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="product-info">
+                                            <span class="category"><?=$row['category']?></span>
+                                            <h3 class="product-name"><?=$row['name']?></h3>
+                                            <div class="product-price">
+                                            <?php
+                                            if ($row['discount'] == "") {
+                                            ?>
+                                                <p class="price">Rp. <?=number_format($row['original'],0,".",".")?></p>
+                                            <?php
+                                            }else{
+                                            ?>
+                                                <p class="price">Rp. <?=number_format($row['original'],0,".",".")?></p>
+                                                <p class="discount">Rp. <?=number_format($row['discount'],0,".",".")?></p>
+                                            <?php
+                                            }
+                                            ?>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <?php
+                                        }
+                                ?>
+                                <?php 
+                                        }
+                                    }
+                                ?>
                             </ul>
                         </div>
                     </div>
@@ -127,8 +179,8 @@ $countElek = 0;
                                 <a href="#elektronik" data-toggle="tab" class="list-group-item">Elektronik
                                     <span class="count-item"><?=$countElek?></span>
                                 </a>
-                                <a href="#" data-toggle="tab" class="list-group-item">Olahraga
-                                    <span class="count-item">3</span>
+                                <a href="#olahraga" data-toggle="tab" class="list-group-item">Olahraga
+                                    <span class="count-item"><?=  $countOg ?></span>
                                 </a>
                             </div>
                         </div>
