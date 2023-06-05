@@ -197,12 +197,12 @@
                 <li class="team-list">
                     <div class="team-inner">
                         <div class="team-avatar">
-                            <img src="assets/images/team/anggae.jpg" alt="team">
+                            <img src="<?=$row['image']?>" alt="team">
 
                             <div class="team-info">
                                 <div class="inner">
-                                    <h4 class="team-name">Fahri Anggara</h4>
-                                    <span class="team-job">Frontend</span>
+                                    <h4 class="team-name"><?=$row['name']?></h4>
+                                    <span class="team-job"><?=$row['job']?></span>
                                 </div>
                                 <div class="social">
                                     <a href="javascript:void(0)"><i class="fab fa-github"></i></a>
@@ -217,84 +217,6 @@
         }
     }
 ?>
-
-                <li class="team-list">
-                    <div class="team-inner">
-                        <div class="team-avatar">
-                            <img src="https://images.unsplash.com/photo-1457449940276-e8deed18bfff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="team">
-
-                            <div class="team-info">
-                                <div class="inner">
-                                    <h4 class="team-name">Dimas Yusuf Hidayat</h4>
-                                    <span class="team-job">Design</span>
-                                </div>
-                                <div class="social">
-                                    <a href="javascript:void(0)"><i class="fab fa-github"></i></a>
-                                    <a href="javascript:void(0)"><i class="fab fa-instagram"></i></a>
-                                    <a href="javascript:void(0)"><i class="fab fa-linkedin"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li class="team-list">
-                    <div class="team-inner">
-                        <div class="team-avatar">
-                            <img src="https://images.unsplash.com/photo-1455274111113-575d080ce8cd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjl8fHByb2ZpbGV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60" alt="team">
-
-                            <div class="team-info">
-                                <div class="inner">
-                                    <h4 class="team-name">Ilham Ramadan</h4>
-                                    <span class="team-job">Backend</span>
-                                </div>
-                                <div class="social">
-                                    <a href="javascript:void(0)"><i class="fab fa-github"></i></a>
-                                    <a href="javascript:void(0)"><i class="fab fa-instagram"></i></a>
-                                    <a href="javascript:void(0)"><i class="fab fa-linkedin"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li class="team-list">
-                    <div class="team-inner">
-                        <div class="team-avatar">
-                            <img src="https://images.unsplash.com/photo-1517070208541-6ddc4d3efbcb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzR8fHByb2ZpbGV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60" alt="team">
-
-                            <div class="team-info">
-                                <div class="inner">
-                                    <h4 class="team-name">Fakhri Akmal Fadillah</h4>
-                                    <span class="team-job">Logo Design</span>
-                                </div>
-                                <div class="social">
-                                    <a href="javascript:void(0)"><i class="fab fa-github"></i></a>
-                                    <a href="javascript:void(0)"><i class="fab fa-instagram"></i></a>
-                                    <a href="javascript:void(0)"><i class="fab fa-linkedin"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li class="team-list">
-                    <div class="team-inner">
-                        <div class="team-avatar">
-                            <img src="https://images.unsplash.com/photo-1531891437562-4301cf35b7e4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDV8fHByb2ZpbGV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60" alt="team">
-
-                            <div class="team-info">
-                                <div class="inner">
-                                    <h4 class="team-name">Sultan Jordy Priadi</h4>
-                                    <span class="team-job">Data Administrator</span>
-                                </div>
-                                <div class="social">
-                                    <a href="javascript:void(0)"><i class="fab fa-github"></i></a>
-                                    <a href="javascript:void(0)"><i class="fab fa-instagram"></i></a>
-                                    <a href="javascript:void(0)"><i class="fab fa-linkedin"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-
             </ul>
 
             <div class="team-controls">
