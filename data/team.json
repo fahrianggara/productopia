@@ -1,7 +1,7 @@
 [
     {
         "id": 1,
-        "image": "assets/image/team/angga.jpg",
+        "image": "assets/images/team/angga.jpg",
         "name": "Fahri Anggara",
         "job": "Front-End",
         "instagram": "https://www.instagram.com/f.anggae/",
@@ -39,7 +39,7 @@
     },
     {
         "id": 5,
-        "image": "assets/image/team/jo.jpg",
+        "image": "assets/images/team/jo.jpg",
         "name": "Sultan Jordy Priadi",
         "job": "Data Administrator",
         "instagram": "https://www.instagram.com/sultanjord/#",
