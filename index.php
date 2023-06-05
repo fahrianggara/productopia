@@ -19,6 +19,7 @@
     <?php include('layouts/navbar.php'); ?>
 
     <main id="main">
+
         <?php
             if (isset($_GET['page'])) {
                 $page = $_GET['page'];
