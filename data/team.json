@@ -1,12 +1,12 @@
 [
     {
         "id": 1,
-        "image": "https:\/\/www.adidas.co.id\/media\/catalog\/product\/cache\/3bec5fdb79d91223b1a151be2b21ce8d\/h\/t\/ht9443_2_apparel_photography_front20center20view_grey.jpg",
+        "image": "assets/image/team/angga.jpg",
         "name": "Fahri Anggara",
         "job": "Front-End",
         "instagram": "https://www.instagram.com/f.anggae/#",
-        "linkdn": "FASHION",
-        "github": "123123123"
+        "linkdn": "https://www.linkedin.com/in/fahrianggara/",
+        "github": "https://github.com/fahrianggara"
     },
 
     {
