@@ -26,8 +26,8 @@ function itemProduct($row)
     if ($row['badge'] == "") {
         $badge = "";
     } else {
-        $badge = $row['badge'] == "hot" 
-            ? '<span class="product-tag bg-danger">Hot</span>' 
+        $badge = $row['badge'] == "hot"
+            ? '<span class="product-tag bg-danger">Hot</span>'
             : '<span class="product-tag bg-info">New</span>';
     }
 
@@ -41,7 +41,10 @@ function itemProduct($row)
                 <div class="product-info">
                     <span class="category">' . $row['category'] . '</span>
                     <h3 class="product-name">
-                        <a href="?page=product-detail&id=' . $row['id'] . '">' . $row['name'] . '</a>
+                        <a title="' . $row['name'] . '" 
+                            href="?page=product-detail&id=' . $row['id'] . '">
+                            ' . $row['name'] . '
+                        </a>
                     </h3>
                     <div class="product-price">
                         ' . $price . $discount . '
