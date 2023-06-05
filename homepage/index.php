@@ -40,7 +40,7 @@
                 <li class="product-item">
                     <a href="javascript:void(0)" class="product">
                         <div class="product-image">
-                            <span class="product-tag bg-danger">Hot</span>
+                            <span class="product-tag bg-danger"><?=$row['badge']?></span>
                             <img src="<?=$row['image']?>">
                             <ul class="product-action">
                                 <li><a href=""><i class="fas fa-shopping-cart"></i></a></li>
@@ -109,9 +109,9 @@
                                     <span class="team-job"><?=$row['job']?></span>
                                 </div>
                                 <div class="social">
-                                    <a href="<?=$row['github']?>"><i class="fab fa-github"></i></a>
-                                    <a href="<?=$row['instagram']?>"><i class="fab fa-instagram"></i></a>
-                                    <a href="<?=$row['linkdn']?>"><i class="fab fa-linkedin"></i></a>
+                                    <a target="_blank" href="<?=$row['github']?>"><i class="fab fa-github"></i></a>
+                                    <a target="_blank" href="<?=$row['instagram']?>"><i class="fab fa-instagram"></i></a>
+                                    <a target="_blank" href="<?=$row['linkdn']?>"><i class="fab fa-linkedin"></i></a>
                                 </div>
                             </div>
                         </div>
