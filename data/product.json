@@ -102,5 +102,19 @@
         "size": "XL",
         "quantity": "1",
         "stock": "25"
+    },
+    {
+        "id": 9,
+        "image": "https://images.tokopedia.net/img/cache/500-square/VqbcmM/2022/7/22/21853476-d853-4561-abee-c07a7a454cb1.jpg.webp?ect=4g",
+        "name": "Alat Bantu Sex Pria",
+        "badge": "HOT",
+        "category": "ELEKTRONIK",
+        "original": "300000",
+        "discount": "900000",
+        "description": "Bentuk yang unik dan menyenagkan",
+        "size": "XL",
+        "quantity": "1",
+        "stock": "25"
     }
+
 ]
