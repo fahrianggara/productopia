@@ -30,7 +30,7 @@
                     }
                 ?>
 
-                <section id="product-detail" style="padding-top: 30px">
+                <section id="product-detail" style="padding-top: 40px">
                     <div class="container">
                         <div class="row">
 
@@ -52,7 +52,7 @@
 
                                 <h1 class="name"><?= $row['name'] ?></h1>
 
-                                <div class="price">
+                                <div class="price <?= $row['description'] == "" ? "mb-4" : "" ?>">
                                     <?php if ($row['discount'] == "") { ?>
                                         <span class="original">Rp<?= number_format($row['original'], 0, ".", ".") ?></span>
                                     <?php } else { ?>
@@ -61,18 +61,20 @@
                                     <?php } ?>
                                 </div>
 
-                                <hr>
+                                <?php if ($row['description'] != "") { ?>
+                                    <hr>
 
-                                <div class="description">
-                                    <p><?= $row['description'] ?></p>
-                                </div>
+                                    <div class="description">
+                                        <p><?= $row['description'] ?></p>
+                                    </div>
+                                <?php } ?>
 
                                 <div class="card">
                                     <div class="card-header font-weight-bold">
                                         Atur Pesanan
                                     </div>
                                     <form action="#">
-                                        <div class="card-body">
+                                        <div class="card-body section-bg">
 
                                             <?php if ($row['size']) { ?>
                                                 <div class="form-group">
@@ -101,7 +103,7 @@
                                                 </div>
                                             <?php } ?>
 
-                                            <div class="form-group">
+                                            <div class="form-group mb-0">
                                                 <label>Kuantitas: </label>
 
                                                 <div class="qty">
@@ -117,10 +119,8 @@
                                                 </div>
                                             </div>
 
-                                            <hr>
-
                                             <!-- Subtotal -->
-                                            <div class="form-group m-0 d-flex align-items-center justify-content-between">
+                                            <!-- <div class="form-group m-0 d-flex align-items-center justify-content-between">
                                                 <span>Subtotal </span>
                                                 <span id="total">
                                                     <?php if ($row['discount'] == "") { ?>
@@ -129,9 +129,9 @@
                                                         Rp<?= number_format($row['discount'], 0, ".", ".") ?>
                                                     <?php } ?>
                                                 </span>
-                                            </div>
+                                            </div> -->
 
-                                            <script>
+                                            <!-- <script>
                                                 const quantity = document.querySelector('#quantity');
                                                 const total = document.querySelector('#total');
                                                 const minQty = document.querySelector('.min-qty');
@@ -148,12 +148,12 @@
                                                     let toRupiah = subtotal.toLocaleString('id-ID');
                                                     total.innerHTML = `Rp${toRupiah}`;
                                                 });
-                                            </script>
+                                            </script> -->
 
                                         </div>
                                         <div class="card-footer">
-                                            <button class="btn btn-sm btn-beli btn-success">
-                                                <i class="fas fa-shopping-cart mr-1"></i> Beli Langsung
+                                            <button class="btn btn-sm btn-beli btn-primary">
+                                                Beli Sekarang
                                             </button>
                                         </div>
                                     </form>

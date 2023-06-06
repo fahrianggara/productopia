@@ -5,31 +5,6 @@
         </div>
 
         <nav class="nav-menu d-none d-md-block">
-            <?php
-                $uri = $_SERVER['REQUEST_URI'];
-
-                if (strpos($uri, '?') !== false) { // Jika ada parameter
-                    $param = explode('=', explode('?', $uri)[1])[1]; // Ambil parameter
-                    $param = explode('&', $param)[0]; // Jika ada parameter lain, ambil parameter pertama
-                }
-               
-                $page = isset($_GET['page']) ? $_GET['page'] : '';
-
-                function setActive($param, $page) {
-                    if (is_array($page)) {
-                        foreach ($page as $p) {
-                            if ($p == $param) {
-                                return 'active';
-                            }
-                        }
-                    } else {
-                        if ($param == $page) {
-                            return 'active';
-                        }
-                    }
-                }
-            ?>
-
             <?php if ($page != '') { ?>
                 <ul>
                     <li class="<?= setActive($param, ['product', 'product-detail']) ?>">
@@ -37,15 +12,22 @@
                     </li>
 
                     <li>
-                        <a href="index.php">Utama</a>
+                        <a href="<?= base_url(); ?>">Utama</a>
                     </li>
 
                     <li>
-                        <a href="index.php#team">Team</a>
+                        <a href="<?= base_url(); ?>#team">Team</a>
                     </li>
 
                     <li>
-                        <a href="index.php#contact">Kontak</a>
+                        <a href="<?= base_url(); ?>#contact">Kontak</a>
+                    </li>
+
+                    <li class="<?= setActive($param, 'checkout') ?>">
+                        <a href="?page=checkout">Checkout</a>
+                    </li>
+                    <li>
+                        <a href="?page=purchase">Purchase</a>
                     </li>
                 </ul>
             <?php } else { ?>
@@ -66,9 +48,9 @@
                         <a href="#contact">Kontak</a>
                     </li>
 
-                    <li class="<?= setActive($param, ['product', 'product-detail']) ?>">
+                    <li>
                         <a class="underline" href="?page=product">Semua Produk
-                        <i class="fas fa-arrow-right"></i>
+                            <i class="fas fa-arrow-right"></i>
                         </a>
                     </li>
                 </ul>
@@ -85,16 +67,6 @@
                     </g>
                 </svg>
             </button>
-            
-            <!-- <a href="?page=cart" class="icon <?= setActive($param, ['cart']) ?>" id="btn-keranjang">
-                <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" width="512" height="512" x="0" y="0" viewBox="0 0 32 32" style="enable-background:new 0 0 512 512" xml:space="preserve" class="">
-                    <g>
-                        <path d="M19.334 11.664c0 2.104-1.712 3.815-3.815 3.815s-3.815-1.711-3.815-3.815a1 1 0 1 0-2 0 5.821 5.821 0 0 0 5.815 5.815 5.821 5.821 0 0 0 5.815-5.815 1 1 0 1 0-2 0z" fill="#000000" data-original="#000000" class=""></path>
-                        <path d="M23.193 6.815h-1.951C20.766 4.085 18.384 2 15.519 2c-2.865 0-5.246 2.084-5.723 4.815H7.844A2.928 2.928 0 0 0 4.95 9.286L2.715 23.424a4.864 4.864 0 0 0 1.111 3.918 4.84 4.84 0 0 0 3.68 1.695h11.73a1 1 0 1 0 0-2H7.506c-.831 0-1.62-.363-2.161-.995a2.868 2.868 0 0 1-.655-2.307l2.234-14.13c.075-.45.47-.79.92-.79h15.35c.45 0 .845.34.918.783l1.599 10.14a1 1 0 0 0 1.977-.312L26.086 9.28a2.927 2.927 0 0 0-2.894-2.464zM15.52 4c1.755 0 3.222 1.198 3.665 2.815h-7.33C12.297 5.198 13.764 4 15.519 4z" fill="#000000" data-original="#000000" class=""></path>
-                        <path d="M25.455 30a1 1 0 0 0 1-1v-1.889h1.889a1 1 0 1 0 0-2h-1.889v-1.889a1 1 0 1 0-2 0v1.89h-1.889a1 1 0 1 0 0 2h1.89V29a1 1 0 0 0 1 1z" fill="#000000" data-original="#000000" class=""></path>
-                    </g>
-                </svg>
-            </a> -->
         </div>
     </div>
 </header>

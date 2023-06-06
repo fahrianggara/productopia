@@ -93,3 +93,16 @@
 
     </div>
 </section>
+
+<script>
+    $(document).ready(function () {
+        // jika window 768.98px maka ketika di klik .list-group-item maka scroll ke atas
+        if ($(window).width() <= 768.98) {
+            $(".list-group-item").click(function () {
+                $("html, body").animate({
+                    scrollTop: 0
+                }, 1000, 'easeInOutExpo');
+            });
+        }
+    });
+</script>

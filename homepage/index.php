@@ -10,7 +10,7 @@
                 <div class="about-text">
                     <h1>Selamat Datang di <u>Productopia</u></h1>
                     <p>
-                        Productopia adalah sebuah website yang menyediakan berbagai macam produk seperti produk fashion, elektronik dan olahraga yang dapat
+                        Productopia adalah sebuah website yang menyediakan berbagai macam produk seperti produk fashion, elektronik dan sports yang dapat
                         dibeli secara online.
                     </p>
                     <a href="#produk" class="btn about-btn">Lihat Produk</a>
