@@ -44,14 +44,14 @@
                     foreach ($product as $row) {
                         $group = $row['category']; // Mendapatkan kategori (grup) dari produk
 
-                        if (!isset($groupedData[$group])) {
+                        if (!isset($groupedData[$group])) { // Jika grup belum ada
                             $groupedData[$group] = []; // Membuat array kosong untuk grup jika belum ada
                         }
 
                         $groupedData[$group][] = $row; // Menambahkan produk ke dalam array grup yang sesuai
                     }
 
-                    foreach ($groupedData as $group => $data) {
+                    foreach ($groupedData as $group => $data) { // Menampilkan data per grup
                         $count = 0; // Menghitung jumlah data yang sudah ditampilkan dalam satu grup
                 
                         foreach ($data as $row) {

@@ -8,9 +8,9 @@
             <?php
                 $uri = $_SERVER['REQUEST_URI'];
 
-                if (strpos($uri, '?') !== false) {
-                    $param = explode('=', explode('?', $uri)[1])[1];
-                    $param = explode('&', $param)[0];
+                if (strpos($uri, '?') !== false) { // Jika ada parameter
+                    $param = explode('=', explode('?', $uri)[1])[1]; // Ambil parameter
+                    $param = explode('&', $param)[0]; // Jika ada parameter lain, ambil parameter pertama
                 }
                
                 $page = isset($_GET['page']) ? $_GET['page'] : '';
@@ -38,10 +38,6 @@
 
                     <li>
                         <a href="index.php">Utama</a>
-                    </li>
-
-                    <li>
-                        <a href="index.php#about">Tentang</a>
                     </li>
 
                     <li>
