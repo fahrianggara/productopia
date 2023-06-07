@@ -20,7 +20,7 @@
     },
     {
         "id": 5,
-        "image": "assets/images/team/jo.jpg",
+        "image": "assets/images/team/jo_gans.jpg",
         "name": "Sultan Jordy Priadi",
         "job": "Data Administrator",
         "instagram": "https://www.instagram.com/sultanjord/#",
@@ -38,7 +38,7 @@
     },
     {
         "id": 4,
-        "image": "https:\/\/www.adidas.co.id\/media\/catalog\/product\/cache\/3bec5fdb79d91223b1a151be2b21ce8d\/h\/t\/ht9443_2_apparel_photography_front20center20view_grey.jpg",
+        "image": "assets/images/team/akmal_gans.jpg",
         "name": "Fakhri Akmal Fadilah",
         "job": "Logo Design",
         "instagram": "https://www.instagram.com/fakhriakm/#",
