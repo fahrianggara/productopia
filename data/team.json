@@ -18,10 +18,18 @@
         "linkdn": "FASHION",
         "github": "123123123"
     },
-
+    {
+        "id": 5,
+        "image": "assets/images/team/jo.jpg",
+        "name": "Sultan Jordy Priadi",
+        "job": "Data Administrator",
+        "instagram": "https://www.instagram.com/sultanjord/#",
+        "linkdn": "FASHION",
+        "github": "123123123"
+    },
     {
         "id": 3,
-        "image": "assets/images/team/jhony.png",
+        "image": "assets/images/team/jhony.jpg",
         "name": "Ilham Ramadan",
         "job": "Back-End",
         "instagram": "https://www.instagram.com/rmdhan_ilhmmm/",
@@ -34,15 +42,6 @@
         "name": "Fakhri Akmal Fadilah",
         "job": "Logo Design",
         "instagram": "https://www.instagram.com/fakhriakm/#",
-        "linkdn": "FASHION",
-        "github": "123123123"
-    },
-    {
-        "id": 5,
-        "image": "assets/images/team/jo.jpg",
-        "name": "Sultan Jordy Priadi",
-        "job": "Data Administrator",
-        "instagram": "https://www.instagram.com/sultanjord/#",
         "linkdn": "FASHION",
         "github": "123123123"
     }
