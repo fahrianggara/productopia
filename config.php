@@ -111,7 +111,7 @@ function groupAndDisplayData($product, $id = "", $category = "")
         $count = 0;
 
         foreach ($data as $row) {
-            if ($id != "" && $category != "") { // <-- ini untuk tampilan produk dihalaman detail
+            if ($id && $category) { // <-- ini untuk tampilan produk dihalaman detail
                 if ($row['id'] != $id && $row['category'] == $category) {
                     echo itemProduct($row);
                     $count++;
