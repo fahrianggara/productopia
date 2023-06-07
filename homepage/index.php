@@ -39,30 +39,7 @@
         <div class="product-container">
             <ul class="slider product-list">
                 <?php if (!empty($product)) {
-                    $groupedData = []; // menyimpan data yang dikelompokkan berdasarkan grup
-                    
-                    foreach ($product as $row) {
-                        $group = $row['category']; // Mendapatkan kategori (grup) dari produk
-
-                        if (!isset($groupedData[$group])) { // Jika grup belum ada
-                            $groupedData[$group] = []; // Membuat array kosong untuk grup jika belum ada
-                        }
-
-                        $groupedData[$group][] = $row; // Menambahkan produk ke dalam array grup yang sesuai
-                    }
-
-                    foreach ($groupedData as $group => $data) { // Menampilkan data per grup
-                        $count = 0; // Menghitung jumlah data yang sudah ditampilkan dalam satu grup
-                
-                        foreach ($data as $row) {
-                            echo itemProduct($row); // Menampilkan item produk
-                            $count++; // Meningkatkan nilai variabel $count setelah setiap data ditampilkan.
-                
-                            if ($count == 3) {
-                                break; // Menghentikan perulangan setelah tiga data ditampilkan
-                            }
-                        }
-                    }
+                    echo groupAndDisplayData($product);
                 } ?>
             </ul>
 
@@ -88,8 +65,7 @@
             <ul id="team-list">
                 <?php
                 if (!empty($teams)) {
-                    foreach ($teams as $row) {
-                ?>
+                    foreach ($teams as $row) { ?>
                         <li class="team-list">
                             <div class="team-inner">
                                 <div class="team-avatar">
@@ -109,7 +85,7 @@
                                 </div>
                             </div>
                         </li>
-                <?php
+                    <?php
                     }
                 }
                 ?>
@@ -141,9 +117,7 @@
             </div>
 
             <div class="card section-bg  card-body col-xl-6 col-lg-6 col-md-12">
-                <!-- <div class=""> -->
-                <!-- <div class="card-body"> -->
-                <form action="#" autocomplete="off" method="POST">
+                <form id="formContact" action="#" autocomplete="off" method="POST">
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
@@ -173,9 +147,30 @@
                         </button>
                     </div>
                 </form>
-                <!-- </div> -->
-                <!-- </div> -->
             </div>
         </div>
     </div>
 </section>
+
+<script>
+    $(document).ready(function () {
+        var formContact = $('#formContact');
+        var submit = formContact.find('button[type="submit"]');
+
+        formContact.on("submit", function (e) {  
+            e.preventDefault();
+
+            submit.html("Mengirim...");
+            submit.attr("disabled", true);
+
+            setTimeout(function() {
+                submit.html("Kirim <i class='fas fa-paper-plane ml-1'></i>");
+                submit.attr("disabled", false);
+
+                alertify.log("Pesan kamu berhasil dikirim");
+
+                formContact[0].reset();
+            }, 1500);
+        });
+    });
+</script>

@@ -48,14 +48,14 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="firstname">Nama Awal</label>
-                                    <input type="text" class="input-billing form-control" id="firstname" 
+                                    <input type="text" class="input-billing form-control" id="firstname" maxlength="10" 
                                         name="firstname" placeholder="Masukkan nama awalan kamu" required>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="lastname">Nama Akhir</label>
-                                    <input type="text" class="input-billing form-control" id="lastname" 
+                                    <input type="text" class="input-billing form-control" id="lastname"  maxlength="10"
                                         name="lastname" placeholder="Masukkan nama akhiran kamu" required>
                                 </div>
                             </div>
@@ -67,7 +67,7 @@
                         </div>
                         <div class="form-group">
                             <label for="address">Alamat</label>
-                            <input type="text" class="input-billing form-control" id="address" 
+                            <input type="text" class="input-billing form-control" id="address" maxlength="50"
                                 name="address" placeholder="Masukkan alamat kamu" required>
                         </div>
                     </div>

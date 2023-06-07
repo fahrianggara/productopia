@@ -11,6 +11,11 @@ if (!$product) {
     $product = array();
 }
 
+function formatRupiah($angka)
+{
+    return 'Rp' . number_format($angka, 0, ".", ".");
+}
+
 function itemProduct($row)
 {
     $price = "";
@@ -18,10 +23,10 @@ function itemProduct($row)
     $badge = "";
 
     if ($row['discount'] == "") {
-        $price = '<p class="original"> Rp' . number_format($row['original'], 0, ".", ".") . '</p>';
+        $price = '<p class="original">' . formatRupiah($row['original']) . '</p>';
     } else {
-        $price = '<p class="original"> Rp' . number_format($row['original'], 0, ".", ".") . '</p>';
-        $discount = '<p class="discount"> Rp' . number_format($row['discount'], 0, ".", ".") . '</p>';
+        $price = '<p class="original"> ' . formatRupiah($row['original']) . '</p>';
+        $discount = '<p class="discount"> ' . formatRupiah($row['discount']) . '</p>';
     }
 
     if ($row['badge'] == "") {
@@ -84,6 +89,45 @@ function setActive($param, $page) // Fungsi untuk menandai menu yang aktif
     } else {
         if ($param == $page) {
             return 'active';
+        }
+    }
+}
+
+function groupAndDisplayData($product, $id = "", $category = "")
+{
+    $groupedData = [];
+
+    foreach ($product as $row) {
+        $group = $row['category'];
+
+        if (!isset($groupedData[$group])) {
+            $groupedData[$group] = [];
+        }
+
+        $groupedData[$group][] = $row;
+    }
+
+    foreach ($groupedData as $group => $data) {
+        $count = 0;
+
+        foreach ($data as $row) {
+            if ($id != "" && $category != "") { // <-- ini untuk tampilan produk dihalaman detail
+                if ($row['id'] != $id && $row['category'] == $category) {
+                    echo itemProduct($row);
+                    $count++;
+
+                    if ($count == 6) {
+                        break;
+                    }
+                }
+            } else {
+                echo itemProduct($row);
+                $count++;
+
+                if ($count == 3) {
+                    break;
+                }
+            }
         }
     }
 }

@@ -42,9 +42,9 @@
 
                                 <p class="category">
                                     <?php
-                                    if ($row['badge']) {
-                                        echo $row['badge'] . " •";
-                                    }
+                                        if ($row['badge']) {
+                                            echo $row['badge'] . " •";
+                                        }
                                     ?>
 
                                     <?= $row['category'] ?>
@@ -54,15 +54,15 @@
 
                                 <div class="price <?= $row['description'] == "" ? "mb-4" : "" ?>">
                                     <?php if ($row['discount'] == "") { ?>
-                                        <span class="original">Rp<?= number_format($row['original'], 0, ".", ".") ?></span>
+                                        <span class="original"><?= formatRupiah($row['original']) ?></span>
                                     <?php } else { ?>
-                                        <span class="original">Rp<?= number_format($row['original'], 0, ".", ".") ?></span>
-                                        <span class="discount">Rp<?= number_format($row['discount'], 0, ".", ".") ?></span>
+                                        <span class="original"><?= formatRupiah($row['original']) ?></span>
+                                        <span class="discount"><?= formatRupiah($row['discount']) ?></span>
                                     <?php } ?>
                                 </div>
 
                                 <?php if ($row['description'] != "") { ?>
-                                    <hr>
+                                    <hr class="rule-detail">
 
                                     <div class="description">
                                         <p><?= $row['description'] ?></p>
@@ -73,7 +73,7 @@
                                     <div class="card-header font-weight-bold">
                                         Atur Pesanan
                                     </div>
-                                    <form action="#">
+                                    <form id="orderForm" action="#" method="POST">
                                         <div class="card-body section-bg">
 
                                             <?php if ($row['size']) { ?>
@@ -119,37 +119,6 @@
                                                 </div>
                                             </div>
 
-                                            <!-- Subtotal -->
-                                            <!-- <div class="form-group m-0 d-flex align-items-center justify-content-between">
-                                                <span>Subtotal </span>
-                                                <span id="total">
-                                                    <?php if ($row['discount'] == "") { ?>
-                                                        Rp<?= number_format($row['original'], 0, ".", ".") ?>
-                                                    <?php } else { ?>
-                                                        Rp<?= number_format($row['discount'], 0, ".", ".") ?>
-                                                    <?php } ?>
-                                                </span>
-                                            </div> -->
-
-                                            <!-- <script>
-                                                const quantity = document.querySelector('#quantity');
-                                                const total = document.querySelector('#total');
-                                                const minQty = document.querySelector('.min-qty');
-                                                const plusQty = document.querySelector('.plus-qty');
-
-                                                minQty.addEventListener('click', function() {
-                                                    let subtotal = <?= $row['discount'] == "" ? $row['original'] : $row['discount'] ?> * quantity.value;
-                                                    let toRupiah = subtotal.toLocaleString('id-ID');
-                                                    total.innerHTML = `Rp${toRupiah}`;
-                                                });
-
-                                                plusQty.addEventListener('click', function() {
-                                                    let subtotal = <?= $row['discount'] == "" ? $row['original'] : $row['discount'] ?> * quantity.value;
-                                                    let toRupiah = subtotal.toLocaleString('id-ID');
-                                                    total.innerHTML = `Rp${toRupiah}`;
-                                                });
-                                            </script> -->
-
                                         </div>
                                         <div class="card-footer">
                                             <button class="btn btn-sm btn-beli btn-primary">
@@ -181,32 +150,7 @@
         <div class="product-container">
             <ul class="slider product-list">
                 <?php if (!empty($product)) {
-                    $groupedData = []; // menyimpan data yang dikelompokkan berdasarkan grup
-                    
-                    foreach ($product as $row) {
-                        $group = $row['category']; // Mendapatkan kategori (grup) dari produk
-
-                        if (!isset($groupedData[$group])) {
-                            $groupedData[$group] = []; // Membuat array kosong untuk grup jika belum ada
-                        }
-
-                        $groupedData[$group][] = $row; // Menambahkan produk ke dalam array grup yang sesuai
-                    }
-
-                    foreach ($groupedData as $group => $data) {
-                        $count = 0; // Menghitung jumlah data yang sudah ditampilkan dalam satu grup
-                
-                        foreach ($data as $row) {
-                            if ($row['id'] != $id && $row['category'] == $category) {
-                                echo itemProduct($row); // Menampilkan item produk
-                                $count++; // Meningkatkan nilai variabel $count setelah setiap data ditampilkan.
-                    
-                                if ($count == 6) {
-                                    break; // Menghentikan perulangan setelah tiga data ditampilkan
-                                }
-                            }
-                        }
-                    }
+                    echo groupAndDisplayData($product, $id, $category);
                 } ?>
             </ul>
 
@@ -217,3 +161,31 @@
         </div>
     </div>
 </section>
+
+<script>
+    $(document).ready(function () {
+        var formOrder = $('#orderForm');
+        var submitOrder = formOrder.find('.btn-beli');
+        var inputSize = formOrder.find("input[name='size']");
+        var inputColor = formOrder.find("input[name='color']");
+        var inputWeight = formOrder.find("input[name='weight']");
+
+        formOrder.submit(function (e) {
+            e.preventDefault();
+
+            // jika radio button tidak ada yang terpilih kasih alert
+            if (inputSize.length > 0 && !inputSize.is(':checked')) {
+                alertify.error('Pilih ukuran terlebih dahulu');
+                return;
+            } else if (inputColor.length > 0 && !inputColor.is(':checked')) {
+                alertify.error('Pilih warna terlebih dahulu');
+                return;
+            } else if (inputWeight.length > 0 && !inputWeight.is(':checked')) {
+                alertify.error('Pilih berat terlebih dahulu');
+                return;
+            }
+
+            this.submit();
+        });
+    });
+</script>

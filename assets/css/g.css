@@ -211,6 +211,10 @@ textarea:focus {
 	color: var(--primary-color);
 }
 
+.list-group-item.border-0 {
+	border: none;
+}
+
 /*--------------------------------------------------------------
 # Bootrap primary
 --------------------------------------------------------------*/
@@ -699,6 +703,9 @@ section {
 /*--------------------------------------------------------------
 # Product List
 --------------------------------------------------------------*/
+#produk {
+	padding-bottom: 90px;
+}
 .product-container {
 	position: relative;
 }
@@ -1366,7 +1373,7 @@ section {
 	justify-content: center;
 	align-items: center;
 	position: absolute;
-	bottom: -30px;
+	bottom: -50px;
 	width: 100%;
 }
 
@@ -1385,9 +1392,14 @@ section {
 /*--------------------------------------------------------------
 # Our Team
 --------------------------------------------------------------*/
+#team {
+	padding-bottom: 90px;
+}
+
 .team-container {
 	position: relative;
 }
+
 .team-container ul {
 	padding: 0;
 	margin: 0;
@@ -1643,6 +1655,10 @@ section {
 /*--------------------------------------------------------------
 # Contact
 --------------------------------------------------------------*/
+#contact {
+	padding-bottom: 10px;
+}
+
 .contact-image {
 	position: relative;
 	overflow: hidden;
@@ -1663,6 +1679,17 @@ section {
 	object-fit: cover;
 	width: 100%;
 	height: 100%;
+}
+
+@media (max-width: 1200.98px) {
+	#contact {
+		padding-bottom: 40px;
+	}
+}
+@media (max-width: 991.98px) {
+	#contact {
+		padding-bottom: 60px;
+	}
 }
 
 /*--------------------------------------------------------------
