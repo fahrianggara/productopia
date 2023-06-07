@@ -1,7 +1,7 @@
 <header id="header">
     <div class="container-fluid d-flex align-items-center justify-content-between">
         <div class="logo-header">
-            <a href="javascript:void(0)">Productopia</a>
+            <a href="<?= base_url(); ?>">Productopia</a>
         </div>
 
         <nav class="nav-menu d-none d-md-block">
