@@ -86,6 +86,8 @@
                             </div>
                         </div>
                     </article>
+                    <!-- make navbar -->
+                    
                 </div>
 
             </aside>
