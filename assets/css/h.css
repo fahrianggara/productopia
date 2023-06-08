@@ -337,7 +337,7 @@ textarea:focus {
 }
 
 .icon-header svg path {
-	fill: var(--primary-color) !important;
+	fill: var(--text-color) !important;
 }
 
 @media (min-width: 767.98px) {
