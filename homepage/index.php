@@ -77,15 +77,21 @@
                                             <span class="team-job"><?= $row['job'] ?></span>
                                         </div>
                                         <div class="social">
-                                            <a target="_blank" href="<?= $row['github'] ?>"><i class="fab fa-github"></i></a>
-                                            <a target="_blank" href="<?= $row['instagram'] ?>"><i class="fab fa-instagram"></i></a>
-                                            <a target="_blank" href="<?= $row['linkdn'] ?>"><i class="fab fa-linkedin"></i></a>
+                                            <a <?= ($row['github'] != null) ? "target='_blank' href='{$row['github']}'" : "href='javascript:void(0)'" ?>>
+                                                <i class="fab fa-github"></i>
+                                            </a>
+                                            <a <?= ($row['instagram'] != null) ? "target='_blank' href='{$row['instagram']}'" : "href='javascript:void(0)'" ?>>
+                                                <i class="fab fa-instagram"></i>
+                                            </a>
+                                            <a <?= ($row['linkdn'] != null) ? "target='_blank' href='{$row['linkdn']}'" : "href='javascript:void(0)'" ?>>
+                                                <i class="fab fa-linkedin"></i>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </li>
-                    <?php
+                <?php
                     }
                 }
                 ?>
@@ -153,11 +159,11 @@
 </section>
 
 <script>
-    $(document).ready(function () {
+    $(document).ready(function() {
         var formContact = $('#formContact');
         var submit = formContact.find('button[type="submit"]');
 
-        formContact.on("submit", function (e) {  
+        formContact.on("submit", function(e) {
             e.preventDefault();
 
             submit.html("Mengirim...");

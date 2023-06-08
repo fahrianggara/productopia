@@ -5,8 +5,8 @@
         "name": "Ilham Ramadan",
         "job": "Back-End",
         "instagram": "https://www.instagram.com/rmdhan_ilhmmm/",
-        "linkdn": "FASHION",
-        "github": "123123123"
+        "linkdn": null,
+        "github": null
     },
     {
         "id": 1,
@@ -22,26 +22,26 @@
         "image": "assets/images/team/jo_gans.jpg",
         "name": "Sultan Jordy Priadi",
         "job": "Technical Leader",
-        "instagram": "https://www.instagram.com/sultanjord/#",
-        "linkdn": "FASHION",
-        "github": "12312312"
+        "instagram": "https://www.instagram.com/sultanjord/",
+        "linkdn": null,
+        "github": null
     },
     {
         "id": 2,
         "image": "assets/images/team/yusuf.jpg",
         "name": "Dimas Yusuf Hidayat",
         "job": "Assistant Front-End",
-        "instagram": "https://www.instagram.com/dms.yusuf/#",
-        "linkdn": "FASHION",
-        "github": "123123123"
+        "instagram": "https://www.instagram.com/dms.yusuf/",
+        "linkdn": null,
+        "github": null
     },
     {
         "id": 4,
         "image": "assets/images/team/akmal_gans.jpg",
         "name": "Fakhri Akmal Fadilah",
         "job": "Assistant Back-End",
-        "instagram": "https://www.instagram.com/fakhriakm/#",
-        "linkdn": "FASHION",
-        "github": "123123123"
+        "instagram": "https://www.instagram.com/fakhriakm/",
+        "linkdn": null,
+        "github": null
     }
 ]
