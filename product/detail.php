@@ -30,7 +30,7 @@
                     }
                 ?>
 
-                <section id="product-detail" style="padding-top: 40px">
+                <section id="product-detail" style="padding-top: 40px;">
                     <div class="container">
                         <div class="row">
 
@@ -138,7 +138,7 @@
     }
 } ?>
 
-<section style="padding-top: 20px ">
+<section style="padding-top: 30px;">
     <div class="container">
         <div class="section-title">
             <h2>Produk Terkait</h2>
