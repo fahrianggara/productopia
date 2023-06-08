@@ -1,33 +1,5 @@
 [
     {
-        "id": 1,
-        "image": "assets/images/team/anggae.jpg",
-        "name": "Fahri Anggara",
-        "job": "Front-End",
-        "instagram": "https://www.instagram.com/f.anggae/",
-        "linkdn": "https://www.linkedin.com/in/fahrianggara/",
-        "github": "https://github.com/fahrianggara"
-    },
-
-    {
-        "id": 2,
-        "image": "assets/images/team/yusuf.jpg",
-        "name": "Dimas Yusuf Hidayat",
-        "job": "Desisgn",
-        "instagram": "https://www.instagram.com/dms.yusuf/#",
-        "linkdn": "FASHION",
-        "github": "123123123"
-    },
-    {
-        "id": 5,
-        "image": "assets/images/team/jo_gans.jpg",
-        "name": "Sultan Jordy Priadi",
-        "job": "Data Administrator",
-        "instagram": "https://www.instagram.com/sultanjord/#",
-        "linkdn": "FASHION",
-        "github": "123123123"
-    },
-    {
         "id": 3,
         "image": "assets/images/team/jhony.jpg",
         "name": "Ilham Ramadan",
@@ -37,10 +9,37 @@
         "github": "123123123"
     },
     {
+        "id": 1,
+        "image": "assets/images/team/anggae.jpg",
+        "name": "Fahri Anggara",
+        "job": "Front-End",
+        "instagram": "https://www.instagram.com/f.anggae/",
+        "linkdn": "https://www.linkedin.com/in/fahrianggara/",
+        "github": "https://github.com/fahrianggara"
+    },
+    {
+        "id": 5,
+        "image": "assets/images/team/jo_gans.jpg",
+        "name": "Sultan Jordy Priadi",
+        "job": "Technical Leader",
+        "instagram": "https://www.instagram.com/sultanjord/#",
+        "linkdn": "FASHION",
+        "github": "123123123"
+    },
+    {
+        "id": 2,
+        "image": "assets/images/team/yusuf.jpg",
+        "name": "Dimas Yusuf Hidayat",
+        "job": "Assistant Front-End",
+        "instagram": "https://www.instagram.com/dms.yusuf/#",
+        "linkdn": "FASHION",
+        "github": "123123123"
+    },
+    {
         "id": 4,
         "image": "assets/images/team/akmal_gans.jpg",
         "name": "Fakhri Akmal Fadilah",
-        "job": "Logo Design",
+        "job": "Assistant Back-End",
         "instagram": "https://www.instagram.com/fakhriakm/#",
         "linkdn": "FASHION",
         "github": "123123123"
