@@ -704,7 +704,7 @@ section {
 # Product List
 --------------------------------------------------------------*/
 #produk {
-	/* padding-bottom: 90px; */
+	padding-bottom: 90px;
 }
 .product-container {
 	position: relative;
@@ -1393,7 +1393,7 @@ section {
 # Our Team
 --------------------------------------------------------------*/
 #team {
-	/* padding-bottom: 60px; */
+	padding-bottom: 90px;
 }
 
 #team .tns-nav {
