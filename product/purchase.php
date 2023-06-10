@@ -84,7 +84,7 @@
 
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">
-                                <div class="d-flex align-items-center justify-content-between">
+                                <div class="d-flex align-items-start justify-content-between">
                                     <span class="pr-2">
                                         <?= $_SESSION['name'] ?>
                                         <small class="text-secondary">
@@ -97,13 +97,13 @@
                                 </div>
                             </li>
                             <li class="list-group-item">
-                                <div class="d-flex align-items-center justify-content-between">
+                                <div class="d-flex align-items-start justify-content-between">
                                     <span>Pajak</span>
                                     <span><?= formatRupiah($_SESSION['tax']) ?></span>
                                 </div>
                             </li>
                             <li class="list-group-item">
-                                <div class="d-flex align-items-center justify-content-between">
+                                <div class="d-flex align-items-start justify-content-between">
                                     <span>
                                         Pengiriman 
                                         <small class="text-secondary">
