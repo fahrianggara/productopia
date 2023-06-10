@@ -350,5 +350,37 @@
         "shipping": "8000",
         "total": "213000",
         "nominal": "Rp220.000"
+    },
+    {
+        "orderId": "PTO7648",
+        "date": "10 June 2023",
+        "name": "Ripped Jins Pria Korean Style",
+        "price": "100000",
+        "firstname": "Fillah",
+        "lastname": "Gay",
+        "email": "FakriLopeFillah@gmail.com",
+        "wilayah": "Jabodetabek",
+        "address": "Anak Gay",
+        "tax": "5000",
+        "quantity": "2",
+        "shipping": "8000",
+        "total": "213000",
+        "nominal": "Rp220.000"
+    },
+    {
+        "orderId": "PTO3440",
+        "date": "10 June 2023",
+        "name": "Ripped Jins Pria Korean Style",
+        "price": "100000",
+        "firstname": "Fillah",
+        "lastname": "GAY",
+        "email": "Pelangi@gmail.com",
+        "wilayah": "Jabodetabek",
+        "address": "Bocah Gay",
+        "tax": "5000",
+        "quantity": "5",
+        "shipping": "8000",
+        "total": "513000",
+        "nominal": "Rp520.000"
     }
 ]
