@@ -73,7 +73,22 @@
                                     <div class="card-header font-weight-bold">
                                         Atur Pesanan
                                     </div>
-                                    <form id="orderForm" action="#" method="POST">
+                                    <form id="orderForm" action="?page=checkout" method="POST">
+                                        <input type="text" value="<?= $row['image'] ?>" name="image" hidden>
+                                        <input type="text" value="<?= $row['name'] ?>" name="name" hidden>
+                                        <input type="text" value="<?= $row['id'] ?>" name="id" hidden>
+                                        <?php 
+                                            if($row['discount'] == "") {
+                                        ?> 
+                                            <input type="text" value="<?= $row['original'] ?>" name="original" hidden>
+                                        <?php
+                                            }else{
+                                        ?>
+                                            <input type="text" value="<?= $row['original'] ?>" name="original" hidden>
+                                            <input type="text" value="<?= $row['discount'] ?>" name="discount" hidden>
+                                        <?php
+                                            }
+                                        ?>            
                                         <div class="card-body section-bg">
 
                                             <?php if ($row['size']) { ?>
@@ -103,7 +118,7 @@
                                                 </div>
                                             <?php } ?>
 
-                                            <div class="form-group mb-0">
+                                            <div class="form-group">
                                                 <label>Kuantitas: </label>
 
                                                 <div class="qty">
@@ -118,7 +133,15 @@
                                                     </button>
                                                 </div>
                                             </div>
-
+                                            <div class="form-group">
+                                                <label for="wilayah">Wilayah Pengiriman: </label>
+                                                <select class="input-billing form-control" id="wilayah" name="wilayah" required>
+                                                    <option value="Jabodetabek">Jabodetabek</option>
+                                                    <option value="Jawa Barat">Jawa Barat</option>
+                                                    <option value="Jawa Tengah">Jawa Tengah</option>
+                                                    <option value="Jawa Timur">Jawa Timur</option>
+                                                </select>
+                                            </div>
                                         </div>
                                         <div class="card-footer">
                                             <button class="btn btn-sm btn-beli btn-primary">
@@ -187,5 +210,16 @@
 
             this.submit();
         });
+    });
+
+    document.getElementById('myForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var name = document.getElementById('nameInput').value;
+
+    // Menyimpan data ke LocalStorage
+    localStorage.setItem('name', name);
+    
+    // Mengarahkan ke halaman PHP
+    window.location.href = 'proses.php';
     });
 </script>

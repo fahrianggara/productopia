@@ -22,13 +22,13 @@
                     <li>
                         <a href="<?= base_url(); ?>#contact">Kontak</a>
                     </li>
-
-                    <li class="<?= setActive($param, 'checkout') ?>">
+                    <!-- //setActive($param, 'checkout') -->
+                    <!-- <li class="">
                         <a href="?page=checkout">Checkout</a>
                     </li>
                     <li>
                         <a href="?page=purchase">Purchase</a>
-                    </li>
+                    </li> -->
                 </ul>
             <?php } else { ?>
                 <ul class="mainpage">

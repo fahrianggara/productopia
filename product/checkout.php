@@ -3,13 +3,56 @@
         <div class="section-title">
             <h2>Checkout</h2>
         </div>
+        <?php
+            $Subtotal = null;
+            $pengiriman = null;
 
-        <form class="row checkout-form" action="#" method="POST" autocomplete="off">
+            if (empty($_POST['discount'])){
+                $Subtotal = $_POST['original'];
+            }else{
+                $Subtotal = $_POST['discount'];
+            }
+            $ppn = $Subtotal * (5 / 100);
 
-            <input type="hidden" name="quantity" value="5">
-            <input type="hidden" name="shipping" value="0">
-            <input type="hidden" name="total" value="100000">
-            <input type="hidden" name="tax" value="0">
+            if ($_POST['wilayah'] == "Jabodetabek") {
+                $pengiriman = 8000;
+            } else if ($_POST['wilayah'] == "Jawa Barat") {
+                $pengiriman = 15000;
+            } else if ($_POST['wilayah'] == "Jawa Tengah") {
+                $pengiriman = 27000;
+            } else if ($_POST['wilayah'] == "Jawa Timur") {
+                $pengiriman = 29000;
+            }
+    
+            function generateOrderNumber() {
+                $prefix = 'PTO';
+                $randomNumber = mt_rand(1000, 9999);
+                $orderNumber = $prefix . $randomNumber;
+            
+                return $orderNumber;
+            }
+            $orderNumber = generateOrderNumber();
+
+        ?>
+        <form class="row checkout-form" action="?page=purchase" method="POST" autocomplete="off">
+
+            <input type="hidden" name="id" value="<?=$_POST['id']?>">
+            <input type="hidden" name="quantity" value="<?=$_POST['quantity']?>">
+            <input type="hidden" name="shipping" value="<?=$pengiriman?>">
+            <input type="hidden" name="total" value="<?=$Subtotal?>">
+            <input type="hidden" name="tax" value="<?=$ppn?>">
+            <input type="hidden" name="name" value="<?=$_POST['name']?>">
+            <input type="hidden" name="orderId" value="<?=$orderNumber?>">
+            <input type="hidden" name="date" value="<?= date("d F Y") ?>">
+            <?php 
+                if(!empty($_POST['discount'])){
+            ?>
+                <input type="hidden" name="price" value="<?= formatRupiah($_POST['discount']) ?>">
+            <?php
+                }
+            ?>
+                <input type="hidden" name="price" value="<?= formatRupiah($_POST['original']) ?>">
+
 
 
             <div class="col-lg-8">
@@ -17,21 +60,35 @@
                     <ul class="checkout-list">
                         <li class="checkout-item">
                             <div class="checkout-info">
-                                <figure class="checkout-image">
-                                    <img src="https://images.tokopedia.net/img/cache/200-square/VqbcmM/2023/3/7/f06992e7-2e18-4965-a808-a735f1c4ddbb.jpg" alt="product-1">
+                                <figure class="checkout-image col-md-4">
+                                    <img src="<?=$_POST['image']?>" alt="product-1" class="img-fluid">
                                 </figure>
                                 <div class="checkout-desc">
                                     <article class="checkout-detail">
                                         <a href="javascript:void(0)" class="checkout-name">
-                                            Headset Lenovo Lorem Ipsum Dolor Sit Amet
+                                            <?=$_POST['name']?>
                                         </a>
                                         <div class="price">
-                                            <span class="original">Rp100.000</span>
-                                            <span class="discount">Rp50.000</span>
+                                            <?php 
+                                                if(!empty($_POST['discount'])){
+                                            ?>
+                                             <span class="discount"><?= formatRupiah($_POST['discount']) ?></span><br>
+                                             <small><i>Belum termasuk PPN 5%</i></small>
+                                            <?php
+                                                }
+                                            ?>
+                                            <span class="original"><?= formatRupiah($_POST['original']) ?></span><br>
+                                            <small><i>Belum termasuk PPN 5%</i></small>
                                         </div>
                                         <div class="checkout-optional mt-3">
-                                            <p class="checkout-size">Ukuran: 40</p>
-                                            <p class="checkout-color">Warna: Hitam</p>
+                                            <?php 
+                                                if (!empty($_POST['size'])){
+                                            ?>
+                                                <p class="checkout-size">Ukuran: <?=$_POST['size']?></p>
+                                            <?php
+                                                }
+                                            ?>
+                                                <p class="checkout-color">Warna: <?=$_POST['color']?></p>
                                         </div>
                                     </article>
                                 </div>
@@ -66,6 +123,10 @@
                                 name="email" placeholder="Masukkan email kamu" required>
                         </div>
                         <div class="form-group">
+                            <label for="wilayah">Wilayah</label>
+                            <input type="text" class="input-billing form-control" name="wilayah" value="<?=$_POST['wilayah']?>" readonly>
+                        </div>
+                        <div class="form-group">
                             <label for="address">Alamat</label>
                             <input type="text" class="input-billing form-control" id="address" maxlength="50"
                                 name="address" placeholder="Masukkan alamat kamu" required>
@@ -84,19 +145,19 @@
                             <li class="list-group-item">
                                 <div class="d-flex justify-content-between">
                                     <span>Kuantitas</span>
-                                    <span>5</span>
+                                    <span><?=$_POST['quantity']?></span>
                                 </div>
                             </li>
                             <li class="list-group-item">
                                 <div class="d-flex justify-content-between">
                                     <span>Pengiriman</span>
-                                    <span>Rp0</span>
+                                    <span id="shipping"></span>
                                 </div>
                             </li>
                             <li class="list-group-item" style="border-bottom: 0;">
                                 <div class="d-flex justify-content-between">
                                     <span>Pajak</span>
-                                    <span>Rp0</span>
+                                    <span id="tax"></span>
                                 </div>
                             </li>
                         </ul>
@@ -104,7 +165,7 @@
                     <div class="card-footer">
                         <div class="d-flex justify-content-between font-weight-bold">
                             <span>Total</span>
-                            <span id="total">Rp100.000</span>
+                            <span id="total"></span>
                         </div>
                     </div>
                 </aside>
@@ -129,6 +190,7 @@
     </div>
 </section>
 
+
 <script>
     function formatRupiah(angka, prefix) {
         var number_string = angka.toString().replace(/[^,\d]/g, ""),
@@ -151,19 +213,26 @@
         return parseInt(rupiah);
     }
 
+
     $(document).ready(function() {
         var checkoutForm = $(".checkout-form");
         var submitPay = $("button[type='submit']");
         var totalInput = $("input[name='total']");
+        var inputShipping = $("input[name='shipping']");
         var nominalInput = $("input[name='nominal']");
         var quantityInput = $("input[name='quantity']");
 
         // Set total * quantity
         var total = parseFloat(totalInput.val());
         var quantity = parseFloat(quantityInput.val());
+        var shipping = parseFloat(inputShipping.val());
+        var ppn = total * (5 / 100)
         var subtotal = total * quantity;
-        totalInput.val(subtotal);
-        $("#total").html(formatRupiah(subtotal, "Rp"));
+        var Alltotal = subtotal + ppn + shipping;
+        document.getElementById("tax").innerHTML = formatRupiah(ppn, "Rp");
+        document.getElementById("shipping").innerHTML = formatRupiah(shipping, "Rp");
+        totalInput.val(Alltotal);
+        $("#total").html(formatRupiah(Alltotal, "Rp"));
 
         // Ketika form checkout di-submit 
         checkoutForm.submit(function(e) { 

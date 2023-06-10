@@ -11,6 +11,11 @@ if (!$product) {
     $product = array();
 }
 
+$purchase = json_decode(file_get_contents('data/purchase.json'), true);
+if (!$purchase) {
+    $purchase = array();
+}
+
 function formatRupiah($angka)
 {
     return 'Rp' . number_format($angka, 0, ".", ".");
