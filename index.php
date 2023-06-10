@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="assets/plugins/fontawesome-free/css/all.css">
     <link rel="stylesheet" href="assets/plugins/tinyslider/tiny-slider.css">
     <link rel="stylesheet" href="assets/plugins/alertify/css/alerts.css">
-    <link rel="stylesheet" href="assets/css/h.css">
+    <link rel="stylesheet" href="assets/css/k.css">
 
     <!-- jQuery -->
     <script src="assets/plugins/jquery/jquery.min.js"></script>

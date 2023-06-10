@@ -39,6 +39,10 @@ body {
 	color: var(--text-color);
 }
 
+.text-secondary {
+	color: var(--paragraph-color);
+}
+
 a {
 	color: var(--primary-color);
 }
@@ -53,14 +57,16 @@ button:focus {
 }
 
 input,
-textarea {
+textarea,
+select {
 	background-color: var(--main-color) !important;
 	border-color: var(--border-color) !important;
 	color: var(--text-color) !important;
 }
 
 input:focus,
-textarea:focus {
+textarea:focus,
+select:focus {
 	box-shadow: 0 0 0 0.2rem rgba(61, 169, 252, 0.25) !important;
 }
 /*--------------------------------------------------------------
@@ -592,7 +598,7 @@ section {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	padding: 0 0 40px 0 !important;
+	padding: 0 0 20px 0 !important;
 }
 
 #about .about-banner {
@@ -1111,6 +1117,7 @@ section {
 .checkout-info figure img {
 	max-width: 100%;
 	height: auto;
+	width: 200px;
 }
 
 .checkout-info .checkout-desc {

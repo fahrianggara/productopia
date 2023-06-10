@@ -7,7 +7,7 @@
         <nav class="nav-menu d-none d-md-block">
             <?php if ($page != '') { ?>
                 <ul>
-                    <li class="<?= setActive($param, ['product', 'product-detail']) ?>">
+                    <li class="<?= setActive($param, ['product', 'product-detail', 'checkout']) ?>">
                         <a href="?page=product">Produk</a>
                     </li>
 
@@ -22,13 +22,6 @@
                     <li>
                         <a href="<?= base_url(); ?>#contact">Kontak</a>
                     </li>
-                    <!-- //setActive($param, 'checkout') -->
-                    <!-- <li class="">
-                        <a href="?page=checkout">Checkout</a>
-                    </li>
-                    <li>
-                        <a href="?page=purchase">Purchase</a>
-                    </li> -->
                 </ul>
             <?php } else { ?>
                 <ul class="mainpage">

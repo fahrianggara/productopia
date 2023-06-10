@@ -77,18 +77,13 @@
                                         <input type="text" value="<?= $row['image'] ?>" name="image" hidden>
                                         <input type="text" value="<?= $row['name'] ?>" name="name" hidden>
                                         <input type="text" value="<?= $row['id'] ?>" name="id" hidden>
-                                        <?php 
-                                            if($row['discount'] == "") {
-                                        ?> 
+                                        <?php if ($row['discount'] == "") { ?> 
                                             <input type="text" value="<?= $row['original'] ?>" name="original" hidden>
-                                        <?php
-                                            }else{
-                                        ?>
+                                        <?php } else { ?>
                                             <input type="text" value="<?= $row['original'] ?>" name="original" hidden>
                                             <input type="text" value="<?= $row['discount'] ?>" name="discount" hidden>
-                                        <?php
-                                            }
-                                        ?>            
+                                        <?php } ?>      
+                                              
                                         <div class="card-body section-bg">
 
                                             <?php if ($row['size']) { ?>
@@ -132,14 +127,16 @@
                                                         <i class="fas fa-plus"></i>
                                                     </button>
                                                 </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="wilayah">Wilayah Pengiriman: </label>
-                                                <select class="input-billing form-control" id="wilayah" name="wilayah" required>
-                                                    <option value="Jabodetabek">Jabodetabek</option>
-                                                    <option value="Jawa Barat">Jawa Barat</option>
-                                                    <option value="Jawa Tengah">Jawa Tengah</option>
-                                                    <option value="Jawa Timur">Jawa Timur</option>
+             _                              </div>
+                                            <div class="form-_roup">
+                                                <label for="region">Wilayah Pengiriman: </la_el>
+                                                <select class="input-billing form-control" id="region" name="region" required>
+                                                    <option value="jabodetabek">Jabodetabek</option>
+                                                    <option value="jawa_barat">Jawa Barat</option>
+                                                    <option value="jawa_tengah">Jawa Tengah</option>
+                                                    <option value="jawa_timur">Jawa Timur</option>
+                                                    <option value="luar_jawa">Luar Jawa</option>
+                                                    <option value="luar_negeri">Luar Negeri</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -210,16 +207,5 @@
 
             this.submit();
         });
-    });
-
-    document.getElementById('myForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    var name = document.getElementById('nameInput').value;
-
-    // Menyimpan data ke LocalStorage
-    localStorage.setItem('name', name);
-    
-    // Mengarahkan ke halaman PHP
-    window.location.href = 'proses.php';
     });
 </script>
