@@ -90,14 +90,20 @@
                                         <div class="checkout-optional mt-3">
                                             <?php if (isset($_SESSION['size'])) { ?>
                                                 <p class="checkout-size">Ukuran: <?= $_SESSION['size'] ?></p>
+
+                                                <input type="hidden" name="size" value="<?= $_SESSION['size'] ?>">
                                             <?php } ?>
 
                                             <?php if (isset($_SESSION['color'])) { ?>
                                                 <p class="checkout-color">Warna: <?= $_SESSION['color'] ?></p>
+
+                                                <input type="hidden" name="color" value="<?= $_SESSION['color'] ?>">
                                             <?php } ?>
 
                                             <?php if (isset($_SESSION['weight'])) { ?>
                                                 <p class="checkout-weight">Jumlah: <?= $_SESSION['weight'] ?></p>
+
+                                                <input type="hidden" name="weight" value="<?= $_SESSION['weight'] ?>">
                                             <?php } ?>
                                         </div>
                                     </article>

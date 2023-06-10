@@ -27,6 +27,25 @@
 
     // calculate change
     $change = $_SESSION['nominal'] - $total;
+
+    // session color, size, weight
+    $arrayChoice = array();
+    if (isset($_SESSION['color'])) {
+        $arrayChoice[] = $_SESSION['color'];
+    }
+    if (isset($_SESSION['size'])) {
+        $arrayChoice[] = $_SESSION['size'];
+    }
+    if (isset($_SESSION['weight'])) {
+        $arrayChoice[] = $_SESSION['weight'];
+    }
+    
+    $arrayChoice = array_filter($arrayChoice); // remove empty array
+    $textChoice = implode(", ", $arrayChoice); // convert array to string
+    if (!empty($textChoice)) { // if not empty
+        $textChoice = "[" . $textChoice . "]"; // add bracket
+    }
+
 ?>
 
 <section id="purchase">
@@ -49,7 +68,7 @@
                             </div>
                             <div class="col-4">
                                 <p class="heading">Order ID</p>
-                                <p class="detail"><?= $_SESSION['order-id'] ?></p> <!-- 7string dirandom di checkout -->
+                                <p class="detail"><?= $_SESSION['order-id'] ?></p>
                             </div>
                         </div>
                         <div class="row" style="margin-top: .8rem;">
@@ -66,8 +85,10 @@
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">
                                 <div class="d-flex align-items-center justify-content-between">
-                                    <span class="pr-2"><?= $_SESSION['name'] ?> 
+                                    <span class="pr-2">
+                                        <?= $_SESSION['name'] ?>
                                         <small class="text-secondary">
+                                            <?= $textChoice ?>
                                             (<?= $_SESSION['qty'] ?>x) 
                                             (<?= formatRupiah($_SESSION['price']) ?>)
                                         </small>
