@@ -1,13 +1,13 @@
 <?php
-    $category;
-    $id = $_GET['id'];
+$category;
+$id = $_GET['id'];
 
-    foreach ($product as $index) {
-        if ($index['id'] == $id) {
-            $showData = $index;
-            break;
-        }
+foreach ($product as $index) {
+    if ($index['id'] == $id) {
+        $showData = $index;
+        break;
     }
+}
 ?>
 
 <!-- Jika data ditemukan -->
@@ -19,15 +19,15 @@
             // Jika id data sama dengan id yang dikirimkan
             if ($row['id'] == $id) { ?>
                 <?php
-                    $category = $row['category'];
+                $category = $row['category'];
 
-                    function explodeItem($row, $key)
-                    {
-                        $exp = explode(',', $row[$key]);
-                        foreach ($exp as $e) {
-                            echo "<li><input type='radio' name='$key' value='$e'>$e</li>";
-                        }
+                function explodeItem($row, $key)
+                {
+                    $exp = explode(',', $row[$key]);
+                    foreach ($exp as $e) {
+                        echo "<li><input type='radio' name='$key' value='$e'>$e</li>";
                     }
+                }
                 ?>
 
                 <section id="product-detail" style="padding-top: 40px;">
@@ -42,9 +42,9 @@
 
                                 <p class="category">
                                     <?php
-                                        if ($row['badge']) {
-                                            echo $row['badge'] . " •";
-                                        }
+                                    if ($row['badge']) {
+                                        echo $row['badge'] . " •";
+                                    }
                                     ?>
 
                                     <?= $row['category'] ?>
@@ -77,13 +77,13 @@
                                         <input type="text" value="<?= $row['image'] ?>" name="image" hidden>
                                         <input type="text" value="<?= $row['name'] ?>" name="name" hidden>
                                         <input type="text" value="<?= $row['id'] ?>" name="id" hidden>
-                                        <?php if ($row['discount'] == "") { ?> 
+                                        <?php if ($row['discount'] == "") { ?>
                                             <input type="text" value="<?= $row['original'] ?>" name="original" hidden>
                                         <?php } else { ?>
                                             <input type="text" value="<?= $row['original'] ?>" name="original" hidden>
                                             <input type="text" value="<?= $row['discount'] ?>" name="discount" hidden>
-                                        <?php } ?>      
-                                              
+                                        <?php } ?>
+
                                         <div class="card-body section-bg">
 
                                             <?php if ($row['size']) { ?>
@@ -127,9 +127,9 @@
                                                         <i class="fas fa-plus"></i>
                                                     </button>
                                                 </div>
-             _                              </div>
-                                            <div class="form-_roup">
-                                                <label for="region">Wilayah Pengiriman: </la_el>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="region">Wilayah Pengiriman: </label>
                                                 <select class="input-billing form-control" id="region" name="region" required>
                                                     <option value="jabodetabek">Jabodetabek</option>
                                                     <option value="jawa_barat">Jawa Barat</option>
@@ -183,14 +183,14 @@
 </section>
 
 <script>
-    $(document).ready(function () {
+    $(document).ready(function() {
         var formOrder = $('#orderForm');
         var submitOrder = formOrder.find('.btn-beli');
         var inputSize = formOrder.find("input[name='size']");
         var inputColor = formOrder.find("input[name='color']");
         var inputWeight = formOrder.find("input[name='weight']");
 
-        formOrder.submit(function (e) {
+        formOrder.submit(function(e) {
             e.preventDefault();
 
             // jika radio button tidak ada yang terpilih kasih alert
