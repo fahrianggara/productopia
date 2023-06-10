@@ -44,17 +44,8 @@
             <input type="hidden" name="name" value="<?=$_POST['name']?>">
             <input type="hidden" name="orderId" value="<?=$orderNumber?>">
             <input type="hidden" name="date" value="<?= date("d F Y") ?>">
-            <?php 
-                if(!empty($_POST['discount'])){
-            ?>
-                <input type="hidden" name="price" value="<?= formatRupiah($_POST['discount']) ?>">
-            <?php
-                }
-            ?>
-                <input type="hidden" name="price" value="<?= formatRupiah($_POST['original']) ?>">
-
-
-
+            <input type="hidden" name="price" value="<?=$Subtotal?>">
+            
             <div class="col-lg-8">
                 <div class="checkout-container">
                     <ul class="checkout-list">
@@ -72,13 +63,18 @@
                                             <?php 
                                                 if(!empty($_POST['discount'])){
                                             ?>
+                                             <span class="original"><?= formatRupiah($_POST['original']) ?></span>
                                              <span class="discount"><?= formatRupiah($_POST['discount']) ?></span><br>
+                                             <small><i>Belum termasuk PPN 5%</i></small>
+                                            <?php
+                                                }else{
+                                            ?>
+                                             <span class="original"><?= formatRupiah($_POST['original']) ?></span><br>
                                              <small><i>Belum termasuk PPN 5%</i></small>
                                             <?php
                                                 }
                                             ?>
-                                            <span class="original"><?= formatRupiah($_POST['original']) ?></span><br>
-                                            <small><i>Belum termasuk PPN 5%</i></small>
+                                            
                                         </div>
                                         <div class="checkout-optional mt-3">
                                             <?php 

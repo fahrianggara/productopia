@@ -66,6 +66,7 @@
                 $price = $row['price'];
                 $cleanNominal = str_replace(array("Rp", "."), "", $nominal);
                 $cleanPrice = str_replace(array("Rp", "."), "", $price);
+                $qtyAndPrice = (int)$cleanPrice * (int)$row['quantity'];
                 $kembali = (int)$cleanNominal - (int)$row['total'];
         ?>
         <div class="purchase-row row">
@@ -104,7 +105,7 @@
                             <li class="list-group-item">
                                 <div class="d-flex justify-content-between">
                                     <span><?=$row['name']?> (<?=$row['quantity']?>x)</span>
-                                    <span><?= formatRupiah((int)$cleanPrice)?></span>
+                                    <span><?= formatRupiah((int)$qtyAndPrice)?></span>
                                 </div>
                             </li>
                             <li class="list-group-item">
