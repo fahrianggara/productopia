@@ -74,15 +74,11 @@ foreach ($product as $index) {
                                         Atur Pesanan
                                     </div>
                                     <form id="orderForm" action="?page=checkout" method="POST">
-                                        <input type="text" value="<?= $row['image'] ?>" name="image" hidden>
-                                        <input type="text" value="<?= $row['name'] ?>" name="name" hidden>
-                                        <input type="text" value="<?= $row['id'] ?>" name="id" hidden>
-                                        <?php if ($row['discount'] == "") { ?>
-                                            <input type="text" value="<?= $row['original'] ?>" name="original" hidden>
-                                        <?php } else { ?>
-                                            <input type="text" value="<?= $row['original'] ?>" name="original" hidden>
-                                            <input type="text" value="<?= $row['discount'] ?>" name="discount" hidden>
-                                        <?php } ?>
+                                        <input type="hidden" value="<?= $row['image'] ?>" name="image">
+                                        <input type="hidden" value="<?= $row['name'] ?>" name="name">
+                                        <input type="hidden" value="<?= $row['id'] ?>" name="id">
+                                        <input type="hidden" value="<?= $row['original'] ?>" name="original">
+                                        <input type="hidden" value="<?= $row['discount'] == null ? "" : $row['discount'] ?>" name="discount">
 
                                         <div class="card-body section-bg">
 
