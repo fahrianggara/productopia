@@ -1,78 +1,41 @@
 <?php
-    $file = 'data/purchase.json';
-    // Mendapatkan file json
-    $purchase = file_get_contents($file);
-    // Mendecode anggota.json
-    $data = json_decode($purchase, true); 
-    if($_SERVER['REQUEST_METHOD'] === 'POST'){
-        $orderId = $_POST['orderId'];
-        $firstname = $_POST['firstname'];
-        $date = $_POST['date'];
-        $name = $_POST['name'];
-        $price = $_POST['price'];
-        $lastname = $_POST['lastname'];
-        $email = $_POST['email'];
-        $wilayah = $_POST['wilayah'];
-        $address = $_POST['address'];
-        $tax = $_POST['tax'];
-        $quantity = $_POST['quantity'];
-        $shipping = $_POST['shipping'];
-        $total = $_POST['total'];
-        $nominal = $_POST['nominal'];
-    
-        // Menambahkan data baru ke dalam array
-        $newData = array(
-            'orderId' => $orderId,
-            'date' => $date,
-            'name' => $name,
-            'price' => $price,
-            'firstname' => $firstname,
-            'lastname' => $lastname,
-            'email' => $email,
-            'wilayah' => $wilayah,
-            'address' => $address,
-            'tax' => $tax,
-            'quantity' => $quantity,
-            'shipping' => $shipping,
-            'total' => $total,
-            'nominal' => $nominal
-        );
-        $data[] = $newData;
-    }
-    $jsonfile = json_encode($data, JSON_PRETTY_PRINT);
+    session_start();
 
-    $purchase = file_put_contents($file, $jsonfile);
-    
+    if (isset($_POST["id"])) { // if post request
+        session_unset(); // clear session
+
+        foreach ($_POST as $key => $value) { // set session
+            $_SESSION[$key] = $value; 
+        }
+    } else {
+        if (!isset($_SESSION['qty'])) { // if session not set
+            session_unset(); // clear session
+            header("Location:" . base_url() . "?page=product"); // redirect to product page
+        }
+    }
+
+    // Combining first name and last name
+    function fullName() {
+        return $_SESSION["firstname"] . " " . $_SESSION["lastname"];
+    }
+
+    // calculate price and quantity
+    $price = $_SESSION['price'] * $_SESSION['qty']; 
+
+    // calculate total price
+    $total = $price + $_SESSION['tax'] + $_SESSION['shipping'];
+
+    // calculate change
+    $change = $_SESSION['nominal'] - $total;
 ?>
+
 <section id="purchase">
     <div class="container">
-        <?php 
-            if (!$data) {
-                $data = array();
-            }
-
-            $orderId = $_POST['orderId'];
-
-            foreach($data as $row){
-                if ($row['orderId'] == $orderId) {
-                    $showData = $row;
-                    break;
-                }
-            }
-            
-
-            if ($row) {
-                $nominal = $row['nominal'];
-                $price = $row['price'];
-                $cleanNominal = str_replace(array("Rp", "."), "", $nominal);
-                $cleanPrice = str_replace(array("Rp", "."), "", $price);
-                $kembali = (int)$cleanNominal - (int)$row['total'];
-        ?>
         <div class="purchase-row row">
             <div class="col-lg-6 col-md-8">
                 <div class="purchase-container">
                     <div class="purchase-title">
-                        <h3>Halo, <?=$row['firstname']?>  <?=$row['lastname']?>👋</h3>
+                        <h3>Halo, <?= fullName() ?>👋</h3>
                         <p>Terimakasih telah berbelanja di Productopia!</p>
                     </div>
 
@@ -82,17 +45,17 @@
                         <div class="row">
                             <div class="col-8">
                                 <p class="heading">Tanggal Pembelian</p>
-                                <p class="detail"><?=$row['date']?></p>
+                                <p class="detail"><?= date("d F Y") ?></p>
                             </div>
                             <div class="col-4">
                                 <p class="heading">Order ID</p>
-                                <p class="detail"><?=$row['orderId']?></p> <!-- 7string dirandom di checkout -->
+                                <p class="detail"><?= $_SESSION['order-id'] ?></p> <!-- 7string dirandom di checkout -->
                             </div>
                         </div>
                         <div class="row" style="margin-top: .8rem;">
                             <div class="col-12">
                                 <p class="heading">Alamat Pengiriman</p>
-                                <p class="detail"><?=$_POST['address']?></p>
+                                <p class="detail"><?= $_SESSION['address'] ?></p>
                             </div>
                         </div>
                     </div>
@@ -102,39 +65,49 @@
 
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">
-                                <div class="d-flex justify-content-between">
-                                    <span><?=$row['name']?> (<?=$row['quantity']?>x)</span>
-                                    <span><?= formatRupiah((int)$cleanPrice)?></span>
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <span class="pr-2"><?= $_SESSION['name'] ?> 
+                                        <small class="text-secondary">
+                                            (<?= $_SESSION['qty'] ?>x) 
+                                            (<?= formatRupiah($_SESSION['price']) ?>)
+                                        </small>
+                                    </span>
+                                    <span><?= formatRupiah($_SESSION['price'] * $_SESSION['qty']) ?></span>
                                 </div>
                             </li>
                             <li class="list-group-item">
-                                <div class="d-flex justify-content-between">
+                                <div class="d-flex align-items-center justify-content-between">
                                     <span>Pajak</span>
-                                    <span><?= formatRupiah($row['tax'])?></span>
+                                    <span><?= formatRupiah($_SESSION['tax']) ?></span>
                                 </div>
                             </li>
                             <li class="list-group-item">
-                                <div class="d-flex justify-content-between">
-                                    <span>Pengiriman</span>
-                                    <span><?= formatRupiah($row['shipping'])?></span>
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <span>
+                                        Pengiriman 
+                                        <small class="text-secondary">
+                                            (<?= ucwords(str_replace('_', ' ', $_SESSION['region'])) ?>)
+                                        </small>
+                                    </span>
+                                    <span><?= formatRupiah($_SESSION['shipping']) ?></span>
                                 </div>
                             </li>
                             <li class="list-group-item border-0 pb-0">
                                 <table class="float-right mt-1">
                                     <tr>
-                                        <td class="px-3" style="padding: .15rem 0;">Subtotal</td>
+                                        <td class="px-3" style="padding: .15rem 0;">Total</td>
                                         <td class="pr-1">:</td>
-                                        <td><?=formatRupiah($row['total'])?></td>
+                                        <td><?= formatRupiah($total) ?></td>
                                     </tr>
                                     <tr>
                                         <td class="px-3" style="padding: .15rem 0;">Cash</td>
                                         <td class="pr-1">:</td>
-                                        <td><?=formatRupiah((int)$cleanNominal)?></td>
+                                        <td><?= formatRupiah($_SESSION['nominal']) ?></td>
                                     </tr>
                                     <tr>
                                         <td class="px-3" style="padding-top: .15rem;">Kembalian</td>
                                         <td class="pr-1">:</td>
-                                        <td><?=formatRupiah($kembali)?></td>
+                                        <td><?= formatRupiah($change) ?></td>
                                     </tr>
                                 </table>
                             </li>
@@ -142,23 +115,17 @@
                     </div>
 
                     <div class="purchase-button mb-1 mt-4">
-                        <a href="<?= base_url(); ?>?page=product-detail&id=<?=$_POST['id']?>" class="btn btn-block btn-success p-1">Beli Lagi</a>
+                        <a href="<?= base_url(); ?>?page=product-detail&id=<?= $_SESSION['id'] ?>" class="btn btn-block btn-success p-1">Beli Lagi</a>
                         <a href="<?= base_url(); ?>" class="btn btn-block btn-primary p-1">Halaman Utama</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <?php 
-        }else{
-            echo "<h1>404 Not Found</h1>";
-        }
-    ?>
 </section>
 
 <script>
     $(document).ready(function() {
-        $("body").css("overflow", "hidden");
         $("#header").remove();
         $("footer").remove();
         $(".menu-toggle").remove();
