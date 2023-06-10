@@ -19,15 +19,15 @@ foreach ($product as $index) {
             // Jika id data sama dengan id yang dikirimkan
             if ($row['id'] == $id) { ?>
                 <?php
-                $category = $row['category'];
+                    $category = $row['category'];
 
-                function explodeItem($row, $key)
-                {
-                    $exp = explode(',', $row[$key]);
-                    foreach ($exp as $e) {
-                        echo "<li><input type='radio' name='$key' value='$e'>$e</li>";
+                    function explodeItem($row, $key)
+                    {
+                        $exp = explode(',', $row[$key]);
+                        foreach ($exp as $e) {
+                            echo "<li><input type='radio' name='$key' value='$e'>$e</li>";
+                        }
                     }
-                }
                 ?>
 
                 <section id="product-detail" style="padding-top: 40px;">
@@ -42,9 +42,9 @@ foreach ($product as $index) {
 
                                 <p class="category">
                                     <?php
-                                    if ($row['badge']) {
-                                        echo $row['badge'] . " •";
-                                    }
+                                        if ($row['badge']) {
+                                            echo $row['badge'] . " •";
+                                        }
                                     ?>
 
                                     <?= $row['category'] ?>

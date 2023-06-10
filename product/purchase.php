@@ -136,7 +136,10 @@
                     </div>
 
                     <div class="purchase-button mb-1 mt-4">
-                        <a href="<?= base_url(); ?>?page=product-detail&id=<?= $_SESSION['id'] ?>" class="btn btn-block btn-success p-1">Beli Lagi</a>
+                        <a href="<?= base_url(); ?>?page=product-detail&id=<?= $_SESSION['id'] ?>" 
+                            class="btn btn-block btn-success p-1">
+                            Beli Lagi
+                        </a>
                         <a href="<?= base_url(); ?>" class="btn btn-block btn-primary p-1">Halaman Utama</a>
                     </div>
                 </div>
