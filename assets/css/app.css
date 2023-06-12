@@ -39,6 +39,15 @@ body {
 	color: var(--text-color);
 }
 
+::-webkit-scrollbar {
+	width: 8px;
+	height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+	background: var(--paragraph-color);
+}
+
 .text-secondary {
 	color: var(--paragraph-color);
 }
