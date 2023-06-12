@@ -1,23 +1,19 @@
 <?php
-    $category; // Deklarasi variabel category
-    $id = $_GET['id']; // Ambil id dari url
-    $found = false; // Set found menjadi false
+    ob_start(); // <-- digunakan untuk menghapus spasi pada file
 
-    function explodeItem($row, $key)
-    {
-        $exp = explode(',', $row[$key]);
-        foreach ($exp as $e) {
-            echo "<li><input type='radio' name='$key' value='$e'>$e</li>";
-        }
-    }
+    $category; // <-- digunakan untuk mengambil data kategori didalam perulangan
+    $found = false; // <-- digunakan untuk mengecek apakah data ditemukan atau tidak
 ?>
 
-<?php if (!empty($product)) { // Jika data tidak kosong
-    foreach ($product as $row) { // Looping isi data
-        if ($row['id'] == $id) { ?> <!-- Jika id data sama dengan id yang dikirim -->
+<?php if (!empty($products)) { ?>
+
+    <?php foreach ($products as $row) { ?>
+
+        <?php if ($row['id'] == $id) { ?>
+
             <?php
-                $found = true; // Set found menjadi true
-                $category = $row['category']; // Set category menjadi category dari data
+                $category = $row['category'];
+                $found = true;
             ?>
 
             <section id="product-detail" style="padding-top: 40px;">
@@ -29,13 +25,8 @@
                         </figure>
 
                         <article class="col-xl-6 col-lg-6 col-md-6">
-
                             <p class="category">
-                                <?php
-                                    if ($row['badge']) { 
-                                        echo $row['badge'] . " •"; 
-                                    }
-                                ?>
+                                <?php if (!empty($row['badge'])) echo $row['badge'] . " •"; ?>
 
                                 <?= $row['category'] ?>
                             </p>
@@ -51,13 +42,11 @@
                                 <?php } ?>
                             </div>
 
-                            <?php if ($row['description'] != "") { ?>
-                                <hr class="rule-detail">
+                            <hr class="rule-detail">
 
-                                <div class="description">
-                                    <p><?= $row['description'] ?></p>
-                                </div>
-                            <?php } ?>
+                            <div class="description">
+                                <p><?= $row['description'] ?></p>
+                            </div>
 
                             <div class="card">
                                 <div class="card-header font-weight-bold">
@@ -76,7 +65,7 @@
                                             <div class="form-group">
                                                 <label>Pilih Ukuran: </label>
                                                 <ul class="selection-input">
-                                                    <?php explodeItem($row, 'size'); ?>
+                                                    <?php explodeItemSelection($row, 'size'); ?>
                                                 </ul>
                                             </div>
                                         <?php } ?>
@@ -85,7 +74,7 @@
                                             <div class="form-group">
                                                 <label>Pilih Warna: </label>
                                                 <ul class="selection-input">
-                                                    <?php explodeItem($row, 'color'); ?>
+                                                    <?php explodeItemSelection($row, 'color'); ?>
                                                 </ul>
                                             </div>
                                         <?php } ?>
@@ -94,7 +83,7 @@
                                             <div class="form-group">
                                                 <label>Pilih Berat: </label>
                                                 <ul class="selection-input">
-                                                    <?php explodeItem($row, 'weight'); ?>
+                                                    <?php explodeItemSelection($row, 'weight'); ?>
                                                 </ul>
                                             </div>
                                         <?php } ?>
@@ -133,20 +122,24 @@
                                     </div>
                                 </form>
                             </div>
-
                         </article>
+
                     </div>
                 </div>
             </section>
-    <?php }
+
+        <?php break; } // <-- end if ($row['id'] == $id) ?>
+
+    <?php } // <-- end foreach ($products as $row) ?>
+
+<?php } // <-- end if (!empty($products)) ?>
+
+<?php 
+    if (!$found) { // <-- jika data tidak ditemukan maka akan diarahkan ke halaman product
+        header("Location: ?page=product"); // <-- digunakan untuk mengarahkan ke halaman tertentu
+        $_SESSION['message'] = "Oops.. Produk tidak ditemukan!"; // <-- kasih pesan
+        exit; // <-- digunakan untuk menghentikan proses dibawahnya
     }
-}
-
-if (!$found) { // Jika tidak ditemukan
-    header("Location: ?page=product"); // Redirect ke halaman product
-    exit; // Hentikan script
-}
-
 ?>
 
 <section style="padding-top: 30px;">
@@ -160,8 +153,8 @@ if (!$found) { // Jika tidak ditemukan
 
         <div class="product-container">
             <ul class="slider product-list">
-                <?php if (!empty($product)) {
-                    echo groupAndDisplayData($product, $id, $category);
+                <?php if (!empty($products)) {
+                    echo groupAndDisplayData($products, $id, $category);
                 } ?>
             </ul>
 
@@ -173,7 +166,7 @@ if (!$found) { // Jika tidak ditemukan
     </div>
 </section>
 
-<script>
+<script type="text/javascript">
     $(document).ready(function() {
         var formOrder = $('#orderForm');
         var submitOrder = formOrder.find('.btn-beli');

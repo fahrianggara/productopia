@@ -1,4 +1,4 @@
-<header id="header">
+<header id="header" class="<?= $page == "purchase" ? "d-none" : "" ?>">
     <div class="container-fluid d-flex align-items-center justify-content-between">
         <div class="logo-header">
             <a href="<?= base_url(); ?>">Productopia</a>
@@ -10,37 +10,16 @@
                     <li class="<?= setActive($param, ['product', 'product-detail', 'checkout']) ?>">
                         <a href="?page=product">Produk</a>
                     </li>
-
-                    <li>
-                        <a href="<?= base_url(); ?>">Utama</a>
-                    </li>
-
-                    <li>
-                        <a href="<?= base_url(); ?>#team">Team</a>
-                    </li>
-
-                    <li>
-                        <a href="<?= base_url(); ?>#contact">Kontak</a>
-                    </li>
+                    <li><a href="<?= base_url(); ?>">Utama</a></li>
+                    <li><a href="<?= base_url(); ?>#team">Team</a></li>
+                    <li><a href="<?= base_url(); ?>#contact">Kontak</a></li>
                 </ul>
             <?php } else { ?>
                 <ul class="mainpage">
-                    <li class="active">
-                        <a href="#about">Tentang</a>
-                    </li>
-
-                    <li>
-                        <a href="#produk">Produk</a>
-                    </li>
-
-                    <li>
-                        <a href="#team">Team</a>
-                    </li>
-
-                    <li>
-                        <a href="#contact">Kontak</a>
-                    </li>
-
+                    <li class="active"><a href="#about">Tentang</a></li>
+                    <li><a href="#produk">Produk</a></li>
+                    <li><a href="#team">Team</a></li>
+                    <li><a href="#contact">Kontak</a></li>
                     <li>
                         <a class="underline" href="?page=product">Semua Produk
                             <i class="fas fa-arrow-right"></i>

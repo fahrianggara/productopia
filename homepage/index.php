@@ -8,9 +8,9 @@
             </div>
             <div class="col-xl-6 col-lg-6 col-md-6">
                 <div class="about-text">
-                    <h1>Selamat Datang di <u>Productopia</u></h1>
+                    <h1>Selamat Datang di <u><?= $title ?></u></h1>
                     <p>
-                        Productopia adalah sebuah website yang menyediakan berbagai macam produk seperti produk fashion, elektronik dan sports yang dapat
+                        <?= $title ?> adalah sebuah website yang menyediakan berbagai macam produk seperti produk fashion, elektronik dan sports yang dapat
                         dibeli secara online.
                     </p>
                     <a href="#produk" class="btn about-btn">Lihat Produk</a>
@@ -26,7 +26,7 @@
         <div class="section-title">
             <h2>Produk</h2>
             <p>
-                Berikut adalah beberapa produk yang tersedia di Productopia. Jika ingin melihat semua produk, silahkan link ini
+                Berikut adalah beberapa produk yang tersedia di <?= $title ?>. Jika ingin melihat semua produk, silahkan link ini
                 <a class="underline" href="?page=product">
                     Lihat semua produk
 
@@ -38,8 +38,8 @@
 
         <div class="product-container">
             <ul class="slider product-list">
-                <?php if (!empty($product)) {
-                    echo groupAndDisplayData($product);
+                <?php if (!empty($products)) {
+                    echo groupAndDisplayData($products);
                 } ?>
             </ul>
 
@@ -57,15 +57,14 @@
         <div class="section-title" style="padding-bottom: 25px;">
             <h2>Our Team</h2>
             <p>
-                Tim yang bekerja dibalik layar untuk membuat website productopia.
+                Tim yang bekerja dibalik layar untuk membuat website <?= $title ?>.
             </p>
         </div>
 
         <div class="team-container">
             <ul id="team-list">
-                <?php
-                if (!empty($teams)) {
-                    foreach ($teams as $row) { ?>
+                <?php if (!empty($teams)) { ?>
+                    <?php foreach ($teams as $row) { ?>
                         <li class="team-list">
                             <div class="team-inner">
                                 <div class="team-avatar">
@@ -91,10 +90,8 @@
                                 </div>
                             </div>
                         </li>
-                <?php
-                    }
-                }
-                ?>
+                    <?php } ?>
+                <?php } ?>
             </ul>
 
             <div class="team-controls">
@@ -163,7 +160,8 @@
         var formContact = $('#formContact');
         var submit = formContact.find('button[type="submit"]');
 
-        formContact.on("submit", function(e) {
+        // ketika formContact di submit
+        formContact.on("submit", function(e) { 
             e.preventDefault();
 
             submit.html("Mengirim...");

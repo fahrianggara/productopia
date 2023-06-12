@@ -1,5 +1,39 @@
 <?php require_once('config.php') ?>
 
+<?php
+    $title = "Productopia";
+
+    if (isset($_GET['page'])) {
+        $page = $_GET['page'];
+
+        switch ($page) {
+            case 'product':
+                $title = "All Product - $title";
+                $content = 'product/index.php';
+                break;
+            case 'product-detail':
+                $id = $_GET['id'];
+                $product = getProductById($id);
+                $title = $product['name'] . " - $title";
+                $content = 'product/detail.php';
+                break;
+            case 'checkout':
+                $title = "Checkout - $title";
+                $content = 'product/checkout.php';
+                break;
+            case 'purchase':
+                $title = "Purchase - $title";
+                $content = 'product/purchase.php';
+                break;
+            default:
+                $content = 'homepage/index.php';
+                break;
+        }
+    } else {
+        $content = 'homepage/index.php';
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,14 +41,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Productopia</title>
+    <title><?= $title; ?></title>
 
     <!-- CSS -->
     <link rel="stylesheet" href="assets/plugins/bootstrap4/bootstrap.min.css">
     <link rel="stylesheet" href="assets/plugins/fontawesome-free/css/all.css">
     <link rel="stylesheet" href="assets/plugins/tinyslider/tiny-slider.css">
     <link rel="stylesheet" href="assets/plugins/alertify/css/alerts.css">
-    <link rel="stylesheet" href="assets/css/k.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 
     <!-- jQuery -->
     <script src="assets/plugins/jquery/jquery.min.js"></script>
@@ -24,32 +58,14 @@
     <!-- Navbar -->
     <?php include('layouts/navbar.php'); ?>
 
-    <main id="main">
-        <?php
-        if (isset($_GET['page'])) {
-            $page = $_GET['page'];
+    <!-- Flash Message -->
+    <?php if (isset($_SESSION['message'])) { ?>
+        <div class="flash-message" data-message="<?= $_SESSION['message'] ?>"></div> 
+        <?php unset($_SESSION['message']); ?>
+    <?php } ?>
 
-            switch ($page) {
-                case 'product':
-                    include('product/index.php');
-                    break;
-                case 'product-detail':
-                    include('product/detail.php');
-                    break;
-                case 'checkout':
-                    include('product/checkout.php');
-                    break;
-                case 'purchase':
-                    include('product/purchase.php');
-                    break;
-                default:
-                    include('homepage/index.php');
-                    break;
-            }
-        } else {
-            include('homepage/index.php');
-        }
-        ?>
+    <main id="main">
+        <?php include($content); ?>
     </main>
 
     <a href="javascript:void(0)" class="btn to-the-top">
@@ -65,5 +81,13 @@
     <script src="assets/plugins/jquery/easing/jquery.easing.min.js"></script>
     <script src="assets/plugins/tinyslider/tiny-slider.js"></script>
     <script src="assets/plugins/alertify/js/alerts.js"></script>
-    <script src="assets/js/j.js"></script>
+    <script src="assets/js/app.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var flashMessage = $('.flash-message');
+            var message = flashMessage.data('message');
+            if (message) alertify.log(message);
+        });
+    </script>
 </body>

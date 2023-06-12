@@ -1,19 +1,6 @@
 <?php
-    session_start();
-
-    if (isset($_POST["id"])) { // if post request
-        session_unset(); // clear session
-
-        foreach ($_POST as $key => $value) { // set session
-            $_SESSION[$key] = $value; 
-        }
-    } else {
-        if (!isset($_SESSION['qty'])) { // if session not set
-            session_unset(); // clear session
-            header("Location:" . base_url() . "?page=product"); // redirect to product page
-        }
-    }
-
+    saveDataWithSession('qty');
+    
     // Combining first name and last name
     function fullName() {
         return $_SESSION["firstname"] . " " . $_SESSION["lastname"];
@@ -150,8 +137,6 @@
 
 <script>
     $(document).ready(function() {
-        $("#header").remove();
-        $("footer").remove();
         $(".menu-toggle").remove();
     });
 </script>

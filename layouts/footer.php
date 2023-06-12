@@ -1,4 +1,4 @@
-<footer>
+<footer class="<?= $page == "purchase" ? "d-none" : "" ?>">
     <div class="footer-top">
         <div class="container">
             <div class="row">
@@ -28,8 +28,7 @@
     </div>
     <div class="footer-bottom">
         <div class="container">
-            <p>&copy; <?= date('Y') ?> Productopia. All Rights Reserved.</p>
+            <p>&copy; <?= date('Y') ?> Productopia</p>
         </div>
     </div>
-    <div></div>
 </footer>

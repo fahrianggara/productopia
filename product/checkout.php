@@ -1,19 +1,5 @@
 <?php
-    session_start();
-
-    // Jika ada data yang dikirim dari form
-    if (isset($_POST['id'])) {
-        session_unset();
-
-        foreach ($_POST as $key => $value) {
-            $_SESSION[$key] = $value;
-        }
-    } else {
-        if (!isset($_SESSION['quantity'])) { // Jika tidak ada data di session
-            session_unset();
-            header("Location:" . base_url() . "?page=product"); // Redirect ke halaman product
-        }
-    }
+    saveDataWithSession('quantity');
 
     // add shipping cost
     $shipping = 0;
@@ -206,26 +192,37 @@
     </div>
 </section>
 
-<script>
+<script>    
+    /**
+     * Memformat angka menjadi format rupiah 
+     *
+     * @param {int} angka
+     * @param {string} prefix
+     */
     function formatRupiah(angka, prefix) {
-        var number_string = angka.toString().replace(/[^,\d]/g, ""),
-            split = number_string.split(","),
-            sisa = split[0].length % 3,
-            rupiah = split[0].substr(0, sisa),
-            ribuan = split[0].substr(sisa).match(/\d{3}/gi);
+        var number_string = angka.toString().replace(/[^,\d]/g, ""); // <-- Menghapus karakter selain digit dan koma
+        var split = number_string.split(","); // <-- Memisahkan string angka berdasarkan koma
+        var sisa = split[0].length % 3; // <-- Menyimpan sisa dari panjang angka saat dibagi 3
+        var rupiah = split[0].substr(0, sisa); // <-- Mengambil sebagian angka dari awal hingga sisa karakter pertama
+        var ribuan = split[0].substr(sisa).match(/\d{3}/gi); // <-- Memisahkan angka menjadi grup tiga digit setelah karakter sisa
         
         if (ribuan) {
-            separator = sisa ? "." : ""; 
-            rupiah += separator + ribuan.join(".");
-        }
+            separator = sisa ? "." : "";  // <-- Menambahkan separator setiap 3 digit
+            rupiah += separator + ribuan.join("."); // <-- Menggabungkan angka yang sudah dipisah
+        } 
 
-        rupiah = split[1] != undefined ? rupiah + "," + split[1] : rupiah;
-        return prefix == undefined ? rupiah : (rupiah ? "Rp" + rupiah : "");
+        rupiah = split[1] != undefined ? rupiah + "," + split[1] : rupiah; // <-- Tambahkan koma dan bagian desimal ke rupiah, jika tidak, rupiah tetap sama
+        return prefix == undefined ? rupiah : (rupiah ? "Rp" + rupiah : ""); // <-- Tambahkan "Rp" pada awal rupiah jika tidak kosong, jika kosong kembalikan string kosong
     }
-
+    
+    /**
+     * Mengubah format rupiah menjadi angka
+     *
+     * @param {string} angka
+     */
     function rupiahToInt(angka) {
-        var rupiah = angka.replace(/[^,\d]/g, "");
-        return parseInt(rupiah);
+        var rupiah = angka.replace(/[^,\d]/g, ""); // <-- Menghapus karakter selain digit dan koma
+        return parseInt(rupiah); // <-- Mengembalikan nilai berupa integer
     }
 
     $(document).ready(function() {
@@ -241,6 +238,7 @@
 
             var total = parseFloat(totalInput.val());
             var nominal = rupiahToInt(nominalId.val());
+
             nominalInput.val(nominal);
 
             if (nominal >= total) {
@@ -248,8 +246,8 @@
                 submitPay.attr("disabled", true);
 
                 setTimeout(function() {
-                    checkoutForm.unbind("submit").submit();
-                }, 1500);
+                    checkoutForm.unbind("submit").submit(); // <-- Submit Form
+                }, 1000);
             } else {
                 alertify.error("Duuuh, Uang-mu kurang tuh..");
             }

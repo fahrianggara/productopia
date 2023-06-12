@@ -11,8 +11,8 @@
                             <ul class="product-list grid grid-sm">
                                 <?php
                                     $countFashion = 0;
-                                    if (!empty($product)) {
-                                        foreach ($product as $row) {
+                                    if (!empty($products)) {
+                                        foreach ($products as $row) {
                                             if ($row['category'] == "fashion") {
                                                 $countFashion++;
 
@@ -30,8 +30,8 @@
                             <ul class="product-list grid grid-sm">
                                 <?php
                                     $countElek = 0;
-                                    if (!empty($product)) {
-                                        foreach ($product as $row) {
+                                    if (!empty($products)) {
+                                        foreach ($products as $row) {
                                             if ($row['category'] == "elektronik") {
                                                 $countElek++;
 
@@ -49,8 +49,8 @@
                             <ul class="product-list grid grid-sm">
                                 <?php
                                     $countOg = 0;
-                                    if (!empty($product)) {
-                                        foreach ($product as $row) {
+                                    if (!empty($products)) {
+                                        foreach ($products as $row) {
                                             if ($row['category'] == "sports") {
                                                 $countOg++;
 
@@ -86,7 +86,6 @@
                             </div>
                         </div>
                     </article>
-                    <!-- make navbar -->
                     
                 </div>
 
@@ -98,13 +97,12 @@
 
 <script>
     $(document).ready(function () {
-        // jika window 768.98px maka ketika di klik .list-group-item maka scroll ke atas
         if ($(window).width() <= 768.98) {
             $(".list-group-item").click(function () {
                 $("html, body").animate({
                     scrollTop: 0
                 }, 1000, 'easeInOutExpo');
             });
-        }
+        } 
     });
 </script>
