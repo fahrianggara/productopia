@@ -1,6 +1,4 @@
 <?php
-    ob_start(); // <-- digunakan untuk menghapus spasi pada file
-
     $category; // <-- digunakan untuk mengambil data kategori didalam perulangan
     $found = false; // <-- digunakan untuk mengecek apakah data ditemukan atau tidak
 ?>

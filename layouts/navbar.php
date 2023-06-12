@@ -27,7 +27,6 @@
                     </li>
                 </ul>
             <?php } ?>
-            
         </nav>
 
         <div class="icon-header">

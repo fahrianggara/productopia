@@ -1,5 +1,6 @@
 <?php 
 
+ob_start(); // <-- digunakan untuk menghapus spasi pada file
 session_start(); // <-- Memulai session (menyimpan data sementara di server)
 
 /**
