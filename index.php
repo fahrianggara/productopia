@@ -2,7 +2,7 @@
 
 <?php
     $title = "Productopia";
-    $description = "$title adalah sebuah website yang menyediakan berbagai macam produk seperti produk fashion, elektronik dan sports yang dapat dibeli secara online.";
+    $description = "$title adalah sebuah website yang menyediakan berbagai macam produk seperti produk fashion, elektronik dan lain lain yang dapat dibeli secara online.";
     $image = "assets/favicon/android-chrome-512x512.png";
 
     if (isset($_GET['page'])) {

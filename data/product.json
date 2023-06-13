@@ -180,5 +180,61 @@
         "size": "39,40,41,42,43,44",
         "color": "Hitam,Putih,Biru",
         "weight": null
+    },
+    {
+        "id": 14,
+        "name": "Maybelline Superstay Matte Ink Tahan 16 Jam",
+        "image": "https://down-id.img.susercontent.com/file/id-11134207-7qul0-lhmsq1zk91wk4d",
+        "description": "Maybelline Superstay Matte Ink adalah lip cream dengan 30+ pilihan warna yang intens dan pigmentasi tinggi, ampuh menutup bibir gelap, transferproof dan tahan lama hingga 16 jam!",
+        "category": "beauty",
+        "badge": "hot",
+        "original": "430000",
+        "discount": "139500",
+        "stock": "100",
+        "size": null,
+        "color": null,
+        "weight": null
+    },
+    {
+        "id": 15,
+        "name": "Marina Glow Ready Face Palette Vivid Earth",
+        "image": "https://down-id.img.susercontent.com/file/584c426cbadd074eadb0ff354741b529",
+        "description": "All-in-one Face Palette dengan 6 pressed color powders untuk eye shadow, blush on, dan highlighter. Tekstur yang creamy dan mudah dibaurkan dengan pigmentasi intens dan tahan lama. Dengan pilihan warna earthy neutrals untuk tampilan mata yang cerah dan wajah yang glowing merona. High Pigmentation & Long Wearing",
+        "category": "beauty",
+        "badge": "hot",
+        "original": "100000",
+        "discount": "84500",
+        "stock": "100",
+        "size": null,
+        "color": null,
+        "weight": null
+    },
+    {
+        "id": 16,
+        "name": "Aster Kosmetik - Make Over Cliquematte Lip Stylo",
+        "image": "https://down-id.img.susercontent.com/file/1b1f21de5ccd84f029661ac02414b730",
+        "description": "Formula Make Over Cliquematte Lip Stylo ini versi improved dari lipstick matte Make Over yang lama, di kemasan hitam pendek. Lebih smooth, less dragging. Ada satu-dua shade yang butuh di-build up lebih (contohnya 205 Jetsetter) untuk dapet pigmentasi yang pas. Warna-warna yang bold (seperti  Éclair dan Spotlight) staining banget di bibir, jadinya lebih tahan lama.",
+        "category": "beauty",
+        "badge": "hot",
+        "original": "116000",
+        "discount": "106500",
+        "stock": "100",
+        "size": null,
+        "color": "Eclair,Hollywood,Crush,Jetsetter,Royale",
+        "weight": null
+    },
+    {
+        "id": 17,
+        "name": "The One Makeup Palette",
+        "image": "https://down-id.img.susercontent.com/file/3807b3eff086deb30bcb7919794ed277",
+        "description": "The One Makeup Palette Oriflame Barang baru dan masih tersegel! Isi terdiri dari Eyeshadow, Bedak+foundation, Counturing, Blush on",
+        "category": "beauty",
+        "badge": null,
+        "original": "350000",
+        "discount": null,
+        "stock": "100",
+        "size": null,
+        "color": null,
+        "weight": null
     }
 ]

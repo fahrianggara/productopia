@@ -1,3 +1,20 @@
+<?php
+    $categories = []; // <-- Membuat array kosong untuk menampung kategori
+    $productCount = []; // <-- Membuat array kosong untuk menampung jumlah produk per kategori
+
+    if (!empty($products)) {
+        foreach ($products as $row) {
+            $category = $row['category'];
+            if (!in_array($category, $categories)) { // <-- Jika kategori belum ada di array $categories
+                $categories[] = $category; // <-- Tambahkan kategori ke array $categories
+                $productCount[$category] = 1; // <-- Tambahkan jumlah produk ke array $productCount
+            } else { // <-- Jika kategori sudah ada di array $categories
+                $productCount[$category]++; // <-- Tambahkan jumlah produk ke array $productCount
+            }
+        }
+    }
+?>
+
 <section id="all-product" style="padding-top: 40px;">
     <div class="container">
 
@@ -6,62 +23,24 @@
             <article class="col-md-8">
                 <div class="tab-content">
 
-                    <div id="fashion" class="tab-pane fade show active">
-                        <div class="product-container">
-                            <ul class="product-list grid grid-sm">
-                                <?php
-                                    $countFashion = 0;
-                                    if (!empty($products)) {
-                                        foreach ($products as $row) {
-                                            if ($row['category'] == "fashion") {
-                                                $countFashion++;
+                    <?php foreach ($categories as $category) { ?>
+                        <div id="<?= $category ?>" class="tab-pane fade show 
+                            <?= $category == $categories[0] ? 'active' : '' ?>">
 
-                                                echo itemProduct($row);
-                                            }
-                                        }
-                                    }
-                                ?>
-                            </ul>
+                            <div class="product-container">
+                                <ul class="product-list grid grid-sm">
+                                    <?php if (!empty($products)) { ?>
+                                        <?php foreach ($products as $row) { ?>
+                                            <?php if ($row['category'] == $category) { ?>
+                                                <?= itemProduct($row) ?>
+                                            <?php } ?>
+                                        <?php } ?>
+                                    <?php } ?>
+                                </ul>
+                            </div>
+
                         </div>
-                    </div>
-
-                    <div id="elektronik" class="tab-pane fade">
-                        <div class="product-container">
-                            <ul class="product-list grid grid-sm">
-                                <?php
-                                    $countElek = 0;
-                                    if (!empty($products)) {
-                                        foreach ($products as $row) {
-                                            if ($row['category'] == "elektronik") {
-                                                $countElek++;
-
-                                                echo itemProduct($row);
-                                            }
-                                        }
-                                    }
-                                ?>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div id="sports" class="tab-pane fade">
-                        <div class="product-container">
-                            <ul class="product-list grid grid-sm">
-                                <?php
-                                    $countOg = 0;
-                                    if (!empty($products)) {
-                                        foreach ($products as $row) {
-                                            if ($row['category'] == "sports") {
-                                                $countOg++;
-
-                                                echo itemProduct($row);
-                                            }
-                                        }
-                                    }
-                                ?>
-                            </ul>
-                        </div>
-                    </div>
+                    <?php } ?>
 
                 </div>
             </article>
@@ -74,21 +53,18 @@
                         </header>
                         <div class="filter-content">
                             <div class="list-group list-group-flush">
-                                <a href="#fashion" data-toggle="tab" class="list-group-item active">Fashion
-                                    <span class="count-item"><?= $countFashion ?></span>
-                                </a>
-                                <a href="#elektronik" data-toggle="tab" class="list-group-item">Elektronik
-                                    <span class="count-item"><?= $countElek ?></span>
-                                </a>
-                                <a href="#sports" data-toggle="tab" class="list-group-item">Sports
-                                    <span class="count-item"><?= $countOg ?></span>
-                                </a>
+                                <?php foreach ($categories as $category) { ?>
+                                    <a href="#<?= $category ?>" data-toggle="tab" 
+                                        class="list-group-item <?= $category == $categories[0] ? 'active' : '' ?>">
+
+                                        <?= ucfirst($category) ?>
+                                        <span class="count-item"><?= $productCount[$category] ?></span>
+                                    </a>
+                                <?php } ?>
                             </div>
                         </div>
                     </article>
-                    
                 </div>
-
             </aside>
         </div>
 
@@ -96,13 +72,13 @@
 </section>
 
 <script>
-    $(document).ready(function () {
+    $(document).ready(function() {
         if ($(window).width() <= 768.98) {
-            $(".list-group-item").click(function () {
+            $(".list-group-item").click(function() {
                 $("html, body").animate({
                     scrollTop: 0
                 }, 1000, 'easeInOutExpo');
             });
-        } 
+        }
     });
 </script>
