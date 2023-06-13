@@ -82,12 +82,6 @@
                             </li>
                             <li class="list-group-item">
                                 <div class="d-flex align-items-start justify-content-between">
-                                    <span>Pajak</span>
-                                    <span><?= formatRupiah($_SESSION['tax']) ?></span>
-                                </div>
-                            </li>
-                            <li class="list-group-item">
-                                <div class="d-flex align-items-start justify-content-between">
                                     <span>
                                         Pengiriman 
                                         <small class="text-secondary">
@@ -95,6 +89,12 @@
                                         </small>
                                     </span>
                                     <span><?= formatRupiah($_SESSION['shipping']) ?></span>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="d-flex align-items-start justify-content-between">
+                                    <span>Pajak</span>
+                                    <span><?= formatRupiah($_SESSION['tax']) ?></span>
                                 </div>
                             </li>
                             <li class="list-group-item border-0 pb-0">
