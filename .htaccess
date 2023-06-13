@@ -1,0 +1,6 @@
+Options -Indexes
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(index\.php)?$ - [R=404,L]
+RewriteRule ^(config\.php|data|homepage|layouts|product)/ - [R=404,L]
