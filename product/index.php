@@ -52,7 +52,7 @@
                             Kategori Produk
                         </header>
                         <div class="filter-content">
-                            <div class="list-group list-group-flush">
+                            <div class="list-group list-group-flush" style="border-radius: 8px;">
                                 <?php foreach ($categories as $category) { ?>
                                     <a href="#<?= $category ?>" data-toggle="tab" 
                                         class="list-group-item <?= $category == $categories[0] ? 'active' : '' ?>">
