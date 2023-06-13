@@ -46,19 +46,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="title" content="<?= $title; ?>">
-    <meta name="description" content="<?= $description ?>">
-    <!-- SEO -->
-    <meta property="og:title" content="<?= $title; ?>"/>
-    <meta property="og:description" content="<?= $description ?>"/>
-    <meta property="og:type" content="website"/>
-    <meta property="og:url" content="<?= url_current() ?>"/>
-    <meta property="og:image" content="<?= $image ?>"/>
-    <meta name="twitter:card" content="summary"/>
-    <meta name="twitter:domain" content="<?= url_current() ?>"/>
-    <meta name="twitter:title" property="og:title" itemprop="name" content="<?= $title; ?>"/>
-    <meta name="twitter:description" property="og:description" itemprop="description" content="<?= $description ?>"/>
-    <meta name="twitter:image" content="<?= $image ?>"/>
+    <meta property="og:title" content="<?= $title; ?>" />
+    <meta property="og:description" content="<?= $description ?>" />
+    <meta property="og:image" content="<?= $image ?>" />
 
     <!-- Title of the page -->
     <title><?= $title; ?></title>
