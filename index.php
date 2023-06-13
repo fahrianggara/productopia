@@ -2,6 +2,8 @@
 
 <?php
     $title = "Productopia";
+    $description = "$title adalah sebuah website yang menyediakan berbagai macam produk seperti produk fashion, elektronik dan sports yang dapat dibeli secara online.";
+    $image = "assets/favicon/android-chrome-512x512.png";
 
     if (isset($_GET['page'])) {
         $page = $_GET['page'];
@@ -15,6 +17,8 @@
                 $id = $_GET['id'];
                 $product = getProductById($id);
                 $title = $product['name'] . " - $title";
+                $image = $product['image'];
+                $description = $product['description'];
                 $content = 'product/detail.php';
                 break;
             case 'checkout':
@@ -37,10 +41,20 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
+<head>  
+    <!-- Meta Tag -->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="title" content="<?= $title; ?>">
+    <meta name="description" content="<?= $description ?>">
+    <meta property="og:title" content="<?= $title; ?>"/>
+    <meta property="og:description" content="<?= $description ?>"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="<?= url_current() ?>"/>
+    <meta property="og:image" content="<?= $image ?>"/>
+
+    <!-- Title of the page -->
     <title><?= $title; ?></title>
 
     <!-- Logo favicon -->
@@ -91,8 +105,7 @@
 
     <script type="text/javascript">
         $(document).ready(function() {
-            var flashMessage = $('.flash-message');
-            var message = flashMessage.data('message');
+            var message = $('.flash-message').data('message');
             if (message) alertify.log(message);
         });
     </script>

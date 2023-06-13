@@ -29,6 +29,20 @@ function base_url()
 }
 
 /**
+ * Url Current
+ *
+ * @return void
+ */
+function url_current()
+{
+    $url = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http';
+    $host = $_SERVER['HTTP_HOST'];
+    $request_uri = $_SERVER['REQUEST_URI'];
+    
+    return $url . '://' . $host . $request_uri;
+}
+
+/**
  * Mengambil parameter page dari URL
  *
  * @return void
@@ -199,6 +213,12 @@ function groupAndDisplayData($products, $id = "", $category = "")
     }
 }
 
+/**
+ * Menyimpan data ke session untuk digunakan dihalaman checkout dan purchase
+ *
+ * @param  mixed $quantity
+ * @return void
+ */
 function saveDataWithSession($quantity) 
 {
     if (isset($_POST["id"])) { // if post request

@@ -9,10 +9,7 @@
             <div class="col-xl-6 col-lg-6 col-md-6">
                 <div class="about-text">
                     <h1>Selamat Datang di <u><?= $title ?></u></h1>
-                    <p>
-                        <?= $title ?> adalah sebuah website yang menyediakan berbagai macam produk seperti produk fashion, elektronik dan sports yang dapat
-                        dibeli secara online.
-                    </p>
+                    <p><?= $description ?></p>
                     <a href="#produk" class="btn about-btn">Lihat Produk</a>
                 </div>
             </div>

@@ -2,9 +2,7 @@
     saveDataWithSession('qty');
     
     // Combining first name and last name
-    function fullName() {
-        return $_SESSION["firstname"] . " " . $_SESSION["lastname"];
-    }
+    $fullname = $_SESSION["firstname"] . " " . $_SESSION["lastname"];
 
     // calculate price and quantity
     $price = $_SESSION['price'] * $_SESSION['qty']; 
@@ -32,7 +30,6 @@
     if (!empty($textChoice)) { // if not empty
         $textChoice = "[" . $textChoice . "]"; // add bracket
     }
-
 ?>
 
 <section id="purchase">
@@ -41,7 +38,7 @@
             <div class="col-lg-6 col-md-8">
                 <div class="purchase-container">
                     <div class="purchase-title">
-                        <h3>Halo, <?= fullName() ?>👋</h3>
+                        <h3>Halo, <?= ucwords($fullname) ?>👋</h3>
                         <p>Terimakasih telah berbelanja di Productopia!</p>
                     </div>
 
