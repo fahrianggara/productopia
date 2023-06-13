@@ -40,11 +40,13 @@
                                 <?php } ?>
                             </div>
 
-                            <hr class="rule-detail">
+                            <?php if ($row['description'] != "") { ?>
+                                <hr class="rule-detail">
 
-                            <div class="description">
-                                <p><?= $row['description'] ?></p>
-                            </div>
+                                <div class="description">
+                                    <p><?= $row['description'] ?></p>
+                                </div>
+                            <?php } ?>
 
                             <div class="card">
                                 <div class="card-header font-weight-bold">
