@@ -29,13 +29,15 @@
 
                             <div class="product-container">
                                 <ul class="product-list grid grid-sm">
-                                    <?php if (!empty($products)) { ?>
-                                        <?php foreach ($products as $row) { ?>
-                                            <?php if ($row['category'] == $category) { ?>
-                                                <?= itemProduct($row) ?>
-                                            <?php } ?>
-                                        <?php } ?>
-                                    <?php } ?>
+                                    <?php 
+                                        if (!empty($products)) {
+                                            foreach ($products as $row) {
+                                                if ($row['category'] == $category) {
+                                                    echo itemProduct($row);
+                                                }
+                                            }
+                                        }
+                                    ?>
                                 </ul>
                             </div>
 
@@ -58,6 +60,7 @@
                                         class="list-group-item <?= $category == $categories[0] ? 'active' : '' ?>">
 
                                         <?= ucfirst($category) ?>
+                                        
                                         <span class="count-item"><?= $productCount[$category] ?></span>
                                     </a>
                                 <?php } ?>

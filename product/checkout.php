@@ -108,23 +108,27 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="firstname">Nama Awal</label>
-                                    <input type="text" class="input-billing form-control" id="firstname" name="firstname" placeholder="Masukkan nama awalan kamu" required>
+                                    <input type="text" class="input-billing form-control" id="firstname" name="firstname" 
+                                        placeholder="Masukkan nama awalan kamu" required maxlength="20">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="lastname">Nama Akhir</label>
-                                    <input type="text" class="input-billing form-control" id="lastname" name="lastname" placeholder="Masukkan nama akhiran kamu" required>
+                                    <input type="text" class="input-billing form-control" id="lastname" name="lastname" 
+                                        placeholder="Masukkan nama akhiran kamu" required maxlength="20">
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="email" class="input-billing form-control" id="email" name="email" placeholder="Masukkan email kamu" required>
+                            <input type="email" class="input-billing form-control" id="email" name="email" 
+                                placeholder="Masukkan email kamu" required>
                         </div>
                         <div class="form-group">
                             <label for="address">Alamat</label>
-                            <input type="text" class="input-billing form-control" id="address" name="address" placeholder="Masukkan alamat kamu" required>
+                            <input type="text" class="input-billing form-control" id="address" name="address" 
+                                placeholder="Masukkan alamat kamu" required>
                         </div>
                         <div class="form-group">
                             <label for="wilayah">Wilayah</label>
@@ -236,20 +240,39 @@
         checkoutForm.submit(function(e) {
             e.preventDefault();
 
+            var regex = /(<([^>]+)>)/ig; // untuk menghilangkan tag html
+
             var total = parseFloat(totalInput.val());
             var nominal = rupiahToInt(nominalId.val());
-
             nominalInput.val(nominal);
 
-            if (nominal >= total) {
-                submitPay.html("Proses...");
-                submitPay.attr("disabled", true);
-
-                setTimeout(function() {
-                    checkoutForm.unbind("submit").submit(); // <-- Submit Form
-                }, 1000);
-            } else {
+            if (nominal <= total) {
                 alertify.error("Duuuh, Uang-mu kurang tuh..");
+                return false; // <-- Submit Form
+            } else {
+                var isInputValid = true; // <-- Flag untuk menandakan apakah input valid atau tidak
+
+                // Loop melalui setiap input pada form checkout
+                checkoutForm.find('input').each(function() {
+                    var inputValue = $(this).val(); // Ambil nilai input
+
+                    // Cek apakah nilai input mengandung tag HTML
+                    if (regex.test(inputValue)) {
+                        alertify.error("Inputan tidak valid! Tidak diperbolehkan menggunakan script HTML.");
+
+                        isInputValid = false; // <-- Set flag menjadi false
+                        return false; // <-- Submit Form
+                    }
+                });
+
+                if (isInputValid) { // <-- Jika input valid
+                    submitPay.html("Memproses...");
+                    submitPay.attr("disabled", true);
+
+                    setTimeout(function() {
+                        checkoutForm.unbind('submit').submit();
+                    }, 1000);
+                }
             }
         });
     });

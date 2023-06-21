@@ -5,9 +5,11 @@ session_start(); // <-- Memulai session (menyimpan data sementara di server)
 
 /**
  * Mengambil data dari file JSON
+ * 
+ * json_decode digunakan untuk mengubah JSON menjadi array
  */
 $teams = json_decode(file_get_contents('data/team.json'), true);
-!$teams ? $teams = array() : null;
+!$teams ? $teams = array() : null; // <-- Jika data kosong, buat array kosong
 
 $products = json_decode(file_get_contents('data/product.json'), true);
 !$products ? $products = array() : null;
