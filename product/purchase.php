@@ -14,15 +14,16 @@
     $change = $_SESSION['nominal'] - $total;
 
     // session color, size, weight
-    $arrayChoice = array();
-    if (isset($_SESSION['color'])) {
-        $arrayChoice[] = $_SESSION['color'];
+    
+    $arrayChoice = array(); // <-- buat array kosong
+    if (isset($_SESSION['color'])) { // <-- jika session color ada
+        $arrayChoice[] = $_SESSION['color']; // <-- tambahkan elemen ke array
     }
-    if (isset($_SESSION['size'])) {
-        $arrayChoice[] = $_SESSION['size'];
+    if (isset($_SESSION['size'])) { // <-- jika session size ada
+        $arrayChoice[] = $_SESSION['size']; // <-- tambahkan elemen ke array
     }
-    if (isset($_SESSION['weight'])) {
-        $arrayChoice[] = $_SESSION['weight'];
+    if (isset($_SESSION['weight'])) { // <-- jika session weight ada
+        $arrayChoice[] = $_SESSION['weight']; // <-- tambahkan elemen ke array
     }
     
     $arrayChoice = array_filter($arrayChoice); // <-- hapus elemen kosong
