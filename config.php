@@ -224,18 +224,19 @@ function groupAndDisplayData($products, $id = "", $category = "")
  */
 function saveDataWithSession($quantity) 
 {
-    if (isset($_POST["id"])) { // if post request
-        session_unset(); // clear session
+    if (isset($_POST["id"])) { // <-- Jika ada data yang dikirimkan
+        session_unset(); // <-- Hapus session yang sebelumnya (jika ada)
 
-        foreach ($_POST as $key => $value) { // set session
-            $_SESSION[$key] = $value; 
+        foreach ($_POST as $key => $value) { // <-- looping data yang dikirimkan ($_POST)
+            $_SESSION[$key] = $value; // <-- Simpan data ke session sesuai key dan value dari $_POSTnya
         }
-    } else {
-        if (!isset($_SESSION[$quantity])) { // if session not set
-            session_unset(); // clear session
-            header("Location:" . base_url() . "?page=product"); // redirect to product page
+    } else { // <-- Jika tidak ada data yang dikirimkan
+        if (!isset($_SESSION[$quantity])) {  // <-- jika session belum ada (belum pernah dikunjungi)
+            session_unset(); // <-- Hapus session yang sebelumnya (jika ada)
+
+            header("Location:" . base_url() . "?page=product"); // <-- Redirect kehalaman product
         }
     }
 
-    return $_SESSION;
+    return $_SESSION; // <-- Kembalikan data sessionnya
 }
