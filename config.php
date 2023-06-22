@@ -149,7 +149,8 @@ function itemProduct($row)
             <a href="?page=product-detail&id=' . $row['id'] . '" class="product">
                 <div class="product-image">
                     ' . $badge . '
-                    <img src="' . $row['image'] . '">
+                    <img src="' . $row['image'] . '" title="Gambar Dari : '. $row['source-img'].'">
+                    <div class="sc-img">Sumber Gambar : '. $row['source-img'] .'</div>
                 </div>
                 <div class="product-info">
                     <span class="category">' . $row['category'] . '</span>

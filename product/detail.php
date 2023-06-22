@@ -18,8 +18,11 @@
                 <div class="container">
                     <div class="row">
 
-                        <figure class="image col-xl-6 col-lg-6 col-md-6">
+                        <figure class="col-xl-6 col-lg-6 col-md-6">
+                            <div class="image">
                             <img src="<?= $row['image'] ?>">
+                            <span class="sc-img">Sumber gambar : <?=$row['source-img']?></span>
+                            </div>
                         </figure>
 
                         <article class="col-xl-6 col-lg-6 col-md-6">
