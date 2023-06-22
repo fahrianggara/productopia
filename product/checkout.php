@@ -50,8 +50,9 @@
             <input type="hidden" name="order-id" value="<?= $orderId ?>">
             <input type="hidden" name="total" value="<?= $total ?>">
             <input type="hidden" name="region" value="<?= $_SESSION['region'] ?>">
-            <input type="hidden" name="nominal">
- 
+            <input type="hidden" name="nominal"> 
+            <!-- Untuk menyimpan data sementara lalu nanti akan di tampilkan di purchase -->
+
             <div class="col-lg-8">
                 <div class="checkout-container">
                     <ul class="checkout-list">
@@ -87,7 +88,7 @@
                                             <?php } ?>
 
                                             <?php if (isset($_SESSION['weight'])) { ?>
-                                                <p class="checkout-weight">Jumlah: <?= $_SESSION['weight'] ?></p>
+                                                <p class="checkout-weight">Berat: <?= $_SESSION['weight'] ?></p>
 
                                                 <input type="hidden" name="weight" value="<?= $_SESSION['weight'] ?>">
                                             <?php } ?>
@@ -109,26 +110,26 @@
                                 <div class="form-group">
                                     <label for="firstname">Nama Awal</label>
                                     <input type="text" class="input-billing form-control" id="firstname" name="firstname" 
-                                        placeholder="Masukkan nama awalan kamu" required maxlength="20">
+                                        placeholder="Masukkan nama awalan kamu" required maxlength="20" oninvalid="this.setCustomValidity('Masukkan Nama Awal Kamu!')" oninput="setCustomValidity('')">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="lastname">Nama Akhir</label>
                                     <input type="text" class="input-billing form-control" id="lastname" name="lastname" 
-                                        placeholder="Masukkan nama akhiran kamu" required maxlength="20">
+                                        placeholder="Masukkan nama akhiran kamu" required maxlength="20" oninvalid="this.setCustomValidity('Masukkan Nama Akhir Kamu!')" oninput="setCustomValidity('')">
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="email">Email</label>
                             <input type="email" class="input-billing form-control" id="email" name="email" 
-                                placeholder="Masukkan email kamu" required>
+                                placeholder="Masukkan email kamu" required oninvalid="this.setCustomValidity('Masukkan Email yang Valid!')" oninput="setCustomValidity('')">
                         </div>
                         <div class="form-group">
                             <label for="address">Alamat</label>
                             <input type="text" class="input-billing form-control" id="address" name="address" 
-                                placeholder="Masukkan alamat kamu" required>
+                                placeholder="Masukkan alamat kamu" required oninvalid="this.setCustomValidity('Masukkan Alamat Kamu!')" oninput="setCustomValidity('')">
                         </div>
                         <div class="form-group">
                             <label for="wilayah">Wilayah</label>
