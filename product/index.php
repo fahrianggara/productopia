@@ -79,9 +79,9 @@
 
 <script>
     $(document).ready(function() {
-        if ($(window).width() <= 768.98) {
-            $(".list-group-item").click(function() {
-                $("html, body").animate({
+        if ($(window).width() <= 768.98) { // <-- Jika tablet ke bawah
+            $(".list-group-item").click(function() { // <-- Ketika kategori navigasi diklik
+                $("html, body").animate({ // <-- scroll ke atas
                     scrollTop: 0
                 }, 1000, 'easeInOutExpo');
             });
