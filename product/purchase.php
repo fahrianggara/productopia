@@ -25,10 +25,10 @@
         $arrayChoice[] = $_SESSION['weight'];
     }
     
-    $arrayChoice = array_filter($arrayChoice); // remove empty array
-    $textChoice = implode(", ", $arrayChoice); // convert array to string
-    if (!empty($textChoice)) { // if not empty
-        $textChoice = "[" . $textChoice . "]"; // add bracket
+    $arrayChoice = array_filter($arrayChoice); // <-- hapus elemen kosong
+    $textChoice = implode(", ", $arrayChoice);  // <-- gabungkan elemen array menjadi string (dipisahkan dengan koma)
+    if (!empty($textChoice)) {  // <-- jika string tidak kosong
+        $textChoice = "[" . $textChoice . "]";  // <-- tambahkan kurung siku di awal dan akhir string
     }
 ?>
 
