@@ -4,12 +4,13 @@
 
     if (!empty($products)) {
         foreach ($products as $row) {
-            $category = $row['category'];
+            $category = $row['category']; // <-- Ambil kategori produk
+
             if (!in_array($category, $categories)) { // <-- Jika kategori belum ada di array $categories
                 $categories[] = $category; // <-- Tambahkan kategori ke array $categories
-                $productCount[$category] = 1; // <-- Tambahkan jumlah produk ke array $productCount
+                $productCount[$category] = 1; // <-- Tambahkan jumlah produk berdasarkan kategori ke array $productCount
             } else { // <-- Jika kategori sudah ada di array $categories
-                $productCount[$category]++; // <-- Tambahkan jumlah produk ke array $productCount
+                $productCount[$category]++; // <-- Tambahkan jumlah produk berdasarkan kategori ke array $productCount
             }
         }
     }
@@ -23,17 +24,18 @@
             <article class="col-md-8">
                 <div class="tab-content">
 
-                    <?php foreach ($categories as $category) { ?>
+                    <?php foreach ($categories as $category) { ?> <!-- Looping kategori -->
                         <div id="<?= $category ?>" class="tab-pane fade show 
                             <?= $category == $categories[0] ? 'active' : '' ?>">
+                            <!-- Tambahkan class active pada kategori pertama -->
 
                             <div class="product-container">
                                 <ul class="product-list grid grid-sm">
                                     <?php 
-                                        if (!empty($products)) {
-                                            foreach ($products as $row) {
-                                                if ($row['category'] == $category) {
-                                                    echo itemProduct($row);
+                                        if (!empty($products)) { // <-- Jika produk tidak kosong
+                                            foreach ($products as $row) { // <-- Looping produk 
+                                                if ($row['category'] == $category) { // <-- Jika kategori produk sama dengan kategori yang sedang di-looping
+                                                    echo itemProduct($row); // <-- Tampilkan produk
                                                 }
                                             }
                                         }
@@ -55,11 +57,12 @@
                         </header>
                         <div class="filter-content">
                             <div class="list-group list-group-flush" style="border-radius: 8px;">
-                                <?php foreach ($categories as $category) { ?>
+                                <?php foreach ($categories as $category) { ?> <!-- Looping kategori -->
                                     <a href="#<?= $category ?>" data-toggle="tab" 
-                                        class="list-group-item <?= $category == $categories[0] ? 'active' : '' ?>">
+                                        class="list-group-item <?= $category == $categories[0] ? 'active' : '' ?>"> 
+                                        <!-- ^ Tambahkan class active pada kategori pertama -->
 
-                                        <?= ucfirst($category) ?>
+                                        <?= ucfirst($category) ?> <!-- Tampilkan nama kategori diawali huruf besar -->
                                         
                                         <span class="count-item"><?= $productCount[$category] ?></span>
                                     </a>
