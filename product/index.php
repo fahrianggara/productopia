@@ -19,7 +19,6 @@
 <section id="all-product" style="padding-top: 40px;">
     <div class="container">
 
-        <!-- Header -->
         <div class="row flex-row-reverse">
             <article class="col-md-8">
                 <div class="tab-content">
@@ -27,10 +26,11 @@
                     <?php foreach ($categories as $category) { ?> <!-- Looping kategori -->
                         <div id="<?= $category ?>" class="tab-pane fade show 
                             <?= $category == $categories[0] ? 'active' : '' ?>">
-                            <!-- Tambahkan class active pada kategori pertama -->
+                            <!-- ^ Tambahkan class active pada kategori pertama -->
 
                             <div class="product-container">
                                 <ul class="product-list grid grid-sm">
+
                                     <?php 
                                         if (!empty($products)) { // <-- Jika produk tidak kosong
                                             foreach ($products as $row) { // <-- Looping produk 
@@ -40,6 +40,7 @@
                                             }
                                         }
                                     ?>
+                                    
                                 </ul>
                             </div>
 
@@ -57,6 +58,7 @@
                         </header>
                         <div class="filter-content">
                             <div class="list-group list-group-flush" style="border-radius: 8px;">
+                            
                                 <?php foreach ($categories as $category) { ?> <!-- Looping kategori -->
                                     <a href="#<?= $category ?>" data-toggle="tab" 
                                         class="list-group-item <?= $category == $categories[0] ? 'active' : '' ?>"> 
@@ -64,9 +66,12 @@
 
                                         <?= ucfirst($category) ?> <!-- Tampilkan nama kategori diawali huruf besar -->
                                         
-                                        <span class="count-item"><?= $productCount[$category] ?></span>
+                                        <span class="count-item"> 
+                                            <?= $productCount[$category] ?> <!-- Tampilkan jumlah produk berdasarkan kategori -->
+                                        </span>
                                     </a>
                                 <?php } ?>
+
                             </div>
                         </div>
                     </article>

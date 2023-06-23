@@ -1,5 +1,5 @@
 <?php
-    saveDataWithSession('quantity');
+    saveDataWithSession('checkout');
 
     // add shipping cost
     $shipping = 0;
@@ -50,6 +50,7 @@
             <input type="hidden" name="order-id" value="<?= $orderId ?>">
             <input type="hidden" name="total" value="<?= $total ?>">
             <input type="hidden" name="region" value="<?= $_SESSION['region'] ?>">
+            <input type="hidden" name="purchase" value="purchase">
             <input type="hidden" name="nominal"> 
             <!-- Untuk menyimpan data sementara lalu nanti akan di tampilkan di purchase -->
 
@@ -58,12 +59,15 @@
                     <ul class="checkout-list">
                         <li class="checkout-item">
                             <div class="checkout-info">
+
                                 <figure class="checkout-image">
                                     <img src="<?= $_SESSION['image'] ?>" class="img-fluid">
+                                    <span class="sc-img">Sumber Gambar : <?= $_SESSION['source-img'] ?></span>
                                 </figure>
+
                                 <div class="checkout-desc">
                                     <article class="checkout-detail">
-                                        <a href="javascript:void(0)" class="checkout-name">
+                                        <a href="<?= base_url() ?>?page=product-detail&id=<?= $_SESSION['id'] ?>" class="checkout-name">
                                             <?= $_SESSION['name'] ?>
                                         </a>
                                         <div class="price">
@@ -110,26 +114,34 @@
                                 <div class="form-group">
                                     <label for="firstname">Nama Awal</label>
                                     <input type="text" class="input-billing form-control" id="firstname" name="firstname" 
-                                        placeholder="Masukkan nama awalan kamu" required maxlength="20" oninvalid="this.setCustomValidity('Masukkan Nama Awal Kamu!')" oninput="setCustomValidity('')">
+                                        placeholder="Masukkan nama awalan kamu" required maxlength="20" 
+                                        oninvalid="this.setCustomValidity('Silahkan masukkan nama awal kamu!')" 
+                                        oninput="setCustomValidity('')">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="lastname">Nama Akhir</label>
                                     <input type="text" class="input-billing form-control" id="lastname" name="lastname" 
-                                        placeholder="Masukkan nama akhiran kamu" required maxlength="20" oninvalid="this.setCustomValidity('Masukkan Nama Akhir Kamu!')" oninput="setCustomValidity('')">
+                                        placeholder="Masukkan nama akhiran kamu" required maxlength="20" 
+                                        oninvalid="this.setCustomValidity('Silahkan masukkan nama akhir kamu!')" 
+                                        oninput="setCustomValidity('')">
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="email">Email</label>
                             <input type="email" class="input-billing form-control" id="email" name="email" 
-                                placeholder="Masukkan email kamu" required oninvalid="this.setCustomValidity('Masukkan Email yang Valid!')" oninput="setCustomValidity('')">
+                                placeholder="Masukkan email kamu" required 
+                                oninvalid="this.setCustomValidity('Silahkan masukkan email kamu yang valid!')" 
+                                oninput="setCustomValidity('')">
                         </div>
                         <div class="form-group">
                             <label for="address">Alamat</label>
                             <input type="text" class="input-billing form-control" id="address" name="address" 
-                                placeholder="Masukkan alamat kamu" required oninvalid="this.setCustomValidity('Masukkan Alamat Kamu!')" oninput="setCustomValidity('')">
+                                placeholder="Masukkan alamat kamu" required 
+                                oninvalid="this.setCustomValidity('Silahkan masukkan alamat kamu!')" 
+                                oninput="setCustomValidity('')">
                         </div>
                         <div class="form-group">
                             <label for="wilayah">Wilayah</label>
@@ -185,7 +197,9 @@
                     <div class="card-body section-bg">
                         <div class="form-group m-0">
                             <input type="text" class="form-control" id="nominal" placeholder="999999" required
-                                onkeyup="this.value = formatRupiah(this.value, 'Rp')">
+                                onkeyup="this.value = formatRupiah(this.value, 'Rp')" 
+                                oninvalid="this.setCustomValidity('Silahkan masukkan uang kamu')" 
+                                oninput="setCustomValidity('')">
                         </div>
                     </div>
                     <div class="card-footer">
@@ -198,38 +212,6 @@
 </section>
 
 <script>    
-    /**
-     * Memformat angka menjadi format rupiah 
-     *
-     * @param {int} angka
-     * @param {string} prefix
-     */
-    function formatRupiah(angka, prefix) {
-        var number_string = angka.toString().replace(/[^,\d]/g, ""); // <-- Menghapus karakter selain digit dan koma
-        var split = number_string.split(","); // <-- Memisahkan string angka berdasarkan koma
-        var sisa = split[0].length % 3; // <-- Menyimpan sisa dari panjang angka saat dibagi 3
-        var rupiah = split[0].substr(0, sisa); // <-- Mengambil sebagian angka dari awal hingga sisa karakter pertama
-        var ribuan = split[0].substr(sisa).match(/\d{3}/gi); // <-- Memisahkan angka menjadi grup tiga digit setelah karakter sisa
-        
-        if (ribuan) {
-            separator = sisa ? "." : "";  // <-- Menambahkan separator setiap 3 digit
-            rupiah += separator + ribuan.join("."); // <-- Menggabungkan angka yang sudah dipisah
-        } 
-
-        rupiah = split[1] != undefined ? rupiah + "," + split[1] : rupiah; // <-- Tambahkan koma dan bagian desimal ke rupiah, jika tidak, rupiah tetap sama
-        return prefix == undefined ? rupiah : (rupiah ? "Rp" + rupiah : ""); // <-- Tambahkan "Rp" pada awal rupiah jika tidak kosong, jika kosong kembalikan string kosong
-    }
-    
-    /**
-     * Mengubah format rupiah menjadi angka
-     *
-     * @param {string} angka
-     */
-    function rupiahToInt(angka) {
-        var rupiah = angka.replace(/[^,\d]/g, ""); // <-- Menghapus karakter selain digit dan koma
-        return parseInt(rupiah); // <-- Mengembalikan nilai berupa integer
-    }
-
     $(document).ready(function() {
         var checkoutForm = $(".checkout-form");
         var submitPay = $("button[type='submit']");
@@ -242,14 +224,13 @@
             e.preventDefault();
 
             var regex = /(<([^>]+)>)/ig; // untuk menghilangkan tag html
-
             var total = parseFloat(totalInput.val());
             var nominal = rupiahToInt(nominalId.val());
             nominalInput.val(nominal);
 
             if (nominal <= total) {
                 alertify.error("Duuuh, Uang-mu kurang tuh..");
-                return false; // <-- Submit Form
+                return;
             } else {
                 var isInputValid = true; // <-- Flag untuk menandakan apakah input valid atau tidak
 
@@ -262,7 +243,7 @@
                         alertify.error("Inputan tidak valid! Tidak diperbolehkan menggunakan script HTML.");
 
                         isInputValid = false; // <-- Set flag menjadi false
-                        return false; // <-- Submit Form
+                        return;
                     }
                 });
 

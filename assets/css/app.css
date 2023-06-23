@@ -787,14 +787,14 @@ section {
 	background: linear-gradient(
         180deg,
         rgba(0, 0, 0, 0) 0%,
-        rgba(0, 0, 0, 0.9) 100%
+        rgba(0, 0, 0, 0.5) 100%
     );
 }
 .product .sc-img{
 	position: absolute;
 	bottom: 0;
 	left: 0;
-	font-size: 10px;
+	font-size: 8px;
 	padding: 1px 5px;
 	color: #fff;
 }
@@ -1062,7 +1062,7 @@ section {
 	background: linear-gradient(
         180deg,
         rgba(0, 0, 0, 0) 0%,
-        rgba(0, 0, 0, 0.9) 100%
+        rgba(0, 0, 0, 0.5) 100%
     );
     border-radius: var(--brs-xl);
 }
@@ -1196,7 +1196,32 @@ section {
 }
 
 .checkout-info figure {
+	position: relative;
+	overflow: hidden;
 	margin-right: 20px;
+}
+
+.checkout-info figure::before{
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 0.5) 100%
+    );
+}
+
+.checkout-info figure .sc-img {
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+	color: #fff;
+	font-size: 7px;
+    padding: 1px 5px;
 }
 
 .checkout-info figure img {

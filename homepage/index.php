@@ -159,7 +159,7 @@
 
         // ketika formContact di submit
         formContact.on("submit", function(e) { 
-            e.preventDefault();
+            e.preventDefault(); // <== menonaktifkan fungsi default dari form
 
             submit.html("Mengirim...");
             submit.attr("disabled", true);
@@ -171,7 +171,7 @@
                 alertify.log("Pesan kamu berhasil dikirim");
 
                 formContact[0].reset();
-            }, 1500);
+            }, 1000);
         });
     });
 </script>

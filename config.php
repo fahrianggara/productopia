@@ -1,6 +1,5 @@
 <?php 
 
-ob_start(); // <-- digunakan untuk menghapus spasi pada file
 session_start(); // <-- Memulai session (menyimpan data sementara di server)
 
 /**
@@ -8,11 +7,23 @@ session_start(); // <-- Memulai session (menyimpan data sementara di server)
  * 
  * json_decode digunakan untuk mengubah JSON menjadi array
  */
-$teams = json_decode(file_get_contents('data/team.json'), true);
-!$teams ? $teams = array() : null; // <-- Jika data kosong, buat array kosong
+// Membaca dan mengurai file JSON 'data/team.json'
+$teamsJson = file_get_contents('data/team.json');
+$teams = json_decode($teamsJson, true); // <-- true digunakan untuk mengubah JSON menjadi array
 
-$products = json_decode(file_get_contents('data/product.json'), true);
-!$products ? $products = array() : null;
+// Memeriksa apakah variabel $teams kosong atau null
+if (!$teams) {
+    $teams = array(); // Jika kosong, buat array kosong
+}
+
+// Membaca dan mengurai file JSON 'data/product.json'
+$productsJson = file_get_contents('data/product.json');
+$products = json_decode($productsJson, true);
+
+// Memeriksa apakah variabel $products kosong atau null
+if (!$products) {
+    $products = array(); // Jika kosong, buat array kosong
+}
 
 /**
  * Membuat Base URL untuk mengakses halaman
@@ -31,7 +42,7 @@ function base_url()
 }
 
 /**
- * Url Current
+ * Menentukan url halaman saat ini
  *
  * @return void
  */
@@ -84,12 +95,11 @@ function setActive($param, $page)
  */
 function getProductById($id)
 {
-    global $products;
+    global $products; // <-- Mengambil variabel global (diluar function)
 
-    foreach ($products as $row) {
-        if ($row['id'] == $id) {
-            return $row;
-
+    foreach ($products as $row) { // <-- Looping data produk
+        if ($row['id'] == $id) { // <-- Jika ID produk sama dengan ID yang dicari
+            return $row; // <-- Kembalikan data produk
             break;
         }
     }
@@ -108,6 +118,7 @@ function formatRupiah($angka)
 
 /**
  * Memecahkan item selection menjadi array
+ * digunakan di file product/detail.php
  *
  * @param  mixed $row
  * @param  mixed $key
@@ -116,6 +127,7 @@ function formatRupiah($angka)
 function explodeItemSelection($row, $key) 
 {
     $exp = explode(',', $row[$key]);
+
     foreach ($exp as $e) {
         echo "<li><input type='radio' name='$key' value='$e'>$e</li>";
     }
@@ -208,7 +220,7 @@ function groupAndDisplayData($products, $id = "", $category = "")
                 echo itemProduct($row);
                 $count++; // <-- Increment counter
 
-                if ($count == 3) { // <-- Jika counter sudah mencapai 3, berhenti
+                if ($count == 2) { // <-- Jika counter sudah mencapai 3, berhenti
                     break;
                 }
             }
@@ -217,26 +229,37 @@ function groupAndDisplayData($products, $id = "", $category = "")
 }
 
 /**
- * Menyimpan data ke session untuk digunakan dihalaman checkout dan purchase
+ * Menyimpan data ($_POST) ke session untuk digunakan pada halaman checkout dan purchase
+ * param $page diambil dari halaman checkout dan purchase, untuk menentukan halaman yang akan diakses
  *
- * @param  mixed $quantity
+ * @param  mixed $page
  * @return void
  */
-function saveDataWithSession($quantity) 
+function saveDataWithSession($page) 
 {
-    if (isset($_POST["id"])) { // <-- Jika ada data yang dikirimkan
-        session_unset(); // <-- Hapus session yang sebelumnya (jika ada)
+    // Jika ada data id yang dikirim lewat $_POST
+    if (isset($_POST["id"])) {
+        
+        session_unset(); // <-- Hapus semua session
 
-        foreach ($_POST as $key => $value) { // <-- looping data yang dikirimkan ($_POST)
-            $_SESSION[$key] = $value; // <-- Simpan data ke session sesuai key dan value dari $_POSTnya
+        foreach ($_POST as $key => $value) { // <-- Looping data $_POST
+            $_SESSION[$key] = $value; // <-- Simpan data ke session
         }
-    } else { // <-- Jika tidak ada data yang dikirimkan
-        if (!isset($_SESSION[$quantity])) {  // <-- jika session belum ada (belum pernah dikunjungi)
-            session_unset(); // <-- Hapus session yang sebelumnya (jika ada)
+        
+    } else { // <-- Jika tidak ada data id yang dikirim lewat $_POST
 
-            header("Location:" . base_url() . "?page=product"); // <-- Redirect kehalaman product
+        /**
+         * Kondisi dibawah ini digunakan untuk mencegah user mengakses halaman 
+         * checkout dan purchase dari URL, agar tidak terjadi error
+         */
+        
+        if (!isset($_SESSION[$page])) { // <-- Jika session page tidak ada
+            session_unset(); // <-- Hapus semua session (jika ada)
+            echo "<script>window.location.href = '". base_url() ."?page=product';</script>"; // <-- Redirect ke halaman product
+            $_SESSION['message'] = "Tidak boleh mengakses halaman ini dari URL!"; // <-- Tampilkan pesan error
         }
+
     }
 
-    return $_SESSION; // <-- Kembalikan data sessionnya
+    return $_SESSION; // <-- Kembalikan data session
 }

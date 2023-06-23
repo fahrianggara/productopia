@@ -1,4 +1,50 @@
 /**
+ * Memformat angka menjadi format rupiah 
+ *
+ * @param {int} angka
+ * @param {string} prefix
+ */
+function formatRupiah(angka, prefix) {
+    var number_string = angka.toString().replace(/[^,\d]/g, ''), // 23456789 (Harus digit dan koma aja)
+        split         = number_string.split(','), // [23, 456, 789] (Dipisah berdasarkan koma)
+        sisa          = split[0].length % 3, // 23|456|789 (Sisa 2)
+        rupiah        = split[0].substr(0, sisa), // 23 (Ambil 2 digit pertama, agar bisa dibagi ribuannya)
+        ribuan        = split[0].substr(sisa).match(/\d{3}/gi); // [456, 789] (Ambil per 3 digit, lalu dijadikan array)
+
+    if (ribuan) { // jika ribuan ada
+        // jika sisa ada, maka tambahkan titik, jika tidak ada, maka kosongkan untuk menghindari angka awal titik .456.789
+        separator = sisa ? '.' : '';
+        rupiah += separator + ribuan.join('.'); // 23 += . + 456.789 => 23.456.789 (Digabungkan)
+    }
+
+    if (split[1] != undefined) { // jika ada angka dibelakang koma
+        rupiah += ',' + split[1]; // 23.456.789,99
+    } else { // jika tidak ada angka dibelakang koma
+        rupiah; // 23.456.789
+    }
+
+    if (prefix == undefined) { // jika prefix tidak diset
+        return rupiah; // 23.456.789
+    } else { // jika prefix diset
+        if (rupiah == '') { // jika rupiah kosong
+            return ''; // kosong
+        } else { // jika rupiah tidak kosong
+            return 'Rp' + rupiah; // Rp23.456.789
+        }
+    }
+}
+
+/**
+ * Mengubah format rupiah menjadi angka
+ *
+ * @param {string} angka
+ */
+function rupiahToInt(angka) {
+    var rupiah = angka.replace(/[^,\d]/g, ""); // <-- Menghapus karakter selain digit dan koma
+    return parseInt(rupiah); // <-- Mengembalikan nilai berupa integer
+}
+
+/**
  * Menjalankan fungsi anonim dengan argumen jQuery sebagai $ menggunakan IIFE (Immediately Invoked Function Expression).
  * Fungsi anonim tidak berisi implementasi kode.
  */

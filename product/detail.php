@@ -20,7 +20,7 @@
 
                         <figure class="col-xl-6 col-lg-6 col-md-6">
                             <img src="<?= $row['image'] ?>">
-                            <span class="sc-img">Sumber gambar : <?=$row['source-img']?></span>
+                            <span class="sc-img">Sumber Gambar : <?=$row['source-img']?></span>
                         </figure>
 
                         <article class="col-xl-6 col-lg-6 col-md-6">
@@ -55,10 +55,12 @@
                                 </div>
                                 <form id="orderForm" action="?page=checkout" method="POST">
                                     <input type="hidden" value="<?= $row['image'] ?>" name="image">
+                                    <input type="hidden" value="<?= $row['source-img'] ?>" name="source-img">
                                     <input type="hidden" value="<?= $row['name'] ?>" name="name">
                                     <input type="hidden" value="<?= $row['id'] ?>" name="id">
                                     <input type="hidden" value="<?= $row['original'] ?>" name="original">
                                     <input type="hidden" value="<?= $row['discount'] == null ? "" : $row['discount'] ?>" name="discount">
+                                    <input type="hidden" value="checkout" name="checkout">
 
                                     <div class="card-body section-bg">
 
@@ -137,9 +139,8 @@
 
 <?php 
     if (!$found) { // <-- jika data tidak ditemukan maka akan diarahkan ke halaman product
-        header("Location: ?page=product"); // <-- digunakan untuk mengarahkan ke halaman tertentu
-        $_SESSION['message'] = "Oops.. Produk tidak ditemukan!"; // <-- kasih pesan
-        exit; // <-- digunakan untuk menghentikan proses dibawahnya
+        echo "<script>window.location.href = '". base_url() ."?page=product';</script>"; // <-- digunakan untuk mengarahkan ke halaman tertentu
+        $_SESSION['message'] = "Maaf.. Produk tersebut tidak ditemukan!"; // <-- kasih pesan
     }
 ?>
 

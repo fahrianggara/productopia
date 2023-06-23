@@ -1,5 +1,5 @@
 <?php
-    saveDataWithSession('qty');
+    saveDataWithSession('purchase');
     
     // Combining first name and last name
     $fullname = $_SESSION["firstname"] . " " . $_SESSION["lastname"];
@@ -14,22 +14,22 @@
     $change = $_SESSION['nominal'] - $total;
 
     // session color, size, weight
+    $arrayChoice = array(); // buat array kosong
+
+    if (isset($_SESSION['color'])) { // jika ada data color, masukkan ke arrayChoice
+        $arrayChoice[] = $_SESSION['color'];  
+    }
+    if (isset($_SESSION['size'])) { // jika ada data size, masukkan ke arrayChoice
+        $arrayChoice[] = $_SESSION['size']; 
+    }
+    if (isset($_SESSION['weight'])) { // jika ada data weight, masukkan ke arrayChoice
+        $arrayChoice[] = $_SESSION['weight']; 
+    }
     
-    $arrayChoice = array(); // <-- buat array kosong
-    if (isset($_SESSION['color'])) { // <-- jika session color ada
-        $arrayChoice[] = $_SESSION['color']; // <-- tambahkan elemen ke array
-    }
-    if (isset($_SESSION['size'])) { // <-- jika session size ada
-        $arrayChoice[] = $_SESSION['size']; // <-- tambahkan elemen ke array
-    }
-    if (isset($_SESSION['weight'])) { // <-- jika session weight ada
-        $arrayChoice[] = $_SESSION['weight']; // <-- tambahkan elemen ke array
-    }
-    
-    $arrayChoice = array_filter($arrayChoice); // <-- hapus elemen kosong
-    $textChoice = implode(", ", $arrayChoice);  // <-- gabungkan elemen array menjadi string (dipisahkan dengan koma)
-    if (!empty($textChoice)) {  // <-- jika string tidak kosong
-        $textChoice = "[" . $textChoice . "]";  // <-- tambahkan kurung siku di awal dan akhir string
+    $arrayChoice = array_filter($arrayChoice); // jika ada data kosong, hapus data kosongnya
+    $textChoice = implode(", ", $arrayChoice); // gabungkan data menjadi string lalu pisahkan dengan koma
+    if (!empty($textChoice)) {  // jika data tidak kosong, tambahkan kurung siku
+        $textChoice = "[" . $textChoice . "]";  
     }
 ?>
 
@@ -101,14 +101,14 @@
                             <li class="list-group-item border-0 pb-0">
                                 <table class="float-right mt-1">
                                     <tr>
-                                        <td class="px-3" style="padding: .15rem 0;">Total</td>
-                                        <td class="pr-1">:</td>
-                                        <td><?= formatRupiah($total) ?></td>
-                                    </tr>
-                                    <tr>
                                         <td class="px-3" style="padding: .15rem 0;">Cash</td>
                                         <td class="pr-1">:</td>
                                         <td><?= formatRupiah($_SESSION['nominal']) ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-3" style="padding: .15rem 0;">Total</td>
+                                        <td class="pr-1">:</td>
+                                        <td><?= formatRupiah($total) ?></td>
                                     </tr>
                                     <tr>
                                         <td class="px-3" style="padding-top: .15rem;">Kembalian</td>

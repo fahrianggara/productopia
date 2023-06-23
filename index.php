@@ -1,9 +1,10 @@
 <?php require_once('config.php') ?>
 
 <?php
-    $title = "Productopia";
-    $description = "$title adalah sebuah website yang menyediakan berbagai macam produk seperti produk fashion, elektronik dan lain lain yang dapat dibeli secara online.";
     $image = "assets/favicon/android-chrome-512x512.png";
+    $title = "Productopia";
+    $description = "$title adalah sebuah website yang menyediakan berbagai macam produk seperti produk fashion, 
+    elektronik dan lain lain yang dapat dibeli secara online.";
 
     if (isset($_GET['page'])) {
         $page = $_GET['page'];
@@ -49,15 +50,15 @@
     <meta property="og:title" content="<?= $title; ?>" />
     <meta property="og:description" content="<?= $description ?>" />
     <meta property="og:image" content="<?= $image ?>" />
+    <meta property="og:url" content="<?= url_current() ?>" />
 
     <!-- Title of the page -->
     <title><?= $title; ?></title>
 
     <!-- Logo favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png"> 
     <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
-    <link rel="manifest" href="assets/favicon/site.webmanifest">
 
     <!-- CSS -->
     <link rel="stylesheet" href="assets/plugins/bootstrap4/bootstrap.min.css">
