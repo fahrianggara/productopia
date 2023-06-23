@@ -134,7 +134,7 @@ function explodeItemSelection($row, $key)
 }
 
 /**
- * Menampilkan item produk
+ * Menampilkan item produk 
  *
  * @param  mixed $row
  * @return void
@@ -239,7 +239,6 @@ function saveDataWithSession($page)
 {
     // Jika ada data id yang dikirim lewat $_POST
     if (isset($_POST["id"])) {
-        
         session_unset(); // <-- Hapus semua session
 
         foreach ($_POST as $key => $value) { // <-- Looping data $_POST
@@ -250,13 +249,13 @@ function saveDataWithSession($page)
 
         /**
          * Kondisi dibawah ini digunakan untuk mencegah user mengakses halaman 
-         * checkout dan purchase dari URL, agar tidak terjadi error
+         * checkout dan purchase dari URL (JIKA TIDAK ADA SESSION), agar tidak terjadi error
          */
         
         if (!isset($_SESSION[$page])) { // <-- Jika session page tidak ada
             session_unset(); // <-- Hapus semua session (jika ada)
             echo "<script>window.location.href = '". base_url() ."?page=product';</script>"; // <-- Redirect ke halaman product
-            $_SESSION['message'] = "Tidak boleh mengakses halaman ini dari URL!"; // <-- Tampilkan pesan error
+            $_SESSION['message'] = "Kamu tidak boleh mengakses halaman ini dari URL!"; // <-- Tampilkan pesan error
         }
 
     }

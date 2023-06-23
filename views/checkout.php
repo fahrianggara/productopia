@@ -1,5 +1,5 @@
 <?php
-    saveDataWithSession('checkout');
+    saveDataWithSession('checkout'); // $_POST to $_SESSION
 
     // add shipping cost
     $shipping = 0;
@@ -44,7 +44,7 @@
             <input type="hidden" name="id" value="<?= $_SESSION['id'] ?>">
             <input type="hidden" name="name" value="<?= $_SESSION['name'] ?>">
             <input type="hidden" name="price" value="<?= $price ?>">
-            <input type="hidden" name="qty" value="<?= $_SESSION['quantity'] ?>">
+            <input type="hidden" name="quantity" value="<?= $_SESSION['quantity'] ?>">
             <input type="hidden" name="shipping" value="<?= $shipping ?>">
             <input type="hidden" name="tax" value="<?= $tax ?>">
             <input type="hidden" name="order-id" value="<?= $orderId ?>">

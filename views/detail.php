@@ -155,9 +155,11 @@
 
         <div class="product-container">
             <ul class="slider product-list">
+
                 <?php if (!empty($products)) {
                     echo groupAndDisplayData($products, $id, $category);
                 } ?>
+
             </ul>
 
             <div class="product-controls">

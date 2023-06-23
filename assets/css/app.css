@@ -194,6 +194,12 @@ select:focus {
 	background-color: var(--card-sec-color);
 }
 
+@media (max-width: 575.98px) {
+	.card-body.section-bg.form-contact {
+		border-radius: 0;
+	}
+}
+
 /*--------------------------------------------------------------
 # List Bootstrap
 --------------------------------------------------------------*/
@@ -284,11 +290,13 @@ select:focus {
 	z-index: 9999;
 	padding: 15px 0;
 	background-color: var(--main-color);
-	transition: top 0.2s ease, box-shadow 0.2s ease;
+	border-bottom: 1px solid transparent;
+	transition: top 0.2s ease, border-bottom 0.2s ease;
 }
 
 #header.on-scroll {
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+	/* box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); */
+	border-bottom: 1px solid var(--border-color);
 }
 
 #header .logo-header {
@@ -426,7 +434,8 @@ select:focus {
 	width: 280px;
 	background: var(--main-color);
 	transition: 0.3s;
-	box-shadow: 5px 0 5px -5px rgba(0, 0, 0, 0.3);
+	/* box-shadow: 5px 0 5px -5px rgba(0, 0, 0, 0.3); */
+	border-right: 1px solid var(--border-color);
 	padding-top: 65px;
 }
 
@@ -481,7 +490,7 @@ select:focus {
 	height: 14.5px;
 	position: fixed;
 	cursor: pointer;
-	top: 27px;
+	top: 27.5px;
 	left: 20px;
 	-webkit-transform: rotate(0deg);
 	-moz-transform: rotate(0deg);
@@ -496,7 +505,7 @@ select:focus {
 .menu-toggle span {
 	display: block;
 	position: absolute;
-	height: 2.5px;
+	height: 1.7px;
 	width: 100%;
 	background: var(--text-color);
 	border-radius: 9px;
@@ -607,7 +616,7 @@ section {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	padding: 0 0 20px 0 !important;
+	padding: 0 0 30px 0 !important;
 }
 
 #about .about-banner {
@@ -661,7 +670,7 @@ section {
 	font-weight: 600;
 	color: #fff;
 	background-color: var(--primary-color);
-	border-radius: 10px 20px;
+	border-radius: 5px 20px;
 	padding: 12px 30px;
 	border: none;
 	transition: transform 0.3s ease-in-out;
@@ -1043,6 +1052,9 @@ section {
 /*--------------------------------------------------------------
 # Product Detail
 --------------------------------------------------------------*/
+#product-detail {
+	padding: 25px 0 60px 0;
+}
 #product-detail figure {
 	position: relative;
 	overflow: hidden;
@@ -1151,10 +1163,10 @@ section {
 }
 
 #product-detail form input[type="number"] {
-	border: 1px solid var(--border-color);
+	border: 1px solid var(--card-sec-color);
 	border-radius: var(--brs-md);
 	text-align: center;
-	font-size: 18px;
+	/* font-size: 18px; */
 	color: var(--paragraph-color);
 	background-color: var(--bg-color);
 }
@@ -1324,7 +1336,7 @@ section {
 	padding: 3px 10px;
 	height: 36px;
 	color: var(--text-color);
-	background-color: var(--main-color);
+	background-color: var(--main-sec-color);
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -1571,28 +1583,12 @@ section {
 	z-index: 1;
 }
 
-.team-avatar::after {
-	content: "";
-	position: absolute;
-	left: 0;
-	top: 0;
-	width: 100%;
-	height: 100%;
-	background-color: rgba(0, 0, 0, 0.3);
-	transition: all 0.4s ease;
-}
-
-.team-inner:hover .team-avatar::after {
-	background-color: transparent;
-}
-
 .team-avatar img {
 	object-fit: cover;
 	width: 100%;
 	height: 100%;
 	filter: grayscale(100%);
 	transition: all 0.4s ease;
-	/* border-radius: var(--brs-md); */
 }
 
 .team-inner:hover .team-avatar img {

@@ -1,18 +1,25 @@
 <?php
-    $categories = []; // <-- Membuat array kosong untuk menampung kategori
-    $productCount = []; // <-- Membuat array kosong untuk menampung jumlah produk per kategori
+    $categories = []; // <-- Buat array kosong untuk menampung kategori produk.
+    $productCount = []; // <-- Buat array kosong untuk menampung jumlah produk dalam setiap kategori.
 
-    if (!empty($products)) {
-        foreach ($products as $row) {
+    if (!empty($products)) { // <-- Jika data produk tidak kosong
+
+        foreach ($products as $row) { // <-- Looping produk
+
             $category = $row['category']; // <-- Ambil kategori produk
 
-            if (!in_array($category, $categories)) { // <-- Jika kategori belum ada di array $categories
-                $categories[] = $category; // <-- Tambahkan kategori ke array $categories
-                $productCount[$category] = 1; // <-- Tambahkan jumlah produk berdasarkan kategori ke array $productCount
-            } else { // <-- Jika kategori sudah ada di array $categories
-                $productCount[$category]++; // <-- Tambahkan jumlah produk berdasarkan kategori ke array $productCount
+            if (!in_array($category, $categories)) { // <-- Jika kategori produk belum ada di array kategori
+
+                $categories[] = $category; // <-- Tambahkan kategori produk ke array categories
+                $productCount[$category] = 1; // <-- Mengatur jumlah produk dalam kategori tersebut menjadi 1
+
+            } else { // <-- Jika kategori produk sudah ada di array kategori
+
+                $productCount[$category]++; // <-- Increment jumlah produk dalam kategori tersebut
             }
+
         }
+
     }
 ?>
 
@@ -24,6 +31,7 @@
                 <div class="tab-content">
 
                     <?php foreach ($categories as $category) { ?> <!-- Looping kategori -->
+
                         <div id="<?= $category ?>" class="tab-pane fade show 
                             <?= $category == $categories[0] ? 'active' : '' ?>">
                             <!-- ^ Tambahkan class active pada kategori pertama -->
@@ -34,17 +42,20 @@
                                     <?php 
                                         if (!empty($products)) { // <-- Jika produk tidak kosong
                                             foreach ($products as $row) { // <-- Looping produk 
-                                                if ($row['category'] == $category) { // <-- Jika kategori produk sama dengan kategori yang sedang di-looping
+
+                                                // Jika kategori produk sama dengan kategori yang sedang di-looping
+                                                if ($row['category'] == $category) {
                                                     echo itemProduct($row); // <-- Tampilkan produk
                                                 }
+
                                             }
                                         }
                                     ?>
                                     
                                 </ul>
                             </div>
-
                         </div>
+
                     <?php } ?>
 
                 </div>
@@ -60,6 +71,7 @@
                             <div class="list-group list-group-flush" style="border-radius: 8px;">
                             
                                 <?php foreach ($categories as $category) { ?> <!-- Looping kategori -->
+
                                     <a href="#<?= $category ?>" data-toggle="tab" 
                                         class="list-group-item <?= $category == $categories[0] ? 'active' : '' ?>"> 
                                         <!-- ^ Tambahkan class active pada kategori pertama -->
@@ -70,6 +82,7 @@
                                             <?= $productCount[$category] ?> <!-- Tampilkan jumlah produk berdasarkan kategori -->
                                         </span>
                                     </a>
+
                                 <?php } ?>
 
                             </div>

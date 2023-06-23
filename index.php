@@ -12,7 +12,7 @@
         switch ($page) {
             case 'product':
                 $title = "All Product - $title";
-                $content = 'product/index.php';
+                $content = 'views/product.php';
                 break;
             case 'product-detail':
                 $id = $_GET['id'];
@@ -20,22 +20,22 @@
                 $title = $product['name'] . " - $title";
                 $image = $product['image'];
                 $description = $product['description'];
-                $content = 'product/detail.php';
+                $content = 'views/detail.php';
                 break;
             case 'checkout':
                 $title = "Checkout - $title";
-                $content = 'product/checkout.php';
+                $content = 'views/checkout.php';
                 break;
             case 'purchase':
                 $title = "Purchase - $title";
-                $content = 'product/purchase.php';
+                $content = 'views/purchase.php';
                 break;
             default:
-                $content = 'homepage/index.php';
+                $content = 'views/homepage.php';
                 break;
         }
     } else {
-        $content = 'homepage/index.php';
+        $content = 'views/homepage.php';
     }
 ?>
 

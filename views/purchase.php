@@ -1,11 +1,11 @@
 <?php
-    saveDataWithSession('purchase');
+    saveDataWithSession('purchase'); // $_POST to $_SESSION
     
     // Combining first name and last name
     $fullname = $_SESSION["firstname"] . " " . $_SESSION["lastname"];
 
     // calculate price and quantity
-    $price = $_SESSION['price'] * $_SESSION['qty']; 
+    $price = $_SESSION['price'] * $_SESSION['quantity']; 
 
     // calculate total price
     $total = $price + $_SESSION['tax'] + $_SESSION['shipping'];
@@ -28,8 +28,8 @@
     
     $arrayChoice = array_filter($arrayChoice); // jika ada data kosong, hapus data kosongnya
     $textChoice = implode(", ", $arrayChoice); // gabungkan data menjadi string lalu pisahkan dengan koma
-    if (!empty($textChoice)) {  // jika data tidak kosong, tambahkan kurung siku
-        $textChoice = "[" . $textChoice . "]";  
+    if (!empty($textChoice)) {  // jika textChoice tidak kosong, tambahkan kurung siku
+        $textChoice = "[" . $textChoice . "]";  // Contoh: [Color, Size, Weight]
     }
 ?>
 
@@ -74,11 +74,11 @@
                                         <?= $_SESSION['name'] ?>
                                         <small class="text-secondary">
                                             <?= $textChoice ?>
-                                            (<?= $_SESSION['qty'] ?>x) 
+                                            (<?= $_SESSION['quantity'] ?>x) 
                                             (<?= formatRupiah($_SESSION['price']) ?>)
                                         </small>
                                     </span>
-                                    <span><?= formatRupiah($_SESSION['price'] * $_SESSION['qty']) ?></span>
+                                    <span><?= formatRupiah($_SESSION['price'] * $_SESSION['quantity']) ?></span>
                                 </div>
                             </li>
                             <li class="list-group-item">

@@ -110,22 +110,22 @@
         </div>
 
         <div class="row align-items-center">
-            <div class="contact-image col-xl-6 col-lg-6 col-md-12">
+            <div class="contact-image col-xl-6 col-lg-6 col-md-6">
                 <figure class="contact-image-inner">
                     <img src="assets/images/contact.svg" alt="contact">
                 </figure>
             </div>
 
-            <div class="card section-bg  card-body col-xl-6 col-lg-6 col-md-12">
+            <div class="card section-bg form-contact card-body col-xl-6 col-lg-6 col-md-6">
                 <form id="formContact" action="#" autocomplete="off" method="POST">
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-xl-6 col-lg-6 col-md-12">
                             <div class="form-group">
                                 <label for="name">Nama</label>
                                 <input type="text" name="name" id="name" class="form-control" placeholder="Masukkan nama kamu" required>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-xl-6 col-lg-6 col-md-12">
                             <div class="form-group">
                                 <label for="email">Email</label>
                                 <input type="email" autocomplete="off" name="email" id="email" class="form-control" placeholder="Masukkan email kamu" required>
