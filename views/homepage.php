@@ -9,7 +9,10 @@
             <div class="col-xl-6 col-lg-6 col-md-6">
                 <div class="about-text">
                     <h1>Selamat Datang di <u><?= $project_name ?></u></h1>
-                    <p><?= $description ?></p>
+                    <p>
+                        <?= $project_name ?> adalah sebuah website yang menyediakan berbagai macam produk seperti produk fashion,
+                        elektronik dan lain lain yang dapat dibeli secara online.
+                    </p>
                     <a href="#produk" class="btn about-btn">Lihat Produk</a>
                 </div>
             </div>
@@ -60,14 +63,14 @@
 
         <div class="team-container">
             <ul id="team-list">
-                
+
                 <?php if (!empty($teams)) { ?>
                     <?php foreach ($teams as $row) { ?>
-                        
+
                         <li class="team-list">
                             <div class="team-inner">
                                 <div class="team-avatar">
-                                    
+
                                     <img src="<?= $row['image'] ?>" alt="team">
 
                                     <div class="team-info">
@@ -96,7 +99,7 @@
 
                     <?php } ?>
                 <?php } ?>
-                
+
             </ul>
 
             <div class="team-controls">
@@ -132,7 +135,7 @@
                             <div class="form-group">
                                 <label for="name">Nama</label>
                                 <input required type="text" name="name" id="name" class="form-control" 
-                                    placeholder="Masukkan nama kamu" oninput="setCustomValidity('')"
+                                    placeholder="Masukkan nama kamu" oninput="setCustomValidity('')" 
                                     oninvalid="this.setCustomValidity('Silahkan masukkan nama kamu!')" />
                             </div>
                         </div>
@@ -140,7 +143,7 @@
                             <div class="form-group">
                                 <label for="email">Email</label>
                                 <input required type="email" autocomplete="off" name="email" id="email" class="form-control" 
-                                    placeholder="Masukkan email kamu" oninput="setCustomValidity('')"
+                                    placeholder="Masukkan email kamu" oninput="setCustomValidity('')" 
                                     oninvalid="this.setCustomValidity('Silahkan masukkan email kamu!')" />
                             </div>
                         </div>
@@ -152,12 +155,14 @@
                             placeholder="Masukkan subjek pesan" oninput="setCustomValidity('')" 
                             oninvalid="this.setCustomValidity('Silahkan masukkan subjek pesan!')" />
                     </div>
+
                     <div class="form-group">
                         <label for="message">Pesan</label>
                         <textarea required name="message" id="message" class="form-control" rows="4" 
                             placeholder="Masukkan pesan kamu" oninput="setCustomValidity('')" 
                             oninvalid="this.setCustomValidity('Silahkan masukkan pesan kamu!')"></textarea>
                     </div>
+                    
                     <div class="form-group m-0">
                         <button type="submit" class="btn btn-primary">
                             Kirim <i class="fas fa-paper-plane ml-1"></i>
@@ -175,7 +180,7 @@
         var submit = formContact.find('button[type="submit"]');
 
         // ketika formContact di submit
-        formContact.on("submit", function(e) { 
+        formContact.on("submit", function(e) {
             e.preventDefault(); // <== menonaktifkan fungsi default dari form
 
             submit.html("Mengirim...");

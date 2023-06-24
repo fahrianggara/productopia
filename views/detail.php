@@ -144,7 +144,7 @@
     }
 ?>
 
-<section style="padding-top: 30px;">
+<section style="padding-top: 30px;" id="anotherProduct">
     <div class="container">
         <div class="section-title">
             <h2>Produk Terkait</h2>

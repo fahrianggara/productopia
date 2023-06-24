@@ -13,7 +13,7 @@ Productopia adalah sebuah website yang menyediakan berbagai macam produk seperti
 
 Project ini dibangun dengan menggunakan teknologi-teknologi berikut:
 1. Bahasa Pemrograman: PHP, CSS, JavaScript
-2. Framework: jQuery(JS), Bootstrap 4(CSS)
+2. Framework: jQuery (JS), Bootstrap 4.6 (CSS)
 
 ## Team Pengembang 
 
@@ -22,6 +22,3 @@ Project ini dibangun dengan menggunakan teknologi-teknologi berikut:
 3. Fakhri Akmal Fadillah - 10220046
 4. Sultan Jordy Priadi - 10220078
 5. Ilham Ramadan - 10220048
-
-
-

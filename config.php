@@ -27,6 +27,7 @@ if (!$products) {
 
 /**
  * Membuat Base URL untuk mengakses halaman
+ * 
  *
  * @return void
  */
@@ -213,29 +214,38 @@ function groupAndDisplayData($products, $id = "", $category = "")
     $groupProducts = []; // <-- Menampung data produk berdasarkan group (kategori)
 
     foreach ($products as $row) { // <-- Looping data produk
-        $category = $row['category']; // <-- Menentukan group (kategori) produk
+        $group = $row['category']; // <-- Menentukan group (kategori) produk
 
-        if (!isset($groupProducts[$category])) {  // <-- Jika group (kategori) belum ada
-            $groupProducts[$category] = []; // <-- Buat group (kategori) baru
+        if (!isset($groupProducts[$group])) {  // <-- Jika group (kategori) belum ada
+            $groupProducts[$group] = []; // <-- Buat group (kategori) baru
         }
 
-        $groupProducts[$category][] = $row; // <-- Masukkan data produk ke group (kategori) yang sesuai
+        $groupProducts[$group][] = $row; // <-- Masukkan data produk ke group (kategori) yang sesuai
     }
 
     foreach ($groupProducts as $group => $data) { // <-- Looping data produk berdasarkan group (kategori)
         $count = 0; // <-- Menentukan jumlah item produk yang akan ditampilkan
+        $hideAnotherProduct = false; // <-- menentukan apakah item produk lainnya akan ditampilkan atau tidak
 
         foreach ($data as $row) { // <-- Looping data produk
 
             if ($id && $category) { // <-- Jika ada parameter ID dan kategori (digunakan di halaman detail produk)
 
                 // Tampilkan produk lainnya, selain produk yang sedang dibuka dan kategori yang sama
-                if ($row['id'] != $id && $row['category'] == $category) {
-                    echo itemProduct($row); // <-- Tampilkan item produk
+                if ($row['category'] == $category) {
                     $count++; // <-- Tambah jumlah item produk
 
-                    if ($count == 6) { // <-- Jika jumlah item produk sudah 6, maka berhenti
-                        break;
+                    if ($row['id'] != $id) {
+                        echo itemProduct($row); // <-- Tampilkan item produk
+                       
+                        if ($count == 6) { // <-- Jika jumlah item produk sudah 6, maka berhenti
+                            break;
+                        }
+                    } else {
+                        // Jika item produk hanya 1 dan kategori yang sama
+                        if (count($data) == 1) {
+                            $hideAnotherProduct = true; // hide section another product
+                        }
                     }
                 }
 
@@ -249,8 +259,12 @@ function groupAndDisplayData($products, $id = "", $category = "")
                 }
 
             }
-
         }
+    }
+
+    // hapus section another product menggunakan javascript
+    if ($hideAnotherProduct) {
+        echo "<script>$('#anotherProduct').remove();</script>";
     }
 }
 

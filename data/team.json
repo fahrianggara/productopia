@@ -1,6 +1,6 @@
 [
     {
-        "id": 3,
+        "id": 1,
         "image": "assets/images/team/jhony.jpg",
         "name": "Ilham Ramadan",
         "job": "Back-End",
@@ -9,7 +9,7 @@
         "github": null
     },
     {
-        "id": 1,
+        "id": 2,
         "image": "assets/images/team/anggae.jpg",
         "name": "Fahri Anggara",
         "job": "Front-End",
@@ -18,7 +18,7 @@
         "github": "https://github.com/fahrianggara"
     },
     {
-        "id": 5,
+        "id": 3,
         "image": "assets/images/team/jo_gans.jpg",
         "name": "Sultan Jordy Priadi",
         "job": "Technical Leader",
@@ -27,7 +27,7 @@
         "github": null
     },
     {
-        "id": 2,
+        "id": 4,
         "image": "assets/images/team/yusuf.jpg",
         "name": "Dimas Yusuf Hidayat",
         "job": "Assistant Front-End",
@@ -36,7 +36,7 @@
         "github": null
     },
     {
-        "id": 4,
+        "id": 5,
         "image": "assets/images/team/akmal.jpg",
         "name": "Fakhri Akmal Fadilah",
         "job": "Assistant Back-End",
