@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <h3>Tentang</h3>
-                    <p>Productopia adalah sebuah website yang menyediakan berbagai macam produk seperti produk fashion, elektronik dan lain lain yang dapat dibeli secara online.</p>
+                    <p><?= $project_name ?> adalah sebuah website yang menyediakan berbagai macam produk seperti produk fashion, elektronik dan lain lain yang dapat dibeli secara online.</p>
                 </div>
                 <div class="col-md-4 footer-menu">
                     <h3>Menu</h3>
@@ -25,7 +25,7 @@
     </div>
     <div class="footer-bottom">
         <div class="container">
-            <p>&copy; <?= date('Y') ?> Productopia</p>
+            <p>&copy; <?= date('Y') ?> <?= $project_name ?>.</p>
         </div>
     </div>
 </footer>

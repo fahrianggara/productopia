@@ -1,7 +1,7 @@
 <header id="header" class="<?= $page == "purchase" ? "d-none" : "" ?>">
     <div class="container-fluid d-flex align-items-center justify-content-between">
         <div class="logo-header">
-            <a href="<?= base_url(); ?>">Productopia</a>
+            <a href="<?= base_url(); ?>"><?= $project_name ?></a>
         </div>
 
         <nav class="nav-menu d-none d-md-block">

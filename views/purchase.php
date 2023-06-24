@@ -1,20 +1,20 @@
 <?php
     saveDataWithSession('purchase'); // $_POST to $_SESSION
     
-    // Combining first name and last name
+    // Membuat nama lengkap dari session firstname dan lastname
     $fullname = $_SESSION["firstname"] . " " . $_SESSION["lastname"];
 
-    // calculate price and quantity
+    // menghitung harga per kuantitas
     $price = $_SESSION['price'] * $_SESSION['quantity']; 
 
-    // calculate total price
+    // menghitung total harga keseluruhan
     $total = $price + $_SESSION['tax'] + $_SESSION['shipping'];
 
-    // calculate change
+    // menghitung kembalian
     $change = $_SESSION['nominal'] - $total;
 
-    // session color, size, weight
-    $arrayChoice = array(); // buat array kosong
+    // data pilihan (color, size, weight) jika ada
+    $arrayChoice = array(); // buat array kosong untuk menampung data pilihan
 
     if (isset($_SESSION['color'])) { // jika ada data color, masukkan ke arrayChoice
         $arrayChoice[] = $_SESSION['color'];  
@@ -40,7 +40,7 @@
                 <div class="purchase-container">
                     <div class="purchase-title">
                         <h3>Halo, <?= ucwords($fullname) ?>👋</h3>
-                        <p>Terimakasih telah berbelanja di Productopia!</p>
+                        <p>Terimakasih telah berbelanja di <?= $project_name ?>!</p>
                     </div>
 
                     <hr>
@@ -94,24 +94,28 @@
                             </li>
                             <li class="list-group-item">
                                 <div class="d-flex align-items-start justify-content-between">
-                                    <span>Pajak</span>
+                                    <span>
+                                        Pajak
+                                        <small class="text-secondary">(5%)</small>
+                                    </span>
+                                    
                                     <span><?= formatRupiah($_SESSION['tax']) ?></span>
                                 </div>
                             </li>
                             <li class="list-group-item border-0 pb-0">
                                 <table class="float-right mt-1">
                                     <tr>
-                                        <td class="px-3" style="padding: .15rem 0;">Cash</td>
-                                        <td class="pr-1">:</td>
-                                        <td><?= formatRupiah($_SESSION['nominal']) ?></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="px-3" style="padding: .15rem 0;">Total</td>
+                                        <td class="pr-3" style="padding: .15rem 0;">Sub Total</td>
                                         <td class="pr-1">:</td>
                                         <td><?= formatRupiah($total) ?></td>
                                     </tr>
                                     <tr>
-                                        <td class="px-3" style="padding-top: .15rem;">Kembalian</td>
+                                        <td class="pr-3" style="padding: .15rem 0;">Cash</td>
+                                        <td class="pr-1">:</td>
+                                        <td><?= formatRupiah($_SESSION['nominal']) ?></td>
+                                    </tr>                                   
+                                    <tr>
+                                        <td class="pr-3" style="padding-top: .15rem;">Kembalian</td>
                                         <td class="pr-1">:</td>
                                         <td><?= formatRupiah($change) ?></td>
                                     </tr>
@@ -135,6 +139,6 @@
 
 <script>
     $(document).ready(function() {
-        $(".menu-toggle").remove();
+        $(".menu-toggle").remove(); // hapus menu toggle (ketika di layar kecil tablet dan mobile)
     });
 </script>

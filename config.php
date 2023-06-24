@@ -34,9 +34,9 @@ function base_url()
 {
     // Jika HTTPS aktif, gunakan HTTPS, jika tidak, gunakan HTTP
     $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http';
-    $host = $_SERVER['HTTP_HOST'];
-    $path = dirname($_SERVER['PHP_SELF']); 
-    $base_url = $protocol . '://' . $host . $path;
+    $host = $_SERVER['HTTP_HOST']; // <-- Mengambil host (localhost atau domain)
+    $path = dirname($_SERVER['PHP_SELF']);  // <-- Mengambil path (folder) dari file ini
+    $base_url = $protocol . '://' . $host . $path; // <-- Menggabungkan semua variabel diatas
 
     return $base_url;
 }
@@ -48,15 +48,17 @@ function base_url()
  */
 function url_current()
 {
+    // Jika HTTPS aktif, gunakan HTTPS, jika tidak, gunakan HTTP
     $url = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http';
-    $host = $_SERVER['HTTP_HOST'];
-    $request_uri = $_SERVER['REQUEST_URI'];
+    $host = $_SERVER['HTTP_HOST']; // <-- Mengambil host (localhost atau domain)
+    $request_uri = $_SERVER['REQUEST_URI']; // <-- Mengambil URI (halaman) saat ini
     
     return $url . '://' . $host . $request_uri;
 }
 
 /**
  * Mengambil parameter page dari URL
+ * Contoh: ?page=home => home
  *
  * @return void
  */
@@ -70,19 +72,21 @@ if (strpos($uri, '?') !== false) { // <-- Jika ada parameter
  * Membuat menu aktif berdasarkan parameter page yang diambil
  *
  * @return void
+ * @param string $param
+ * @param string|array $page
  */
 $page = isset($_GET['page']) ? $_GET['page'] : ''; 
 function setActive($param, $page) 
 {
-    if (is_array($page)) {
-        foreach ($page as $p) {
-            if ($p == $param) {
-                return 'active';
+    if (is_array($page)) { // <-- Jika parameter $page berupa array
+        foreach ($page as $p) { // <-- Looping data didalam array
+            if ($p == $param) { // <-- Jika parameter sama dengan data didalam array
+                return 'active'; // <-- Tambahkan class active
             }
         }
-    } else {
-        if ($param == $page) {
-            return 'active';
+    } else { // <-- Jika parameter $page bukan array
+        if ($param == $page) { // <-- Jika parameter sama dengan $page
+            return 'active'; // <-- Tambahkan class active
         }
     }
 }
@@ -113,6 +117,14 @@ function getProductById($id)
  */
 function formatRupiah($angka)
 {
+    /**
+     * Parameter number_format
+     * 
+     * 1. Angka (value) yang akan diformat
+     * 2. Jumlah digit desimal (Contoh: 0 = 1000, 2 = 1000,00)
+     * 3. Karakter pemisah desimal
+     * 4. Karakter pemisah ribuan
+     */
     return 'Rp' . number_format($angka, 0, ".", ".");
 }
 
@@ -126,9 +138,14 @@ function formatRupiah($angka)
  */
 function explodeItemSelection($row, $key) 
 {
+    /**
+     * explode digunakan untuk memecahkan string menjadi array
+     * disini kita memecahkan string berdasarkan koma (,)
+     * Contoh: "S,M,L" => ["S", "M", "L"]
+     */
     $exp = explode(',', $row[$key]);
 
-    foreach ($exp as $e) {
+    foreach ($exp as $e) { // <-- Looping data didalam array
         echo "<li><input type='radio' name='$key' value='$e'>$e</li>";
     }
 }
@@ -141,7 +158,9 @@ function explodeItemSelection($row, $key)
  */
 function itemProduct($row)
 {
-    $price = ""; $discount = ""; $badge = "";
+    $price = ""; 
+    $discount = ""; 
+    $badge = "";
     
     if ($row['discount'] == "") {
         $price = '<p class="original">' . formatRupiah($row['original']) . '</p>';
@@ -182,7 +201,7 @@ function itemProduct($row)
 }
 
 /**
- * Menampilkan item produk berdasarkan group (category)
+ * Menampilkan item produk berdasarkan group (kategori)
  *
  * @param  mixed $product
  * @param  mixed $id
@@ -191,39 +210,46 @@ function itemProduct($row)
  */
 function groupAndDisplayData($products, $id = "", $category = "")
 {
-    $groupedData = []; // <-- Menampung data yang sudah dikelompokkan
+    $groupProducts = []; // <-- Menampung data produk berdasarkan group (kategori)
 
-    foreach ($products as $row) { // <-- Mengelompokkan data
-        $group = $row['category']; // <-- Menentukan group berdasarkan category
+    foreach ($products as $row) { // <-- Looping data produk
+        $category = $row['category']; // <-- Menentukan group (kategori) produk
 
-        if (!isset($groupedData[$group])) { // <-- Jika group belum ada, buat group baru
-            $groupedData[$group] = []; // <-- Buat group baru
+        if (!isset($groupProducts[$category])) {  // <-- Jika group (kategori) belum ada
+            $groupProducts[$category] = []; // <-- Buat group (kategori) baru
         }
 
-        $groupedData[$group][] = $row; // <-- Masukkan data ke group yang sudah dibuat
+        $groupProducts[$category][] = $row; // <-- Masukkan data produk ke group (kategori) yang sesuai
     }
 
-    foreach ($groupedData as $group => $data) { // <-- Menampilkan data
-        $count = 0; // <-- Membuat counter untuk membatasi jumlah data yang ditampilkan
+    foreach ($groupProducts as $group => $data) { // <-- Looping data produk berdasarkan group (kategori)
+        $count = 0; // <-- Menentukan jumlah item produk yang akan ditampilkan
 
-        foreach ($data as $row) { 
-            if ($id && $category) { // <-- ini untuk tampilan produk dihalaman detail
+        foreach ($data as $row) { // <-- Looping data produk
+
+            if ($id && $category) { // <-- Jika ada parameter ID dan kategori (digunakan di halaman detail produk)
+
+                // Tampilkan produk lainnya, selain produk yang sedang dibuka dan kategori yang sama
                 if ($row['id'] != $id && $row['category'] == $category) {
-                    echo itemProduct($row);
-                    $count++; // <-- Increment counter
+                    echo itemProduct($row); // <-- Tampilkan item produk
+                    $count++; // <-- Tambah jumlah item produk
 
-                    if ($count == 6) { // <-- Jika counter sudah mencapai 6, berhenti
+                    if ($count == 6) { // <-- Jika jumlah item produk sudah 6, maka berhenti
                         break;
                     }
                 }
-            } else {
-                echo itemProduct($row);
-                $count++; // <-- Increment counter
 
-                if ($count == 2) { // <-- Jika counter sudah mencapai 3, berhenti
+            } else { // <-- Jika tidak ada parameter ID dan kategori (digunakan di halaman home)
+
+                echo itemProduct($row); // <-- Tampilkan item produk
+                $count++; // <-- Tambah jumlah item produk
+
+                if ($count == 2) { // <-- Jika item produk dalam satu group sudah 2, maka berhenti
                     break;
                 }
+
             }
+
         }
     }
 }
@@ -248,8 +274,8 @@ function saveDataWithSession($page)
     } else { // <-- Jika tidak ada data id yang dikirim lewat $_POST
 
         /**
-         * Kondisi dibawah ini digunakan untuk mencegah user mengakses halaman 
-         * checkout dan purchase dari URL (JIKA TIDAK ADA SESSION), agar tidak terjadi error
+         * Kondisi dibawah ini digunakan untuk mencegah user mengakses halaman- 
+         * checkout dan purchase lewat URL (JIKA TIDAK ADA SESSION), agar tidak terjadi error
          */
         
         if (!isset($_SESSION[$page])) { // <-- Jika session page tidak ada

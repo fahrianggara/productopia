@@ -1,7 +1,7 @@
 <?php
     saveDataWithSession('checkout'); // $_POST to $_SESSION
 
-    // add shipping cost
+    // membuat pengiriman berdasarkan wilayah
     $shipping = 0;
     if ($_SESSION['region'] == "jabodetabek") {
         $shipping = 5000;
@@ -17,19 +17,19 @@
         $shipping = 30000;
     }
 
-    // generate random for order Id
+    // membuat order id dengan diawali PT# dan diikuti 5 digit angka random
     $orderId = "PT#" . rand(10000, 99999);
 
-    // if discount is null, use original price else use discount price
+    // jika discount kosong, maka pakai harga original, jika discount ada, pakai harga discount
     $_SESSION['discount'] == null ? $price = $_SESSION['original'] : $price = $_SESSION['discount'];
 
-    // calculate tax, price * 5%
+    // menghitung pajak 5% dari harga
     $tax = $price * 0.05;
 
-    // calculate total price and quantity
+    // menghitung kuantitas dengan harga
     $priceQty = $price * $_SESSION['quantity'];
 
-    // calculate total
+    // menghitung total harga keseluruhan
     $total = $priceQty + $shipping + $tax;
 ?>
 
@@ -62,7 +62,6 @@
 
                                 <figure class="checkout-image">
                                     <img src="<?= $_SESSION['image'] ?>" class="img-fluid">
-                                    <span class="sc-img">Sumber Gambar : <?= $_SESSION['source-img'] ?></span>
                                 </figure>
 
                                 <div class="checkout-desc">

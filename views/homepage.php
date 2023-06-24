@@ -8,7 +8,7 @@
             </div>
             <div class="col-xl-6 col-lg-6 col-md-6">
                 <div class="about-text">
-                    <h1>Selamat Datang di <u><?= $title ?></u></h1>
+                    <h1>Selamat Datang di <u><?= $project_name ?></u></h1>
                     <p><?= $description ?></p>
                     <a href="#produk" class="btn about-btn">Lihat Produk</a>
                 </div>
@@ -23,7 +23,7 @@
         <div class="section-title">
             <h2>Produk</h2>
             <p>
-                Berikut adalah beberapa produk yang tersedia di <?= $title ?>. Jika ingin melihat semua produk, silahkan link ini
+                Berikut adalah beberapa produk yang tersedia di <?= $project_name ?>. Jika ingin melihat semua produk, silahkan link ini
                 <a class="underline" href="?page=product">
                     Lihat semua produk
 
@@ -36,7 +36,7 @@
         <div class="product-container">
             <ul class="slider product-list">
                 <?php if (!empty($products)) {
-                    echo groupAndDisplayData($products);
+                    groupAndDisplayData($products);
                 } ?>
             </ul>
 
@@ -54,24 +54,29 @@
         <div class="section-title" style="padding-bottom: 25px;">
             <h2>Our Team</h2>
             <p>
-                Tim yang bekerja dibalik layar untuk membuat website <?= $title ?>.
+                Tim yang bekerja dibalik layar untuk membuat website <?= $project_name ?>.
             </p>
         </div>
 
         <div class="team-container">
             <ul id="team-list">
+                
                 <?php if (!empty($teams)) { ?>
                     <?php foreach ($teams as $row) { ?>
+                        
                         <li class="team-list">
                             <div class="team-inner">
                                 <div class="team-avatar">
+                                    
                                     <img src="<?= $row['image'] ?>" alt="team">
 
                                     <div class="team-info">
+
                                         <div class="inner">
                                             <h4 class="team-name"><?= $row['name'] ?></h4>
                                             <span class="team-job"><?= $row['job'] ?></span>
                                         </div>
+
                                         <div class="social">
                                             <a <?= ($row['github'] != null) ? "target='_blank' href='{$row['github']}'" : "href='javascript:void(0)'" ?>>
                                                 <i class="fab fa-github"></i>
@@ -83,12 +88,15 @@
                                                 <i class="fab fa-linkedin"></i>
                                             </a>
                                         </div>
+
                                     </div>
                                 </div>
                             </div>
                         </li>
+
                     <?php } ?>
                 <?php } ?>
+                
             </ul>
 
             <div class="team-controls">
@@ -105,7 +113,8 @@
         <div class="section-title">
             <h2>Kontak Kami</h2>
             <p>
-                Jika ada pertanyaan, silahkan masukkan pesan pada form dibawah ini. Kami akan segera merespon pesan kamu.
+                Jika ada pertanyaan atau ingin menghubungi kami,
+                silahkan masukkan pesan pada form dibawah ini. Kami akan segera merespon pesan kamu.
             </p>
         </div>
 
@@ -122,24 +131,32 @@
                         <div class="col-xl-6 col-lg-6 col-md-12">
                             <div class="form-group">
                                 <label for="name">Nama</label>
-                                <input type="text" name="name" id="name" class="form-control" placeholder="Masukkan nama kamu" required>
+                                <input required type="text" name="name" id="name" class="form-control" 
+                                    placeholder="Masukkan nama kamu" oninput="setCustomValidity('')"
+                                    oninvalid="this.setCustomValidity('Silahkan masukkan nama kamu!')" />
                             </div>
                         </div>
                         <div class="col-xl-6 col-lg-6 col-md-12">
                             <div class="form-group">
                                 <label for="email">Email</label>
-                                <input type="email" autocomplete="off" name="email" id="email" class="form-control" placeholder="Masukkan email kamu" required>
+                                <input required type="email" autocomplete="off" name="email" id="email" class="form-control" 
+                                    placeholder="Masukkan email kamu" oninput="setCustomValidity('')"
+                                    oninvalid="this.setCustomValidity('Silahkan masukkan email kamu!')" />
                             </div>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="subject">Subjek</label>
-                        <input name="subject" id="subject" class="form-control" placeholder="Masukkan subjek pesan" required></input>
+                        <input required name="subject" id="subject" class="form-control" 
+                            placeholder="Masukkan subjek pesan" oninput="setCustomValidity('')" 
+                            oninvalid="this.setCustomValidity('Silahkan masukkan subjek pesan!')" />
                     </div>
                     <div class="form-group">
                         <label for="message">Pesan</label>
-                        <textarea name="message" id="message" class="form-control" rows="4" placeholder="Masukkan pesan kamu" required></textarea>
+                        <textarea required name="message" id="message" class="form-control" rows="4" 
+                            placeholder="Masukkan pesan kamu" oninput="setCustomValidity('')" 
+                            oninvalid="this.setCustomValidity('Silahkan masukkan pesan kamu!')"></textarea>
                     </div>
                     <div class="form-group m-0">
                         <button type="submit" class="btn btn-primary">

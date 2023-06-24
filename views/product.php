@@ -65,9 +65,9 @@
                 <div class="card mb-3">
                     <article class="card-group-item">
                         <header class="card-header font-weight-bold">
-                            Kategori Produk
+                            Filter Produk (Kategori)
                         </header>
-                        <div class="filter-content">
+                        <div class="card-body filter-content p-0">
                             <div class="list-group list-group-flush" style="border-radius: 8px;">
                             
                                 <?php foreach ($categories as $category) { ?> <!-- Looping kategori -->

@@ -1,40 +1,44 @@
 <?php require_once('config.php') ?>
 
 <?php
+    $project_name = "Productopia";
+
+    $title = $project_name;
     $image = "assets/favicon/android-chrome-512x512.png";
-    $title = "Productopia";
-    $description = "$title adalah sebuah website yang menyediakan berbagai macam produk seperti produk fashion, 
+    $description = "$project_name adalah sebuah website yang menyediakan berbagai macam produk seperti produk fashion, 
     elektronik dan lain lain yang dapat dibeli secara online.";
 
-    if (isset($_GET['page'])) {
-        $page = $_GET['page'];
+    if (isset($_GET['page'])) { // <-- Jika ada parameter page di URL (?page=...)
+        $page = $_GET['page']; // <-- Ambil nilai parameter page
 
-        switch ($page) {
-            case 'product':
+        switch ($page) { // <-- Cek nilai parameter page
+            case 'product': // <-- Jika nilainya product
                 $title = "All Product - $title";
                 $content = 'views/product.php';
                 break;
-            case 'product-detail':
+            case 'product-detail': // <-- Jika nilainya product-detail
                 $id = $_GET['id'];
+                
                 $product = getProductById($id);
                 $title = $product['name'] . " - $title";
                 $image = $product['image'];
                 $description = $product['description'];
+
                 $content = 'views/detail.php';
                 break;
-            case 'checkout':
+            case 'checkout': // <-- Jika nilainya checkout
                 $title = "Checkout - $title";
                 $content = 'views/checkout.php';
                 break;
-            case 'purchase':
+            case 'purchase': // <-- Jika nilainya purchase
                 $title = "Purchase - $title";
                 $content = 'views/purchase.php';
                 break;
-            default:
+            default: // <-- Jika nilainya tidak ada
                 $content = 'views/homepage.php';
                 break;
         }
-    } else {
+    } else { // <-- Jika tidak ada parameter page di URL
         $content = 'views/homepage.php';
     }
 ?>
@@ -56,9 +60,9 @@
     <title><?= $title; ?></title>
 
     <!-- Logo favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png"> 
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicon/apple-touch-icon.png"> 
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon/favicon-16x16.png">
 
     <!-- CSS -->
     <link rel="stylesheet" href="assets/plugins/bootstrap4/bootstrap.min.css">
@@ -78,7 +82,7 @@
     <!-- Flash Message -->
     <?php if (isset($_SESSION['message'])) { ?>
         <div class="flash-message" data-message="<?= $_SESSION['message'] ?>"></div> 
-        <?php unset($_SESSION['message']); ?>
+        <?php unset($_SESSION['message']); ?> <!-- Hapus session message -->
     <?php } ?>
 
     <main id="main">

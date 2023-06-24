@@ -10,8 +10,8 @@
         <?php if ($row['id'] == $id) { ?>
 
             <?php
-                $category = $row['category'];
-                $found = true;
+                $category = $row['category']; // <-- mengambil data kategori produk untuk dipakai diluar perulangan
+                $found = true; // <-- data ditemukan
             ?>
 
             <section id="product-detail">
@@ -149,15 +149,15 @@
         <div class="section-title">
             <h2>Produk Terkait</h2>
             <p>
-                Produk lainnya yang mungkin kamu suka
+                Produk <?= $category ?> lainnya yang mungkin kamu suka.
             </p>
         </div>
 
         <div class="product-container">
             <ul class="slider product-list">
 
-                <?php if (!empty($products)) {
-                    echo groupAndDisplayData($products, $id, $category);
+                <?php if (!empty($products)) { // <-- jika data tidak kosong
+                    echo groupAndDisplayData($products, $id, $category); // <-- tampilkan data berdasarkan kategori yang sama
                 } ?>
 
             </ul>
@@ -182,13 +182,13 @@
             e.preventDefault();
 
             // jika radio button tidak ada yang terpilih kasih alert
-            if (inputSize.length > 0 && !inputSize.is(':checked')) {
+            if (inputSize.length > 0 && !inputSize.is(':checked')) { // <-- jika inputSize ada dan tidak terpilih
                 alertify.error('Pilih ukuran terlebih dahulu');
                 return;
-            } else if (inputColor.length > 0 && !inputColor.is(':checked')) {
+            } else if (inputColor.length > 0 && !inputColor.is(':checked')) { // <-- jika inputColor ada dan tidak terpilih
                 alertify.error('Pilih warna terlebih dahulu');
                 return;
-            } else if (inputWeight.length > 0 && !inputWeight.is(':checked')) {
+            } else if (inputWeight.length > 0 && !inputWeight.is(':checked')) { // <-- jika inputWeight ada dan tidak terpilih
                 alertify.error('Pilih berat terlebih dahulu');
                 return;
             }

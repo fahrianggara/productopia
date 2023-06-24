@@ -4,8 +4,8 @@
 # General CSS
 --------------------------------------------------------------*/
 :root {
-	--main-color: #141516;
-	--main-sec-color: #1c1d1e;
+	--bg-color: #141516;
+	--bg-sec-color: #1c1d1e;
 	--text-color: #fffff0;
 	--button-color: #3da9fc;
 	--stroke-color: #094067;
@@ -21,8 +21,8 @@
 }
 
 body.light-theme {
-	--main-color: #fffffe;
-	--main-sec-color: #f1f2f6;
+	--bg-color: #fffffe;
+	--bg-sec-color: #f1f2f6;
 	--text-color: #141516;
 	--button-color: #3da9fc;
 	--stroke-color: #094067;
@@ -35,7 +35,7 @@ body.light-theme {
 
 body {
 	font-family: "Rubik", sans-serif;
-	background-color: var(--main-color);
+	background-color: var(--bg-color);
 	color: var(--text-color);
 }
 
@@ -46,6 +46,7 @@ body {
 
 ::-webkit-scrollbar-thumb {
 	background: var(--paragraph-color);
+	border-radius: 10px;
 }
 
 .text-secondary {
@@ -68,7 +69,7 @@ button:focus {
 input,
 textarea,
 select {
-	background-color: var(--main-color) !important;
+	background-color: var(--bg-color) !important;
 	border-color: var(--border-color) !important;
 	color: var(--text-color) !important;
 }
@@ -113,19 +114,19 @@ select:focus {
 	font-size: 15px;
 }
 .card-body.section-bg .form-control {
-	background-color: var(--main-sec-color) !important;
+	background-color: var(--bg-sec-color) !important;
 }
 
 /*--------------------------------------------------------------
 # Card Bootstrap
 --------------------------------------------------------------*/
 .card {
-	background-color: var(--main-sec-color);
+	background-color: var(--bg-sec-color);
 	border-radius: 8px;
 }
 
 .card.section-bg {
-	background-color: var(--main-color);
+	background-color: var(--bg-color);
 	border-radius: 12px;
 }
 
@@ -170,13 +171,13 @@ select:focus {
 }
 
 .card-header {
-	background-color: var(--main-sec-color);
+	background-color: var(--bg-sec-color);
 	color: var(--card-headline-color);
 	border-bottom: 1px solid var(--border-color);
 }
 
 .card-footer {
-	background-color: var(--main-sec-color);
+	background-color: var(--bg-sec-color);
 	color: var(--card-headline-color);
 	border-top: 1px solid var(--border-color);
 }
@@ -211,7 +212,7 @@ select:focus {
 }
 
 .list-group-item:hover {
-	background-color: var(--main-sec-color);
+	background-color: var(--bg-sec-color);
 }
 
 .list-group-item:first-child {
@@ -225,7 +226,7 @@ select:focus {
 }
 
 .list-group-item.active {
-	background-color: var(--main-sec-color);
+	background-color: var(--bg-sec-color);
 	border: none;
 	border-left: 3px solid var(--primary-color);
 	/* border-bottom: 1px solid var(--border-color); */
@@ -289,7 +290,7 @@ select:focus {
 #header {
 	z-index: 9999;
 	padding: 15px 0;
-	background-color: var(--main-color);
+	background-color: var(--bg-color);
 	border-bottom: 1px solid transparent;
 	transition: top 0.2s ease, border-bottom 0.2s ease;
 }
@@ -432,7 +433,7 @@ select:focus {
 	overflow-y: auto;
 	left: -280px;
 	width: 280px;
-	background: var(--main-color);
+	background: var(--bg-color);
 	transition: 0.3s;
 	/* box-shadow: 5px 0 5px -5px rgba(0, 0, 0, 0.3); */
 	border-right: 1px solid var(--border-color);
@@ -612,11 +613,11 @@ section {
 # About
 --------------------------------------------------------------*/
 #about {
-	min-height: 90vh;
+	min-height: 100vh;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	padding: 0 0 30px 0 !important;
+	padding: 0 0 80px 0 !important;
 }
 
 #about .about-banner {
@@ -712,7 +713,7 @@ section {
 
 @media (max-width: 425.98px) {
 	#about .about-text h1 {
-		font-size: 1.5rem;
+		font-size: 1.6rem;
 	}
 
 	#about .about-text p {
@@ -728,8 +729,21 @@ section {
 # Product List
 --------------------------------------------------------------*/
 #produk {
-	padding-bottom: 90px;
+	min-height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 0 0 60px 0 !important;
 }
+
+@media (max-width: 768.98px) {
+	#produk {
+		min-height: 0;
+		display: block;
+		padding: 60px 0 90px 0 !important;
+	}
+}
+
 .product-container {
 	position: relative;
 }
@@ -1084,7 +1098,7 @@ section {
 	bottom: 10px;
 	left: 15px;
 	color: #fff;
-	font-size: 15px;
+	font-size: 12px;
 }
 
 #product-detail figure img {
@@ -1213,29 +1227,6 @@ section {
 	margin-right: 20px;
 }
 
-.checkout-info figure::before{
-	content: "";
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background: linear-gradient(
-        180deg,
-        rgba(0, 0, 0, 0) 0%,
-        rgba(0, 0, 0, 0.5) 100%
-    );
-}
-
-.checkout-info figure .sc-img {
-	position: absolute;
-	bottom: 0px;
-	left: 0px;
-	color: #fff;
-	font-size: 7px;
-    padding: 1px 5px;
-}
-
 .checkout-info figure img {
 	max-width: 100%;
 	height: auto;
@@ -1336,7 +1327,7 @@ section {
 	padding: 3px 10px;
 	height: 36px;
 	color: var(--text-color);
-	background-color: var(--main-sec-color);
+	background-color: var(--bg-sec-color);
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -1521,8 +1512,21 @@ section {
 /*--------------------------------------------------------------
 # Our Team
 --------------------------------------------------------------*/
+
 #team {
-	padding-bottom: 90px;
+	min-height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 0 0 60px 0 !important;
+}
+
+@media (max-width: 768.98px) {
+	#team {
+		min-height: 0;
+		display: block;
+		padding: 60px 0 90px 0 !important;
+	}
 }
 
 #team .tns-nav {
@@ -1581,6 +1585,21 @@ section {
 	bottom: 0.6rem;
 	right: -0.6rem;
 	z-index: 1;
+}
+
+.team-avatar::after {
+	content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    transition: all 0.4s ease;
+}
+
+.team-inner:hover .team-avatar::after {
+	background-color: rgba(0, 0, 0, 0);
 }
 
 .team-avatar img {
@@ -1886,19 +1905,14 @@ footer {
 }
 
 .footer-bottom {
-	padding: 30px 5px;
+	padding: 60px 5px 30px 5px;
 }
 
 .footer-bottom p {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	font-size: 15px;
+	color: var(--paragraph-color);
+	font-size: 16px;
 	margin: 0;
-}
-
-@media (max-width: 425.98px) {
-	.footer-bottom p {
-		font-size: 14px;
-	}
 }
