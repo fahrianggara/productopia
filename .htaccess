@@ -1,6 +1,6 @@
 RewriteEngine On
-RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^(index\.php)?$ - [R=404,L]
 RewriteRule ^(config\.php) - [R=404,L]
 RewriteRule ^(data|layouts|views)/ - [R=404,L]
