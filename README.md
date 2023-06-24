@@ -12,7 +12,7 @@ Productopia adalah sebuah website yang menyediakan berbagai macam produk seperti
 ## Teknologi yang digunakan
 
 Project ini dibangun dengan menggunakan teknologi-teknologi berikut:
-1. Bahasa Pemrograman: PHP, CSS, JavaScript
+1. Bahasa Pemrograman: PHP, CSS, JavaScript, JSON (JavaScript Object Notation)
 2. Framework: jQuery (JS), Bootstrap 4.6 (CSS)
 
 ## Team Pengembang 

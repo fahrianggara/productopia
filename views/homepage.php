@@ -56,9 +56,7 @@
     <div class="container">
         <div class="section-title" style="padding-bottom: 25px;">
             <h2>Our Team</h2>
-            <p>
-                Tim yang bekerja dibalik layar untuk membuat website <?= $project_name ?>.
-            </p>
+            <p>Tim yang bekerja dibalik layar untuk membuat website <?= $project_name ?>.</p>
         </div>
 
         <div class="team-container">

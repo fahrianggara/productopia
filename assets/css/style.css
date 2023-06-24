@@ -754,7 +754,6 @@ section {
 	margin: 0;
 }
 
-
 .product-list.grid {
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);

@@ -4,7 +4,7 @@
     $project_name = "Productopia";
     $title = $project_name;
 
-    if (isset($_GET['page'])) { // <-- Jika ada parameter page di URL (?page=...)
+    if (isset($_GET['page'])) { // <-- Jika ada parameter page di URL (?page=)
         $page = $_GET['page']; // <-- Ambil nilai parameter page
 
         switch ($page) { // <-- Cek nilai parameter page

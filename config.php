@@ -26,8 +26,8 @@ if (!$products) {
 }
 
 /**
- * Membuat Base URL untuk mengakses halaman
- * 
+ * Membuat Base URL untuk mengakses file
+ * fungsinya untuk memanggil alamat utama dari URL (localhost atau domain)
  *
  * @return void
  */
