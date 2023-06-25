@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <h3>Tentang</h3>
-                    <p><?= $project_name ?> adalah sebuah website yang menyediakan berbagai macam produk seperti produk fashion, elektronik dan lain lain yang dapat dibeli secara online.</p>
+                    <p><?= $description ?></p>
                 </div>
                 <div class="col-md-4 footer-menu">
                     <h3>Menu</h3>

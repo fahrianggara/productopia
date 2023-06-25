@@ -2,14 +2,17 @@
 
 <?php
     $project_name = "Productopia";
+
     $title = $project_name;
+    $description = "$project_name adalah sebuah website yang menyediakan berbagai macam produk seperti 
+        produk aksesoris, elektronik dan lain lain yang dapat dibeli secara online dan mudah.";
 
     if (isset($_GET['page'])) { // <-- Jika ada parameter page di URL (?page=)
         $page = $_GET['page']; // <-- Ambil nilai parameter page
 
         switch ($page) { // <-- Cek nilai parameter page
             case 'product': // <-- Jika nilainya product
-                $title = "All Product - $title";
+                $title = "Product - $title";
                 $content = 'views/product.php';
                 break;
             case 'product-detail': // <-- Jika nilainya product-detail

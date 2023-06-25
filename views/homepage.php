@@ -9,10 +9,7 @@
             <div class="col-xl-6 col-lg-6 col-md-6">
                 <div class="about-text">
                     <h1>Selamat Datang di <u><?= $project_name ?></u></h1>
-                    <p>
-                        <?= $project_name ?> adalah sebuah website yang menyediakan berbagai macam produk seperti produk fashion,
-                        elektronik dan lain lain yang dapat dibeli secara online.
-                    </p>
+                    <p><?= $description ?></p>
                     <a href="#produk" class="btn about-btn">Lihat Produk</a>
                 </div>
             </div>
@@ -131,7 +128,10 @@
                     <div class="row">
                         <div class="col-xl-6 col-lg-6 col-md-12">
                             <div class="form-group">
-                                <label for="name">Nama</label>
+                                <label for="name">
+                                    Nama
+                                    <small class="text-danger">*</small>
+                                </label>
                                 <input required type="text" name="name" id="name" class="form-control" 
                                     placeholder="Masukkan nama kamu" oninput="setCustomValidity('')" 
                                     oninvalid="this.setCustomValidity('Silahkan masukkan nama kamu!')" />
@@ -139,7 +139,10 @@
                         </div>
                         <div class="col-xl-6 col-lg-6 col-md-12">
                             <div class="form-group">
-                                <label for="email">Email</label>
+                                <label for="email">
+                                    Email
+                                    <small class="text-danger">*</small>
+                                </label>
                                 <input required type="email" autocomplete="off" name="email" id="email" class="form-control" 
                                     placeholder="Masukkan email kamu" oninput="setCustomValidity('')" 
                                     oninvalid="this.setCustomValidity('Silahkan masukkan email kamu!')" />
@@ -148,14 +151,20 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="subject">Subjek</label>
+                        <label for="subject">
+                            Subjek
+                            <small class="text-danger">*</small>
+                        </label>
                         <input required name="subject" id="subject" class="form-control" 
                             placeholder="Masukkan subjek pesan" oninput="setCustomValidity('')" 
                             oninvalid="this.setCustomValidity('Silahkan masukkan subjek pesan!')" />
                     </div>
 
                     <div class="form-group">
-                        <label for="message">Pesan</label>
+                        <label for="message">
+                            Pesan
+                            <small class="text-danger">*</small>
+                        </label>
                         <textarea required name="message" id="message" class="form-control" rows="4" 
                             placeholder="Masukkan pesan kamu" oninput="setCustomValidity('')" 
                             oninvalid="this.setCustomValidity('Silahkan masukkan pesan kamu!')"></textarea>

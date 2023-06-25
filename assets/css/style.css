@@ -113,8 +113,14 @@ select:focus {
 	color: var(--paragraph-color);
 	font-size: 15px;
 }
+
 .card-body.section-bg .form-control {
 	background-color: var(--bg-sec-color) !important;
+}
+
+.form-control[readonly] {
+	color: var(--paragraph-color) !important;
+	cursor: default;
 }
 
 /*--------------------------------------------------------------

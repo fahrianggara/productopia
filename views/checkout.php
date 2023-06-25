@@ -17,6 +17,9 @@
         $shipping = 30000;
     }
 
+    // membuat region menjadi huruf kapital dan mengganti underscore menjadi spasi (jawa_barat -> Jawa Barat)
+    $region = ucwords(str_replace('_', ' ', $_SESSION['region']));
+
     // membuat order id dengan diawali PT# dan diikuti 5 digit angka random
     $orderId = "PT#" . rand(10000, 99999);
 
@@ -111,7 +114,10 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="firstname">Nama Awal</label>
+                                    <label for="firstname">
+                                        Nama Awal
+                                        <small class="text-danger">*</small>
+                                    </label>
                                     <input type="text" class="input-billing form-control" id="firstname" name="firstname" 
                                         placeholder="Masukkan nama awalan kamu" required maxlength="20" 
                                         oninvalid="this.setCustomValidity('Silahkan masukkan nama awal kamu!')" 
@@ -120,7 +126,10 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="lastname">Nama Akhir</label>
+                                    <label for="lastname">
+                                        Nama Akhir
+                                        <small class="text-danger">*</small>
+                                    </label>
                                     <input type="text" class="input-billing form-control" id="lastname" name="lastname" 
                                         placeholder="Masukkan nama akhiran kamu" required maxlength="20" 
                                         oninvalid="this.setCustomValidity('Silahkan masukkan nama akhir kamu!')" 
@@ -129,14 +138,20 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="email">Email</label>
+                            <label for="email">
+                                Email
+                                <small class="text-danger">*</small>
+                            </label>
                             <input type="email" class="input-billing form-control" id="email" name="email" 
                                 placeholder="Masukkan email kamu" required 
                                 oninvalid="this.setCustomValidity('Silahkan masukkan email kamu yang valid!')" 
                                 oninput="setCustomValidity('')">
                         </div>
                         <div class="form-group">
-                            <label for="address">Alamat</label>
+                            <label for="address">
+                                Alamat
+                                <small class="text-danger">*</small>
+                            </label>
                             <input type="text" class="input-billing form-control" id="address" name="address" 
                                 placeholder="Masukkan alamat kamu" required 
                                 oninvalid="this.setCustomValidity('Silahkan masukkan alamat kamu!')" 
@@ -145,7 +160,7 @@
                         <div class="form-group">
                             <label for="wilayah">Wilayah</label>
                             <input type="text" class="input-billing form-control" id="wilayah" name="wilayah"
-                            value="<?= ucwords(str_replace('_', ' ', $_SESSION['region'])) ?>" readonly>
+                            value="<?= $region ?>" readonly>
                         </div>
                     </div>
                 </div>
@@ -176,7 +191,10 @@
                             <li class="list-group-item" style="border-bottom: 0;">
                                 <div class="d-flex justify-content-between">
                                     <span>Pajak</span>
-                                    <span><?= formatRupiah($tax) ?></span>
+                                    <span>
+                                        <?= formatRupiah($tax) ?>
+                                        <small class="text-secondary">(5%)</small>
+                                    </span>
                                 </div>
                             </li>
                         </ul>
@@ -192,10 +210,11 @@
                 <aside class="checkout-summary card mt-3">
                     <div class="card-header font-weight-bold">
                         Pembayaran
+                        <small class="text-secondary">(Ductopay)</small>
                     </div>
                     <div class="card-body section-bg">
                         <div class="form-group m-0">
-                            <input type="text" class="form-control" id="nominal" placeholder="999999" required
+                            <input type="text" class="form-control" id="nominal" placeholder="Nominal uang kamu" required
                                 onkeyup="this.value = formatRupiah(this.value, 'Rp')" 
                                 oninvalid="this.setCustomValidity('Silahkan masukkan uang kamu')" 
                                 oninput="setCustomValidity('')">
@@ -227,9 +246,9 @@
             var nominal = rupiahToInt(nominalId.val());
             nominalInput.val(nominal);
 
-            if (nominal <= total) {
+            if (nominal < total) { // <-- jika uang kurang dari total
                 alertify.error("Duuuh, Uang-mu kurang tuh..");
-                return;
+                return; // <-- hentikan proses submit
             } else {
                 var isInputValid = true; // <-- Flag untuk menandakan apakah input valid atau tidak
 
@@ -242,7 +261,7 @@
                         alertify.error("Inputan tidak valid! Tidak diperbolehkan menggunakan script HTML.");
 
                         isInputValid = false; // <-- Set flag menjadi false
-                        return;
+                        return; // <-- Hentikan proses submit
                     }
                 });
 
@@ -250,7 +269,7 @@
                     submitPay.html("Memproses...");
                     submitPay.attr("disabled", true);
 
-                    setTimeout(function() {
+                    setTimeout(function() { // <-- Jalankan proses submit setelah 1 detik
                         checkoutForm.unbind('submit').submit();
                     }, 1000);
                 }
