@@ -29,3 +29,6 @@ Project ini dibangun dengan menggunakan teknologi-teknologi berikut:
 2. Buka XAMPP dan jalankan Apache 
 3. Buka browser dan ketikkan `localhost/productopia` pada URL
 4. Website siap digunakan. Jangan lupa untuk menyalakan internet.
+
+
+# Tolong jangan diperjualbelikan yaa, jika mau dijadikan referensi / belajar silahkan saja. Terima kasih.
