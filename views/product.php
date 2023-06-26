@@ -32,7 +32,8 @@
             <article class="col-md-8">
                 <div class="tab-content">
 
-                    <?php foreach ($categories as $category) { ?> <!-- Looping kategori -->
+                     <!-- Looping kategorinya, $categories ini diambil dari array kategori diatas -->
+                    <?php foreach ($categories as $category) { ?>
 
                         <!-- id ini target href navigasi kategori (dibawah) -->
                         <div id="<?= $category ?>" class="tab-pane fade show 

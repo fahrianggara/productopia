@@ -40,7 +40,7 @@
                 <div class="purchase-container">
                     <div class="purchase-title">
                         <h3>Halo, <?= ucwords($fullname) ?>👋</h3>
-                        <p>Terimakasih telah berbelanja di <?= $project_name ?>!</p>
+                        <p>Terimakasih telah berbelanja di <?= $project_name ?>! jangan lupa berikan bintang 5</p>
                     </div>
 
                     <hr>

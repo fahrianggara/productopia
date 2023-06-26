@@ -3,7 +3,7 @@
         <div class="row flex-row-reverse align-items-center">
             <div class="about-banner col-xl-6 col-lg-6 col-md-6">
                 <picture class="about-banner-inner">
-                    <img src="assets/images/banner.svg">
+                    <img src="<?= base_url() ?>/assets/images/banner.svg">
                 </picture>
             </div>
             <div class="col-xl-6 col-lg-6 col-md-6">
@@ -24,7 +24,7 @@
             <h2>Produk</h2>
             <p>
                 Berikut adalah beberapa produk yang tersedia di <?= $project_name ?>. Jika ingin melihat semua produk, silahkan link ini
-                <a class="underline" href="?page=product">
+                <a class="underline" href="<?= base_url() ?>/?page=product">
                     Lihat semua produk
 
                     <i class="fas fa-arrow-right"></i>
@@ -35,8 +35,8 @@
 
         <div class="product-container">
             <ul class="slider product-list">
-                <?php if (!empty($products)) {
-                    groupAndDisplayData($products);
+                <?php if (!empty($products)) { // <-- Jika $products tidak kosong
+                    groupAndDisplayData($products); // <-- Tampilkan data berdasarkan group(kategori)
                 } ?>
             </ul>
 

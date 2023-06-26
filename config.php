@@ -13,7 +13,7 @@ $teams = json_decode($teamsJson, true); // <-- true digunakan untuk mengubah JSO
 
 // Memeriksa apakah variabel $teams kosong atau null
 if (!$teams) {
-    $teams = array(); // Jika kosong, buat array kosong
+    $teams = []; // Jika kosong, buat array kosong
 }
 
 // Membaca dan mengurai file JSON 'data/product.json'
@@ -22,7 +22,7 @@ $products = json_decode($productsJson, true);
 
 // Memeriksa apakah variabel $products kosong atau null
 if (!$products) {
-    $products = array(); // Jika kosong, buat array kosong
+    $products = []; // Jika kosong, buat array kosong
 }
 
 /**
@@ -178,7 +178,7 @@ function itemProduct($row)
     
     return '
         <li class="product-item">
-            <a href="?page=product-detail&id=' . $row['id'] . '" class="product">
+            <a href="'. base_url().'/?page=product-detail&id=' . $row['id'] . '" class="product">
                 <div class="product-image">
                     ' . $badge . '
                     <img src="' . $row['image'] . '" title="Gambar Dari : '. $row['source-img'].'">
@@ -188,7 +188,7 @@ function itemProduct($row)
                     <span class="category">' . $row['category'] . '</span>
                     <h3 class="product-name">
                         <a title="' . $row['name'] . '" 
-                            href="?page=product-detail&id=' . $row['id'] . '">
+                            href="'. base_url().'/?page=product-detail&id=' . $row['id'] . '">
                             ' . $row['name'] . '
                         </a>
                     </h3>
@@ -270,7 +270,7 @@ function groupAndDisplayData($products, $id = "", $category = "")
 
 /**
  * Menyimpan data ($_POST) ke session untuk digunakan pada halaman checkout dan purchase
- * param $page diambil dari halaman checkout dan purchase, untuk menentukan halaman yang akan diakses
+ * param $page diambil dari file checkout dan purchase, untuk menentukan halaman yang akan diakses
  *
  * @param  mixed $page
  * @return void
