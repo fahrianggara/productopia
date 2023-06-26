@@ -22,3 +22,10 @@ Project ini dibangun dengan menggunakan teknologi-teknologi berikut:
 3. Fakhri Akmal Fadillah - 10220046
 4. Sultan Jordy Priadi - 10220078
 5. Ilham Ramadan - 10220048
+
+## Instalasi
+
+1. Clone repository ini ke dalam folder htdocs pada XAMPP
+2. Buka XAMPP dan jalankan Apache 
+3. Buka browser dan ketikkan `localhost/productopia` pada URL
+4. Website siap digunakan. Jangan lupa untuk menyalakan internet.
