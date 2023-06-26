@@ -17,7 +17,7 @@
         $shipping = 30000;
     }
 
-    // membuat region menjadi huruf kapital dan mengganti underscore menjadi spasi (jawa_barat -> Jawa Barat)
+    // membuat region menjadi huruf kapital dan mengganti underscore menjadi spasi. (jawa_barat -> Jawa Barat)
     $region = ucwords(str_replace('_', ' ', $_SESSION['region']));
 
     // membuat order id dengan diawali PT# dan diikuti 5 digit angka random
@@ -210,7 +210,6 @@
                 <aside class="checkout-summary card mt-3">
                     <div class="card-header font-weight-bold">
                         Pembayaran
-                        <small class="text-secondary">(Ductopay)</small>
                     </div>
                     <div class="card-body section-bg">
                         <div class="form-group m-0">

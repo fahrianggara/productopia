@@ -27,11 +27,14 @@
     <div class="container">
 
         <div class="row flex-row-reverse">
+
+            <!-- Tab content -->
             <article class="col-md-8">
                 <div class="tab-content">
 
                     <?php foreach ($categories as $category) { ?> <!-- Looping kategori -->
 
+                        <!-- id ini target href navigasi kategori (dibawah) -->
                         <div id="<?= $category ?>" class="tab-pane fade show 
                             <?= $category == $categories[0] ? 'active' : '' ?>">
                             <!-- ^ Tambahkan class active pada kategori pertama -->
@@ -61,17 +64,20 @@
                 </div>
             </article>
 
+            <!-- Tab navigasi -->                                
             <aside class="col-md-4">
                 <div class="card mb-3">
-                    <article class="card-group-item">
+                    <div class="card-group-item">
                         <header class="card-header font-weight-bold">
                             Filter Produk (Kategori)
                         </header>
                         <div class="card-body filter-content p-0">
                             <div class="list-group list-group-flush" style="border-radius: 8px;">
                             
+                            
                                 <?php foreach ($categories as $category) { ?> <!-- Looping kategori -->
 
+                                    <!-- href ini target id kategori yang akan ditampilkan di tab content (diatas) -->
                                     <a href="#<?= $category ?>" data-toggle="tab" 
                                         class="list-group-item <?= $category == $categories[0] ? 'active' : '' ?>"> 
                                         <!-- ^ Tambahkan class active pada kategori pertama -->
@@ -87,7 +93,7 @@
 
                             </div>
                         </div>
-                    </article>
+                    </div>
                 </div>
             </aside>
         </div>

@@ -3,7 +3,7 @@
 /*--------------------------------------------------------------
 # General CSS
 --------------------------------------------------------------*/
-:root {
+:root { /* variable untuk warna darkmode dan global variable */
 	--bg-color: #141516;
 	--bg-sec-color: #1c1d1e;
 	--text-color: #fffff0;
@@ -20,7 +20,7 @@
 	--brs-xl: 10px;
 }
 
-body.light-theme {
+body.light-theme { /* untuk warna lightmode */
 	--bg-color: #fffffe;
 	--bg-sec-color: #f1f2f6;
 	--text-color: #141516;
