@@ -32,4 +32,4 @@ Project ini dibangun dengan menggunakan teknologi-teknologi berikut:
 
 ---
 
-# Tolong jangan diperjualbelikan yaa, jika mau dijadikan referensi / belajar silahkan saja. Terima kasih.
+# Tolong jangan diperjualbelikan yaa, jika mau dijadikan referensi / belajar silahkan saja. Terima kasih. (Please don't sell this project, if you want to use it as a reference / learning, please do. Thank you.)
