@@ -10,9 +10,9 @@
             <div class="modal-body">
                 <ol>
                     <li>Silahkan pilih produk yang ingin kamu beli. <a class="underline" href="<?= base_url() ?>?page=product">Klik disini</a></li>
-                    <li>Atur pesanan kamu pada di bagian atur pesanan, Lalu klik tombol bayar sekarang. Setelah itu kamu akan diarahkan ke checkout.</li>
-                    <li>Pada dihalaman checkout, kamu akan diminta untuk mengisi data diri kamu. Dan masukkan nominal uang kamu (tidak boleh kurang dari total).</li>
-                    <li>Setelah itu kamu akan diarahkan ke halaman invoice pembayaran. Selesai!</li>
+                    <li>Atur pesanan kamu pada bagian atur pesanan, Lalu klik tombol bayar sekarang. Setelah itu kamu akan di arahkan ke checkout.</li>
+                    <li>Pada halaman checkout, kamu akan diminta untuk mengisi data diri kamu dan masukkan nominal uang kamu (tidak boleh kurang dari total).</li>
+                    <li>Setelah itu kamu akan di arahkan ke halaman invoice pembayaran. Selesai!</li>
                     <li>Happy Shopping!</li>
                 </ol>
             </div>
