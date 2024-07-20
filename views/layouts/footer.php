@@ -14,7 +14,12 @@
                 <div class="col-md-4">
                     <h3>Hubungi Kami</h3>
                     <ul>
-                        <li><a class="underline" href="javascript:void(0)">Facebook</a></li>
+                        <li>
+                            <a class="underline" href="javascript:void(0)">
+                                <i class="bi bi-telephone"></i>
+                                08971231241
+                            </a>
+                        </li>
                         <li><a class="underline" href="javascript:void(0)">Instagram</a></li>
                         <li><a class="underline" href="javascript:void(0)">Twitter</a></li>
                         <li><a class="underline" href="javascript:void(0)">WhatsApp</a></li>

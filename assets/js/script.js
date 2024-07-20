@@ -293,7 +293,7 @@ function rupiahToInt(angka) {
         history.replaceState('', document.title, window.location.origin + window
             .location.pathname + window
                 .location.search);
-    }, 1000);
+    }, 150);
 
     /**
     * Membuat slider pada item menggunakan tiny slider js
