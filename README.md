@@ -34,3 +34,5 @@ Project ini dibangun dengan menggunakan teknologi-teknologi berikut:
 
 # Tolong jangan diperjualbelikan yaa, jika mau dijadikan referensi atau belajar silahkan saja. Terima kasih.
 # Please do not sell it, feel free to use it as a reference or for learning purposes. Thank you.
+
+# Soon to be updated with more features and improvements. Stay tuned!
